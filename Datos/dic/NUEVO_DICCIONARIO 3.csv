@@ -1,0 +1,21 @@
+Campo;Descripci�n;Tipo de Dato;Valores Permitidos (Reglas/Listas);Ejemplos (Casos de Uso)
+ID;Identificador �nico del caso de prueba o registro QA.;Num�rico;Enteros secuenciales (>= 0).;1, 105
+ID Referencial;Identificador externo del dato a usar en el ciclo de prueba.;Alfanum�rico;Formato libre o patrones espec�ficos (ej. QA-XXX).;QA-001, 1023
+Tipo de Prueba;Categor�a de la ejecuci�n seg�n el objetivo de la validaci�n.;Lista;Regresiva, Proyecto (Funcional), Funcional Positiva;Proyecto (Funcional)
+Prioridad;Nivel de criticidad basado en impacto de negocio y riesgo.;Num�rico;1 , 2, 3 ;1
+Marca;Marca asociada al producto o servicio evaluado.;Lista;Claro, VTR;VTR
+Segmento;Segmento de negocio al que pertenece el flujo.;Lista;B2B PYME, B2B GC, B2C PYME, B2C Residencial, B2C, B2B;B2C Residencial
+Tecnolog�a;Tecnolog�a de red involucrada en la prueba.;Lista;NFTT, NEUTRA, HFC, FTTH, CFTT, MOVIL, SIP, XGSPON, GPON;HFC
+Proceso;Flujo de negocio macro que se est� certificando.;Lista;Venta, Cambio de Promoci�n, Traslado, Modificaci�n, Suspensi�n, Reanudaci�n, Retenci�n, Servicio Tecnico, Facturacion, Cancelacion, Activacion;Venta
+Sub Proceso;Acci�n espec�fica derivada de la funcionalidad principal.;Lista;Traslado con Intercambio de Equipo, Traslado Sin cambio de equipo, Downgrade, Upgrade, Cambio de Titularidad, Portabilidad, Reparaci�n, Venta Fija, Agregar Servicios Adicionales, Eliminar Servicios Adicionales, Agregar Descuentos, Eliminar Descuentos, Proceso de Facturaci�n - Emisi�n de boletas - BillNow, Proceso de Facturaci�n - Emisi�n de boletas - 1era Boleta, Proceso de Facturaci�n - Emisi�n de Factura - BillNow, Proceso de Facturaci�n - Emisi�n de Factura - 1era Boleta, Proceso de Facturaci�n - Emisi�n de boletas PUF, Proceso de Facturaci�n - Emisi�n de factura PUF, Proceso de Facturaci�n - Emisi�n Nota de Credito, Pago Deuda Boletas, Pago Deuda Factura, Pago Deuda PUF;Upgrade
+Servicios;Servicios espec�ficos incluidos o impactados en la prueba.;Texto Libre;Nombres oficiales de promociones o servicios activos.;3 play finix con OTT Disney
+Empaquetado;Tipo de bundle o configuraci�n comercial del producto.;Lista;1Play, 2Play, 3Play, OTT, Prepago, Cuenta Controlada, PostPago, ClaroUP;3Play
+Equipo (Material);Hardware o material necesario para el escenario.;Texto / Lista;Modelos de decodificadores, m�dems, SIMs o equipos m�viles vigentes.;ONT ZTE H6701Q, TG2492LG, SIMCARD
+Precondiciones;Estado necesario del sistema/datos antes de iniciar.;Texto Largo;Activo, Mora, Suspendido, No Activo.;Usuario creado, servicio activo
+Descripci�n;Resumen del objetivo del escenario de prueba.;Texto Largo;Frase imperativa describiendo la acci�n.;Validar creaci�n de pedido exitoso
+Paso a Paso;Secuencia detallada de acciones a ejecutar.;Texto Largo;Pasos numerados l�gicamente.;1. Ingresar a andesqa.cl. 2. Login con credenciales...
+Resultado Esperado;Criterio de aceptaci�n para considerar la prueba exitosa.;Texto Largo;Estado final verificable en sistemas;Cliente creado exitosamente en Siebel y OSM
+Estatus;Estado actual de ejecuci�n del caso de prueba.;Lista;No Ejecutado, Aprobado, Bloqueado, Fallido, N/A, En Pruebas;En Pruebas
+Datos de Prueba;Datos espec�ficos (como RUT) usados en la ejecuci�n.;Texto / PII;Formato de RUT v�lido u otros identificadores.;12.345.678-9
+Defecto;Identificador del bug asociado si la prueba falla.;Alfanum�rico;IDs de sistemas de gesti�n de defectos (Jira, ALM, etc.).;GDI-1234, GTI-5678
+Comentario;Observaciones adicionales o razones de bloqueo.;Texto Libre;Texto explicativo.;Bloqueado por defecto GDI-123

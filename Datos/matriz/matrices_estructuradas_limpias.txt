@@ -1,0 +1,26 @@
+==========================================================================================
+TXT LIMPIO Y NORMALIZADO (SIN HTML / SIN TABLAS MARKDOWN)
+==========================================================================================
+
+MATRIZ_HTML_1
+CAMPOS: Procedimiento | Control | Celdas (normalizadas)
+REGISTROS:
+Procedimiento="HFC" | Control=FTTH | Celdas=['Neutra', 'NA', 'HFC', 'FTTH', 'Neutra']
+Procedimiento="1P" | Control=2P | Celdas=['3P', 'OTT', '1P', '2P', '3P', 'OTT', '1P', '2P', '3P', 'OTT', '1P', '2P', '3P', 'OTT']
+Procedimiento="Venta Fija" | Control=Ambas | Celdas=['NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA', 'NA']
+Procedimiento="Cambio de Promo (1 a 2, 1 a 3, 2 a 3)" | Control=Ambas | Celdas=['SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI']
+Procedimiento="DownGrade de Promo (2 a 1, 3 a 2, 3 a 1)" | Control=Ambas | Celdas=['SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI']
+Procedimiento="Agregar Servicios Adicionales" | Control=Ambas | Celdas=['SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI']
+Procedimiento="Eliminar Servicios Adicionales" | Control=Ambas | Celdas=['SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI']
+Procedimiento="Agregar Descuentos" | Control=Ambas | Celdas=['SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI']
+Procedimiento="Eliminar Descuentos" | Control=Ambas | Celdas=['SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI']
+Procedimiento="Proceso de Facturación - Emisión de boletas - BillNow" | Control=Ambas | Celdas=['SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI']
+Procedimiento="Proceso de Facturación - Emisión de boletas - 1era Boleta" | Control=Ambas | Celdas=['SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI']
+Procedimiento="Proceso de Facturación - Emisión de Factura - BillNow" | Control= | Celdas=['SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI']
+Procedimiento="Proceso de Facturación - Emisión de Factura - 1era Boleta" | Control= | Celdas=['SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI']
+Procedimiento="Proceso de Facturación - Emisión de boletas PUF" | Control= | Celdas=['SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI']
+Procedimiento="Proceso de Facturación - Emisión de factura PUF" | Control= | Celdas=['SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI']
+Procedimiento="Proceso de Facturación - Emisión Nota de Credito" | Control=Ambas | Celdas=['SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI']
+Procedimiento="Pago Deuda Boletas" | Control=Ambas | Celdas=['SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI']
+Procedimiento="Pago Deuda Factura" | Control=Ambas | Celdas=['SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI']
+Procedimiento="Pago Deuda PUF" | Control=Ambas | Celdas=['SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI', 'SI']

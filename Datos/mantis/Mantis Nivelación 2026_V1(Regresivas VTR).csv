@@ -1,0 +1,2044 @@
+ID;FLUJO;TECNOLOGIA;MARCA;Descripción;Precondición;Pasos;Resultado Esperado;[ 0% ];Asignado;Rut;Cuenta de Facturación;Num Pedido;Id Actividad;Comentario;Mantis;Fecha automatización;Plataforma Robot;Link Viveo
+1;VENTA;HFC;VTR;Alta 3 play vive mas residencial - Dummy;N/A;"I. Consulta Estados Plataformas Antes de Venta
+1. Plataforma Siebel
+2. Creacion de cliente o Consulta Cliente vista 360
+3. Direccion debe tener tipo de red HFC
+II. Venta Triple Pack Siebel
+1. En pedidos seleccionar “Nuevo registro”
+2. Seleccionar “Numero de Pedido” 
+3. En catalogo seleccionar producto a instalar
+4. Generar Cotización y Enviar TSQ
+5. Generar Documento
+6. Ingresar numero de serie y Enviar pedido
+7. Actividad generada
+III. Plataforma TOA
+1. Validar informacion, Item de servicio, materiales requeridos y pasos de actividad. Asignar a tecnico.
+2. Iniciar actividad en tecnico y validar informacion de esta (Item de servicio, materiales requeridos y pasos) .
+3. Instalar materiales requeridos.
+4. Enviar aprovisionamiento, niveles y completar actividad
+IV. Plataforma Siebel
+9. Pedido queda en estado “completada”
+V. Consulta Estados Plataformas despues de venta
+1. Plataforma Siebel:
+a. Productos Instalados
+b. Perfil de facturacion y DOM (validar que se genera N° Factura y no BI)
+c. Validar actividad terreno quede en estado ""Finalizada""
+1. Plataforma UIM (Estado In Service los 3 servicios)
+2. Plataforma OSM (Completed todas las capas)
+3. Plataforma BRM (Servicios en estado activos)
+a. Resumen
+b. Saldo
+c. Planes
+d. Servicio";"*Permita generar una venta de servicio Fijo
+*Numero telefonia fija, se asigne automaticamente
+*TSQ quede aprobado
+*Permita enviar pedido y agendar
+*Actividad muestre los pasos y material requerido
+*Permita asignar actividad a TOA
+*Tecnico pueda asignar el material requerido y visualice los pasos
+*Permita enviar el aprovisionamiento quedando OK
+*Niveles OK
+*Completar actividad
+*Alta debe quedar completada
++Cliente debe quedar registrado en UIM y BRM
+* OSM debe quedar orden en estado completada";No Ejecutados;Robot;;;;;;;;;
+2;VENTA;FTTH;VTR;Alta servicio TV - Dummy;N/A;"I. Consulta Estados Plataformas Antes de Venta 
+1. Plataforma Siebel 
+2. Creacion de cliente o Consulta Cliente vista 360 
+II. Venta TV 
+1. En pedidos seleccionar “Nuevo registro” 
+2. Seleccionar “Numero de Pedido” 
+3. En catalogo seleccionar producto a instalar 
+4. Generar Cotización y Enviar TSQ 
+5. Generar Documento 
+6. Ingresar numero de serie y Enviar pedido 
+7. Se genera Actividad 
+III. Plataforma TOA 
+1. Validar informacion, Item de servicio, materiales requeridos y pasos de actividad. Asignar a tecnico.
+2. Iniciar actividad en tecnico y validar informacion de esta (Item de servicio, materiales requeridos y pasos) .
+3. Instalar materiales requeridos.
+4. Enviar aprovisionamiento, niveles y completar actividad.
+V. Plataforma Siebel 
+1. Pedido queda en estado “completada” 
+V. Consulta Estados Plataformas despues de venta 
+1. Plataforma Siebel 
+a. Productos Instalados 
+b. Perfil de facturacion y DOM (validar que se genera N° factura y no BI) 
+c. Validar actividad terreno quede en estado ""Finalizada""
+2. Plataforma UIM (Por servicio Activo 
+3. Plataforma OSM 
+4. Plataforma BRM 
+a. Resumen 
+b. Saldo 
+c. Planes
+d. Servicio";"*Permita generar una venta de servicio Fijo
+*TSQ quede aprobado
+*Permita enviar pedido y agendar
+*Actividad muestre los pasos y material requerido
+*Permita asignar actividad a TOA
+*Tecnico pueda asignar el material requerido y visualice los pasos
+*Permita enviar el aprovisionamiento quedando OK
+*Niveles OK
+*Completar actividad
+*Alta debe quedar completada
++Cliente debe quedar registrado en UIM y BRM
+* OSM debe quedar orden en estado completada";No Ejecutados;Robot;;;;;;;;;
+3;CAMBIO PLAN;FTTH;VTR;Cambio de plan Fijo - Upgrade de 1 a 2 play - Dummy;Cliente con servicios 1p;"I. Consulta Estados Plataformas Antes de cambio de Plan
+1. Plataforma Siebel
+a. Consulta Cliente
+b. Estado Servicios (antes del Upgrade)
+2. Plataforma UIM (antes del Upgrade)
+3. Plataforma BRM (antes del Upgrade)
+a. Resumen
+b.Planes
+c. Servicios
+II. Cambio de Plan
+1. Presionar Botón “Actualizar Promoción”
+2. Seleccionar promoción
+3. Presionar Botón “TSQ”
+4. Presionar Botón “Generar documento”
+5. Presionar Botón “Enviar”
+6. Se genera Actividad
+III. Plataforma TOA
+1. Validar la informacion, Item de servicio, materiales requeridos y pasos de actividad. Asignar a tecnico
+2. Iniciar actividad en Tecnico y validar informacion de esta (Item de servicio, materiales requeridos y Pasos).
+3. Instalar materiales requeridos.
+4. Enviar aprovisionamiento, niveles y completar actividad.
+IV. Plataforma Siebel
+10. Pedido queda en estado “Completada”
+V. Consulta Estados Plataformas despues de Cambio de Plan
+1. Plataforma Siebel
+a. Productos Instalados
+b. DOM
+c. Validar actividad terreno quede en estado ""Finalizada"".
+2. Plataforma UIM
+3. Plataforma OSM
+4. Plataforma BRM
+a. Resumen
+b. Saldo
+c. Planes
+d. Servicio";"*Permita generar un cambio de promoción de servicio Fijo
+*Catalogo muestre promociones fijas disponible
+*TSQ quede aprobado
+*Permita enviar pedido y agendar
+*Actividad muestre los pasos y material requerido
+*Permita asignar actividad a TOA
+*Tecnico pueda asignar el material requerido y visualice los pasos
+*Permita enviar el aprovisionamiento quedando OK
+*Niveles OK
+*Completar actividad
+*Alta debe quedar completada
++Cliente debe quedar registrado en UIM y BRM
+* OSM debe quedar orden en estado completada";No Ejecutados;Robot;;;;;;;;;
+4;CAMBIO PLAN;FTTH;VTR;Cambio de Plan Fijo - Upgrade de 1 a 3 - con fecha distinta a la venta - Chequeo DOM - Dummy;Cliente con servicios 1p fecha distinta del upgrade;"I. Consulta Estados Plataformas Antes de cambio de Plan
+1. Plataforma Siebel
+a. Consulta Cliente
+b. Estado Servicios (antes del Upgrade)
+2. Plataforma UIM (antes del Upgrade)
+3. Plataforma BRM (antes del Upgrade)
+a. Resumen
+b. Planes
+c. Servicios
+II. Cambio de Plan
+1. Presionar Botón “Actualizar Promoción”
+2. Seleccionar promoción
+3. Presionar Botón “TSQ”
+4. Presionar Botón “Generar documento”
+5. Presionar Botón “Enviar”
+6. Se genera Actividad
+III. Plataforma TOA
+1. Validar la informacion, Item de servicio, materiales requeridos y y pasos de actividad. Asignar a tecnico
+2. Iniciar actividad en Tecnico y validar informacion de esta (Item de servicio, materiales requeridos y Pasos).
+3. Instalar materiales requeridos.
+4. Enviar aprovisionamiento, niveles y completar actividadI.IV. Plataforma Siebel
+IV. Plataforma Siebel
+1. Pedido queda en estado “Completada”
+V. Consulta Estados Plataformas despues de Cambio de Plan
+1. Plataforma Siebel
+a. Productos Instalados
+b. DOM
+c. Validar actividad terreno quede en estado ""Finalizada"".
+2. Plataforma UIM
+3. Plataforma OSM
+4. Plataforma BRM 
+a. Resumen
+b. Saldo
+c. planes
+Cliente debe mantener DOM";"*Permita generar un cambio de promoción de servicio Fijo
+*Catalogo muestre promociones fijas disponible
+*TSQ quede aprobado
+*Permita enviar pedido y agendar
+*Actividad muestre los pasos y material requerido
+*Permita asignar actividad a TOA
+*Tecnico pueda asignar el material requerido y visualice los pasos
+*Permita enviar el aprovisionamiento quedando OK
+*Niveles OK
+*Completar actividad
+*Alta debe quedar completada
++Cliente debe quedar registrado en UIM y BRM
+* OSM debe quedar orden en estado completada";No Ejecutados;Robot;;;;;;;;;
+5;SUSPENSION;FTTH;VTR;Suspensión Fija - Cliente 3 play - Dummy;Cliente con servicios fijos 3p;"I. Consulta Estados Plataformas Antes de Suspención
+1. Plataforma Siebel
+a. Consulta Cliente
+b. Estado Servicios
+2. Plataforma UIM
+3. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios
+II. Suspención
+1. En la cuenta cliente ""Activos instalados"" posicionarse en promocion y presionar engranaje.
+2. Seleccionar Suspender
+3. Llenar los siguientes campos: Fecha de envío (hoy), Actividad Codigo de Cierre, Motivo,Estado
+4. Presionar icono de grabar 
+5. Se genera Actividad
+6. Se ingresa a vista de pedido de suspensión automaticamente.
+7. Pedido queda en estado “Completada”
+III. Consulta Estados Plataformas despues de Suspención
+1. Plataforma Siebel
+2. Plataforma UIM
+3. Plataforma OSM
+4. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios";"*Permita seleccionar la promocion y Suspender
+*Se genere la solicitud de Suspensión
+*Permita ingresa Fecha de Envia y modificar a hoy
+*Al guardar se genere el pedido de suspension bidireccional
+*Suspension debe quedar completada
+*Solicitud de suspencion debe quedar Cerrada
+*Debe registrar fecha de cierre y solución
+*Servicios en BRM e UIM y vista 360 deben estar suspendidos";No Ejecutados;Robot;;;;;;;;;
+6;REANUDACION;FTTH;VTR;Reanudación Fija - Cliente 3 play - Dummy;Cliente con servicios fijos 3p;"I. Consulta Estados Plataformas Antes de Reanudación
+1. Plataforma Siebel
+a. Consulta Cliente
+b. Estado Servicios
+2. Plataforma UIM
+3. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios
+II. Reanudación
+1. En la cuenta cliente ""Activos instalados"" posicionarse en promocion y presionar engranaje.
+2. Seleccionar Reanudar
+3. Llenar los siguientes campos: Codigo de Cierre, Motivo,Estado
+4. Presionar icono de grabar 
+5. Se genera Actividad
+6. Ingresar a numero de Pedido
+7. Pedido queda en estado “Completada”
+III. Consulta Estados Plataformas despues de Reanudación
+1. Plataforma Siebel
+2. Plataforma UIM
+3. Plataforma OSM
+4. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios";"*Permita seleccionar la promocion y Reanudar
+*Se genere la solicitud de Reanudacion
+*Permita ingresa Fecha de Envio y modificar a hoy
+*Al guardar se genere el pedido de reanudacion
+*Reanudacion debe quedar completada
+*Solicitud de suspencion debe quedar Cerrada
+*Debe registrar fecha de cierre y solución
+*Servicios en BRM e UIM y vista 360 deben estar suspendidos";No Ejecutados;Robot;;;;;;;;;
+7;DESCONEXION COBRANZA;HFC;VTR;Desconexión Fija con corte de acometida y retiro de material- Cliente 3 play - Dummy Ultima boleta no pagada;Cliente con servicios fijos 3p;"I. Consulta Estados Plataformas Antes de Desconexion
+1. Plataforma Siebel
+a. Consulta Cliente
+b. Estado Servicios
+2. Plataforma UIM
+3. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios
+II. Desconexión
+1. En productos instalados posicionarse en Promoción y presionar Botón desconectar
+2. Modificar campo ""Fecha de envio"" a la fecha de hoy e ingresar ""Motivo de desconexión"".
+3. Presionar icono de ""Guardar"" de la cabecera de la solicitud
+4. Una vez guardada, te dirigirá al pedido de desconexión que se encontrara en estado ""Abierto"" automaticamente.
+5. Pedido queda en estado “Completada”
+6. Una vez ejecutado el punto 3, se creara un actividad de baja.
+III. Plataforma TOA
+1. Validar información de actividad y asignar a tecnico
+2. Iniciar actividar, validar ITEM de servicio y pasos.
+3. Enviar solicitud ""Corte de acometida"" y esperar ok
+4. Desinstalar material de cliente.
+5. Enviar solicitud de ""Retiro de material"" y esperar ok.
+6. Finalizar actividad.
+IV. Consulta Estados Plataformas despues de Desconexion
+1. Plataforma Siebel
+2. Plataforma UIM
+3. Plataforma OSM
+4. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios
+
+IV. Consulta Estados Plataformas despues de Desconexion
+1. Plataforma Siebel
+- Perfil de Facturación
+- Se genere una NC a la ultima boleta
+- Debe rebajar el monto adeudado del cliente
+2. Plataforma UIM
+3. Plataforma OSM
+4. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios";"*Desconexion debe quedar completada
+*Solicitud debe quedar con fecha de cierre y solucion
++Cliente debe quedar registrado en UIM y BRM con servicios desconectados
+* OSM debe quedar orden en estado completada
+* Actividad ""Corte de acometida"" y ""Retiro de material"" en TOA deben completarse correctamente";No Ejecutados;Robot;;;;;;;;;
+8;REPARACIÓN;FTTH;VTR;Reparación 2 Play vive más residencial Cambio de Equipo MTA - Dummy - Código de Finalización DE07 - Daño a Equipo VTR Domiciliario;Cliente con servicios fijos 2P;"I. Consulta Estados Plataformas Antes de Reparación.
+1. Plataforma Siebel
+a. Validar Productos instalados y series de equipo a intercambiar
+2. Plataforma UIM
+II. Ingresar SS de Reparación
+1.- Ingresar a Siebel, ingresar el rut del cliente y hacer click a nivel de cuenta de servicio
+2.- En vista 360 del cliente hacer click en pestaña Solicitud de Servicio
+3.- Ingresar nueva solicitud de servicio de reparación Tipo: (Internet, Televisión o Telefonia fija), Area (Reparación Tecnica), Subarea y descripción
+4.- Botón Guardar
+5.- Confirmar fecha de agendamiento
+III. Plataforma TOA
+5.- En TOA Coordinador asignar actividad a tecnico correspondiente
+6.- Ingresar a TOA Tecnico e iniciar actividad
+7.- En materiales realizar intercambio de MTA y posterior validar:
+a. Se debe generar una nueva Revision en Siebel (2) la cual debe quedar en estado ""pendiente"" y la primera en estado ""Revisado""
+b. Validar actualización de pasos en Siebel y TOA.
+8.- Enviar solicitud de aprovisionamiento y esperar OK.
+9.- Enviar niveles y esperar NOK.
+10.- Ir a TOA coordinador y cambiar niveles de NOK a OK
+11.- Verificar que en TOA Tecnico niveles este OK y completar la orden.
+12.- Finalizar orden con el codigo DE07 y presionar botón OK.
+IV. Consulta Estados Plataformas despues de Reparación
+1. Plataforma Siebel
+a. Pedido de Reparación en estado complatada.
+b. Actividad de reparación en estado Finalizada.
+c. Equipo MTA debe figurar con nueva serie instalada.
+2. Plataforma UIM
+a. Validar que MTA figure con la nueva serie instalada.
+3. Plataforma OSM
+4. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios";"*Permita generar la SS de reparación
+*Luego de seleccionar tipo, area y subarea y guardar, el activo se selecciones automaticamente
+*Lleve automaticamente al agendamiento
+*Permita asignar actividad a tecnico
+*Tecnico pueda iniciar actividad y realizar el intercambio de material
+-Al momento del intercambio se visualice el pedido en vista 360
+*Tecnico envie a provisionar esperar el OK
+*En vista 360 pedido de reparacion debe quedar en estado Abierto
+-En el detalle del pedido de reparación debe estar el asset Nuevo y Eliminar del equipo intercambiado
+*Tecnico permita finalizar la Actividad
+*Solicitud debe quedar Cerrada con fecha de cierre y solución
+* Actividad estado Finalizada
+*Se visualice en siebel el nuevo equipo instalado
+*Validar en UIM la serie del nuevo equipo";No Ejecutados;Robot;;;;;;;;;
+9;REPARACIÓN;HFC;VTR;Reparación Fijo - 2 Ctas Facturacion - 1 Cta Servicio - Fijo y Movil - Dummy;Cliente con servicios fijos y móvil activos en 2 cuentas de facturación 1 cuenta de servicio;"I. Consulta Estados Plataformas Antes de Reparación.
+1. Plataforma Siebel
+a. Validar Productos instalados y series de equipo a intercambiar
+2. Plataforma UIM
+II. Ingresar SS de Reparación
+1.- Ingresar a Siebel, ingresar el rut del cliente y hacer click a nivel de cuenta de servicio
+2.- En vista 360 del cliente hacer click en pestaña Solicitud de Servicio
+3.- Ingresar nueva solicitud de servicio de reparación Tipo: (Internet, Televisión o Telefonia fija), Area (Reparación Tecnica), Subarea y descripción
+4.- Botón Guardar
+5.- Ingresar fecha de agendamiento
+III. Plataforma TOA
+6.- En TOA Coodrinador asignar actividad a tecnico correspondiente
+7.- Ingresar a TOA Tecnico e iniciar actividad
+8.- En materiales realizar intercambio de DBOX y posterior validar:
+a. Se debe generar una nueva Revision en Siebel (2) la cual debe quedar en estado ""pendiente"" y la primera en estado ""Revisado""
+9.- En materiales realizar intercambio de MTA y posterior validar:
+a. Se debe generar una nueva Revision en Siebel (3) la cual debe quedar en estado ""pendiente"" y la segunda en estado ""Revisado""
+b. Validar actualización de pasos en Siebel y TOA.
+9.- Enviar solicitud de aprovisionamiento y esperar OK.
+10.- Enviar niveles y esperar NOK.
+11.- Ir a TOA coordinador y cambiar niveles de NOK a OK
+12.- Verificar que en TOA Tecnico niveles este OK y completar la orden.
+13.- Finalizar orden con el codigo DE07 y presionar botón OK.
+IV. Consulta Estados Plataformas despues de Reparación
+1. Plataforma Siebel
+a. Pedido de Reparación en estado complatada.
+b. Actividad de reparación en estado Finalizada.
+c. Equipos MTA y DBOX deben figurar con las nuevas series instaladas.
+2. Plataforma UIM
+a. Validar que la ultima version figure con la nueva serie instalada.
+3. Plataforma OSM
+4. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios";"*Permita generar la SS de reparación
+*Luego de seleccionar tipo, area y subarea y guardar, el activo se selecciones automaticamente
+*Lleve automaticamente al agendamiento
+*Permita asignar actividad a tecnico
+*Tecnico pueda iniciar actividad y realizar el intercambio de material
+-Al momento del intercambio se visualice el pedido en vista 360
+*Tecnico envie a provisionar esperar el OK
+*En vista 360 pedido de reparacion debe quedar en estado Abierto
+-En el detalle del pedido de reparación debe estar el asset Nuevo y Eliminar del equipo intercambiado
+*Tecnico permita finalizar la Actividad
+*Solicitud debe quedar Cerrada con fecha de cierre y solución
+* Actividad estado Finalizada
+*Se visualice en siebel el nuevo equipo instalado
+*Validar en UIM la serie del nuevo equipo";N/A;Robot;;;;;;;;;
+10;TRASLADO;HFC;VTR;Traslado Fijo - 2 Ctas Facturacion - 1 Cta Servicio - Fijo y Movil - Con fecha distinta a la venta - Dummy 2P;Cliente con servicios fijos y móvil activos en 2 cuentas de facturación 1 cuenta de servicio;"I. Consulta Estados Plataformas Antes de Traslado.
+1. Plataforma Siebel
+a. Consulta Cliente productos instalados
+2. Plataforma UIM
+3. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios
+II. Ingresar Pedido de traslado
+1.- Ingresar a Siebel y buscar rut del cliente
+2.- Hacer click sobre la cuenta Cliente
+3.- A nivel de vista 360 del cliente seleccionar pestaña jerarquia de cuentas 
+4.- Crear una nueva cuenta de servicio con una nueva dirección
+5.- En vista 360 del cliente a nivel de producto fijo seleccioanr el plan y posteriormente hacer click en icono engranaje y seleccionar opcion traslado
+6.-En el campo cuenta de servicio seleccionar la nueva cuenta y verificar que tenga la nueva dirección
+7.- Presionar TSQ y verificar que quede aprobado
+8.- Presionar boton Enviar
+III. Plataforma TOA
+9.- En TOA Coordinador asignar actividad a tecnico correspondiente
+10.- Ingresar a TOA Tecnico e iniciar actividad
+11.- Realizar el retiro de todos los materiales del cliente que estan activos e instalar nuevos
+12.- Enviar solcitud de aprovisionamiento
+13.- Una ves que el aprovisionamiento este OK enviar niveles
+14.- Niveles quedará como NOK para ello ir a TOA coordinador y cambiar niveles de NOK a OK
+15.- Verificar que en TOA Tecnico niveles este OK y completar la orden
+IV. Consulta Estados Plataformas despues de Traslado 
+1. Plataforma Siebel
+a. Pedido de Traslado en estado complatada.
+b. Actividad de Traslado en estado Finalizada.
+c. Equipos MTA y DBOX deben figurar con las nuevas series instaladas.
+d. Validar DOM
+2. Plataforma UIM
+a. Validar que la ultima version figure con la nueva serie instalada y nueva dirección.
+3. Plataforma OSM
+4. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios";"*Permita generar la nueva cuenta de servicio con la nueva dirección
+*Pedido de traslado tenga habilitado el campo para cambiar la cuenta de Servicio
+*Campo cuenta de facturación debe estar bloqueado
+*Al generar TSQ quede aprobado
+*Permita enviar el pedido y lleve a la vista del agendamiento
+*En las actividades se genere Alta y Baja Traslado
+*Actviidad de Alta se asigne a tecnico
+*Se complete actividad a traves de TOA
+*Traslado debe quedar completada en vista 360
+*Nuevo domicilio debe registrarse correctamente en vista 360
+*En UIM debe quedar registrado y completado el traslado con la nueva direccion";N/A;Robot;;;;;;;;;
+11;CAMBIO PLAN;MOVIL;VTR;Cambio de Promo Movil - 2 Ctas Facturacion - 1 Cta Servicio - Fijo y Movil - Dummy;Cliente con servicios fijos y móvil activos en 2 cuentas de facturación 1 cuenta de servicio;"I. Consulta Estados Plataformas Antes de Cambio de Promción.
+1. Plataforma Siebel
+a. Consulta Cliente productos instalados.
+2. Plataforma UIM
+3. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios
+II. Ingresar Pedido de Cambio de Promoción
+1.- Ingresar a Siebel y buscar rut del cliente, hacer click en la cuenta Cliente
+2.- En vista 360 del cliente hacer click a nivel de producto (plan movil activo del cliente)
+3.- Hacer click en actualización de promoción
+4.- Seleccionar nueva promoción.
+5.- Generar contrato
+6.- Hacer click en botón Enviar
+7.- Esperar a que complete la orden de cambio de promoción.
+III. Consulta Estados Plataformas despues de Cambio de Promoción 
+1. Plataforma Siebel
+a. Pedido de Cambio de Promoción en estado complatada.
+b. En productos instalados debe figurar nueva promoción
+c. Debe figurar DOM inicial
+2. Plataforma UIM
+3. Plataforma OSM
+4. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios";"1.- Al seleccionar la promocion movil se habilite el boton Actualizar Promoción
+2.- Se debe desplegar el catalogo de solo promociones moviles
+3.- Luego de seleccionar una promoción se debe generar un pedido de Cambio de promocion
+4.- En el detalle del pedido deben queda las lineas que se elimina y las nuevas
+5.- TSQ quede aprobado y permita enviar el pedido
+6.- Cambio de promo debe quedar completada
+7.- Cliente debe quedar registrado en UIM y BRM
+8.- Orden debe quedar completada en OSM";N/A;Robot;;;;;;;;;
+12;SERVICIO ADICIONAL;FTTH;VTR;Venta de SVA - Adición de canal Premium - con fecha distinta a la Venta - Dummy;Cliente con servicios fijos 3p;"I. Consulta Estados Plataformas Antes de modificacion
+1. Plataforma Siebel
+a. Consulta Cliente productos instalados
+b. Estado Servicios y que no tenga el canal a agregar
+2. Plataforma UIM
+3. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios
+II. Venta CDF
+1. En productos intalados posicionarse en Promoción principal y Presionar Botón “Modificar"".
+2. En detalle Posicionarse en Televisión y presionar Botón “Personalizar”
+3. Seleccionar canal adicional y presionar Terminado.
+3. Presionar Botón “Generar documento”
+4. Presionar Botón “Enviar”
+5. Pedido queda en estado “Completada”
+III. Consulta Estados Plataformas despues de modificacion
+1. Plataforma Siebel
+a. Validar SVA agregado y productos instalados.
+b. Validar que mantenga DOM de origen.
+2. Plataforma UIM
+a. Validar productos instalados y en ultima version de TV validar canal agregado
+3. Plataforma OSM
+4. Plataforma BRM
+a. Resumen
+b. Saldo
+c. planes";"1.- Al seleccionar la promoción se habilite el boton Modificar
+2.- Se genere un pedido del tipo modificación
+3.- Permita adicionar el SVA la servicio Televisión
+4.- SVA tenga la acción nuevo
+5.- Permita submitir el pedido
+6.- Modificacion debe quedar completada
+7.- Sistema no debe cambiar DOM
+8.- SVA debe quedar en la vista 360 dentro de los productos instalados
+9.- Debe quedar registrado en BRM y UIM
+10.- OSM debe quedar orden en estado completada";No Ejecutados;Robot;;;;;;;;;
+13;SERVICIO ADICIONAL;FTTH;VTR;Venta de D-BOX Adicional - Dummy;Cliente con servicios fijos 3p;"I. Consulta Estados Plataformas Antes de modificacion
+1. Plataforma Siebel
+a. Consulta Cliente productos instalados
+b. Validar cuantos DBOXs con los que cuente cliente antes de adicionar uno nuevo.
+2. Plataforma UIM
+3. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios
+II. Venta dbox
+1. En productos intalados posicionarse en Promoción principal y Presionar Botón “Modificar"".
+2. En detalle Posicionarse en Televisión y presionar Botón “Personalizar”
+3. En Equipos añadir un nuevo Dbox adicional y presionar Terminado.
+3. Presionar Botón “Generar documento”
+4. Presionar Botón “Enviar”
+5. Se genera Actividad 
+III. Plataforma TOA 
+1. Validar informacion, Item de servicio, materiales requeridos y pasos de actividad. Asignar a tecnico.
+2. Iniciar actividad en tecnico y validar informacion de esta (Item de servicio, materiales requeridos y pasos) .
+3. Instalar DBOX.
+4. Enviar aprovisionamiento, niveles y completar actividad.
+V. Plataforma Siebel 
+1. Pedido queda en estado “completada” 
+V. Consulta Estados Plataformas despues de venta 
+1. Plataforma Siebel 
+a. Productos Instalados y series de DBOXs
+b. Validar DOM
+c. Validar actividad terreno quede en estado ""Finalizada""
+2. Plataforma UIM (Por servicio Activo) 
+3. Plataforma OSM 
+4. Plataforma BRM 
+a. Resumen 
+b. Saldo 
+c. Planes
+d. Servicio";"1.- Al seleccionar la promoción se habilite el boton Modificar
+2.- Se genere un pedido del tipo modificación
+3.- Permita adicionar el DBox adicional la servicio Televisión
+4.- SVA tenga la acción nuevo
+5.- Permita submitir el pedido
+6.- Agender la Actividad para instalacion
+7.- La actividad incluya los pasos y material requerido
+8.- Se pueda asignar la actividad a TOA
+9.- Tecnico en TOA visualice la accion a realizar y los pasos y el material requerido
+10.- Tecnico seleccione el material e instalar
+11.- Al enviar a provisionar entrege OK
+12.- Niveles OK
+13.- Tecnico complete actividad en TOA
+14.- Modificacion debe quedar completada
+15.- Actividad terreno finalizada
+*Sistema no debe cambiar DOM
+*DBox adicional y serie debe quedar en la vista 360 dentro de los productos instalados
+*Debe quedar registrado en BRM y UIM
+* OSM debe quedar orden en estado completada";No Ejecutados;Robot;;;;;;;;;
+14;VENTA;MOVIL;VTR;Alta Movil - PostPago - Dummy;N/A;"I. Consulta Estados Plataformas Antes Venta
+1. Plataforma Siebel
+a. Creacion de cliente o Consulta Cliente vista 360
+II. Ingresar Venta Movil
+1. En pedidos seleccionar “Nuevo registro”
+2. Seleccionar “Numero de Pedido”
+3. En catalogo seleccionar producto a instalar
+4. En detalles posicionarse en Promocion y presionar ""Editar promoción""
+5. En Servicio Movil Seleccionar "" Personalizar"" y Agregar descuento SIM Only
+6. Generar documento (cotizacion)
+7. Enviar TSQ
+8.Generar documento
+9. Enviar pedido y este queda en estado abierto y pendiente de pago
+III. Pago de PUF
+1. Realizar pago de PUF a traves de Caja.
+2. En Siebel Validar que el estado del pedido quede en ""Pendiente de Envio"", que se marque Flag de pago y que contexto de estado avance.
+IV. Ingreso de Simcard
+1.Plataforma Siebel Usuario Bodeguero
+a. Ingresar Simcard
+b. Cambiar estado de Pedido a “enviado”
+2. Plataforma Siebel Usuario ejecutivo
+a. Cambiar estado de pedido a “Recibido”
+b.Pedido queda en estado “Compledada”
+VI. Consulta Estados Plataformas despues de compltar Alta movil.
+1. Plataforma Siebel
+a. Productos Instalados y que corresponda numero de serie simcard
+b. Perfil de facturacion y DOM (validar que se genera N° Factura y no BI)
+2. Plataforma UIM
+3. Plataforma OSM
+4. Plataforma BRM
+a. Resumen
+b. Saldo
+C. Planes";"1.- Pedido de venta debe quedar completado
+2.- Cliente debe quedar registrado en UIM y BRM
+3.- OSM debe quedar orden en estado completada";N/A;Robot;;;;;;;;;
+15;CAMBIO PLAN;MOVIL;VTR;Registrar Cambio de plan Postpago a Prepago - con fecha distinta a la venta - Dummy;Cliente con servicio móvil postpago activo y fecha del DOM distinta;"I. Consulta Estados Plataformas Antes Cambio de Promoción.
+1. Plataforma Siebel
+a. Validar Productos instalados 
+2. Plataforma UIM
+3. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios
+II. Ingresar Cambio de promoción
+1. En Productos instalados posicionarse en Promoción y presionar ""Actualización de Promoción"".
+2. Seleccionar nueva Promoción
+3. Generar documento 
+4. Enviar pedido
+5. Pedido queda en estado “Completada”
+III. Consulta Estados Plataformas después de Cambio de promoción.
+1. Plataforma Siebel 
+a. Productos Instalados 
+b. Validar que mantenga DOM de origen.
+2. Plataforma UIM 
+3. Plataforma OSM 
+4. Plataforma BRM 
+a. Resumen 
+b. Saldo 
+c. Planes
+d. Servicio
+Cliente debe mantener DOM";"1.- Modificación debe quedar completada
+2.- Cambios debe quedar registrado en UIM y BRM
+3.- OSM debe quedar orden en estado completada
+4.- La fecha de DOM se debe mantener";N/A;Robot;;;;;;;;;
+16;CAMBIO PLAN;MOVIL;VTR;Registrar Cambio de plan Prepago a Postpago - con fecha distinta a la venta - Dummy;Cliente con servicio móvil prepago activo y fecha del DOM distinta;"I. Consulta Estados Plataformas Antes Cambio de Promoción.
+1. Plataforma Siebel
+a. Validar Productos instalados 
+2. Plataforma UIM
+3. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios
+II. Ingresar Cambio de promoción
+1. En Productos instalados posicionarse en Promoción y presionar ""Actualización de Promoción"".
+2. Seleccionar nueva Promoción
+3. Generar documento 
+4. Enviar pedido
+5. Pedido queda en estado “Completada”
+III. Consulta Estados Plataformas después de Cambio de promoción.
+1. Plataforma Siebel 
+a. Productos Instalados 
+b. Validar que mantenga DOM de origen.
+2. Plataforma UIM 
+3. Plataforma OSM 
+4. Plataforma BRM 
+a. Resumen 
+b. Saldo 
+c. Planes
+d. Servicio";"1.- Modificación debe quedar completada
+2.- Cambios debe quedar registrado en UIM y BRM
+3.- OSM debe quedar orden en estado completada
+4.- La fecha de DOM se debe mantener";N/A;Robot;;;;;;;;;
+17;SERVICIO ADICIONAL;MOVIL;VTR;Venta de Bolsa Móvil PostPago - con fecha distinta a la venta - Dummy;Cliente con servicio móvil postpago activo y fecha del DOM distinta;"I. Consulta Estados Plataformas Antes Modificación.
+1. Plataforma Siebel
+a. Validar Productos instalados 
+2. Plataforma UIM
+3. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios
+II. Ingresar Modificación
+1. En Productos instalados posicionarse en Promoción y presionar ""Modificar"".
+2. En detalles del pedido posicionarse en Servicio Móvil y presionar ""Personalizar"".
+3. Agregar bolsa móvil
+4. Generar documento y Enviar pedido
+5. Pedido queda en estado “Completada”
+III. Consulta Estados Plataformas después de Modificación
+1. Plataforma Siebel 
+a. Productos Instalados 
+b. Validar que mantenga DOM de origen.
+2. Plataforma UIM 
+3. Plataforma OSM 
+4. Plataforma BRM 
+a. Resumen 
+b. Saldo 
+c. Planes
+d. Servicio";"1.- Modificación debe quedar completada
+2.- Cambios debe quedar registrado en UIM y BRM
+3.- OSM debe quedar orden en estado completada
+4.- La fecha de DOM se debe mantener";N/A;Robot;;;;;;;;;
+18;MODIFICACIÓN;MOVIL;VTR;Cambio de Simcard SS - Dummy;Cliente con servicio móvil activo;"I. Consulta Estados Plataformas Antes Modificación.
+1. Plataforma Siebel
+a. Validar Productos instalados 
+2. Plataforma UIM
+3. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios
+II. Ingresar Modificación
+1. En Productos instalados posicionarse en Promoción y presionar ""Modificar"".
+2. En Detalles del pedido posicionarse en el Ítem ""Simcard"" y presionar ""Cambiar Simcard"".
+3. Enviar TSQ y Generar documento 
+4. Enviar pedido y este queda en estado abierto y pendiente de pago
+III. Pago de PUF
+1. Realizar pago de PUF a través de Caja.
+2. En Siebel Validar que el estado del pedido quede en ""Pendiente de Envio"", que se marque Flag de pago y que contexto de estado avance.
+IV. Ingreso de Simcard
+1.Plataforma Siebel Usuario Bodeguero
+a. Ingresar al pedido 
+b. En la línea Simcard con acción ""Nuevo"" ingresar serie de nueva Simcard
+b. Cambiar estado de Pedido a “enviado”
+2. Plataforma Siebel Usuario ejecutivo
+a. Cambiar estado de pedido a “Recibido”
+b.Pedido queda en estado “Completada”
+VI. Consulta Estados Plataformas después de completar Alta móvil.
+1. Plataforma Siebel
+a. Validar productos instalados y en Simcard validar que se refleje la serie nueva.
+b. Validar DOM
+2. Plataforma UIM
+a. Validar en ultima versión de móvil que se refleje la serie de la simcard nueva
+3. Plataforma OSM
+4. Plataforma BRM
+a. Resumen
+b. Saldo
+C. Planes";"1.- Modificación debe quedar completada
+2.- Se debe visualizar la nueva SIM en el perfil del cliente
+3.- Cambios debe quedar registrado en UIM y BRM
+4.- OSM debe quedar orden en estado completada
+5.- La fecha de DOM se debe mantener";N/A;;;;;;;;;;
+19;VENTA - CANCELADA;FTTH;VTR;Cancelación 3P;N/A;"I. Venta Triple Pack Plataforma Siebel
+1. Crear cliente con todos los campos requeridos (Nombre, Rut, Dirección, email, teléfono)
+2. En pedidos seleccionar “Nuevo registro”
+3. Seleccionar “Numero de Pedido” 
+4. En catalogo seleccionar producto a instalar
+5. Generar Cotización y Enviar TSQ
+6. Generar Documento
+7. Ingresar numero de serie y Enviar pedido
+8. Actividad generada
+II. Plataforma TOA
+1.Ingresar con toa coordinador, mover actividad a técnico
+2.Tomar actividad en técnico suspender actividad
+3.Razon de suspensión Falta material no seriado, notas: ingresar texto breve
+
+III Siebel 
+1. Ingresar a Siebel
+2. Ingresar al pedido de venta ingresar motivo de cancelación (Sin Motivo)
+3. Presionar Cancelar
+4. Orden debe quedar cancelada 
+5. Al consultar en TOA actividad debe quedar cancelada";"*Pedido debe quedar en estado cancelado
+*Lineas del pedido deben quedar canceladas
+*OSM no debe quedar tareas pendiente
+*Actividad terreno debe quedar Cancelada";No Ejecutados;Robot;;;;;;;;;
+20;REPARACION - CANCELADA;FTTH;VTR;Reparación Cancelada 3P;Cliente con servicios fijos 3p;"Precondicion -> Cliente debe tener servicio fijos 
+I. Consulta Estados Plataformas Antes de Reparación.
+1. Plataforma Siebel
+a. Validar Productos instalados y series de equipo a intercambiar
+2. Plataforma UIM
+II. Ingresar SS de Reparación
+1.- Ingresar a Siebel, ingresar el rut del cliente y hacer click a nivel de cuenta de servicio
+2.- En vista 360 del cliente hacer click en pestaña Solicitud de Servicio
+3.- Ingresar nueva solicitud de servicio de reparación Tipo: (Internet, Televisión o Telefonia fija), Area (Reparación Tecnica), Subarea y descripción
+4.- Botón Guardar
+5.- Ingresar fecha de agendamiento
+6-En toa coordinador buscar actividad de repa
+7-Mover actividad a técnico
+8-tomar actividad en técnico suspender actividad
+9-Razon de suspensión Falta material no seriado, notas: ingresar texto breve
+10-Ingresar a Siebel
+11-Ingresar a reparación enviada a terreno (solicitud de servicio de tipo repa)
+12-en actividad de terreno ingresar código de cierre ERED
+13-ingresar Motivo CANCELADA
+14- Ingresar Estado Cancelada
+15- SS debe quedar cancelada
+16- Consultar actividad con toa coordinador, esta debe estar cancelada";"*Permita generar la SS de reparación
+*Luego de seleccionar tipo, area y subarea y guardar, el activo se selecciones automaticamente
+*Lleve automaticamente al agendamiento
+*Permita asignar actividad a tecnico
+*Tecnico permita suspender la reparación
+*En siebel la actividad quede suspendida
+*Permita cancelar la actividad ingresando motivo, codigo de cierre y estado cancelado
+*Cabecera solicitud cambie a Cancelada
+*Registre fecha de cierre y solución";No Ejecutados;Robot;;;;;;;;;
+21;VENTA;FTTH;VTR;Alta con Derivacion - Cliente 3 Play - Dummy;N/A;"I. Consulta Estados Plataformas Antes de Venta
+1. Plataforma Siebel
+2. Creación de cliente o Consulta Cliente vista 360
+II. Venta Triple Pack Plataforma Siebel
+1. En pedidos seleccionar “Nuevo registro”
+2. Seleccionar “Numero de Pedido” 
+3. En catalogo seleccionar producto a instalar
+4. Generar Cotización y Enviar TSQ
+5. Generar Documento
+6. Ingresar numero de serie y Enviar pedido
+7. Actividad generada
+III. Plataforma TOA
+1. Validar información, Ítem de servicio, materiales requeridos y pasos de actividad. Asignar a técnico.
+2. Iniciar actividad en técnico y validar información de esta (Ítem de servicio, materiales requeridos y pasos)
+3. Dirigirse a la sección “Derivada” y completar los campos:
+a. Razón de Derivación: Bocas dañadas.
+b. Área derivación: Redes
+c. Notas de Cierre: (ingresar comentario) y Presionar OK 
+IV. Plataforma Siebel
+1. Validar que la primera actividad quede en estado ""Derivada"" y que se genere una segunda en estado ""No Agendada"".
+2. Ingresar a la nueva actividad, agendar y validar que cambie a estado ""agendada
+V. Plataforma TOA
+1. Validar información, Ítem de servicio, materiales requeridos y pasos de actividad. Asignar a técnico.
+2. Iniciar actividad en técnico y validar información de esta (Ítem de servicio, materiales requeridos y pasos)
+3. Dirigirse a la sección “Derivada” y completar los campos:
+a. Razón de Derivación: Cliente Reagenda.
+b. Área derivación: Plataforma Reagendamiento.
+c. Notas de Cierre: (ingresar comentario) y Presionar OK.
+VI. Plataforma Siebel
+1. Validar que la primera actividad quede en estado ""Derivada"" y que se genere una segunda en estado ""No Agendada"".
+2. Ingresar a la nueva actividad, agendar y validar que cambie a estado ""agendada"" 
+VII. Plataforma TOA
+1. Validar información, Ítem de servicio, materiales requeridos y pasos de actividad. Asignar a técnico.
+2. Iniciar actividad en técnico y validar información de esta (Ítem de servicio, materiales requeridos y pasos)
+3. Dirigirse a la sección “Derivada” y completar los campos:
+a. Razón de Derivación: Falla Aprovisionamiento 
+b. Área derivación: GSA
+c. Notas de Cierre: (ingresar comentario) y Presionar OK
+VIII. Plataforma Siebel
+1. Ingresar a Siebel con usuario SUCLAN (Pass: Vtr.2020)
+2. Validar que la segunda actividad quede en estado ""Derivada"" y que se genere una tercera en estado ""No Agendada"".
+3. Ingresar a la nueva actividad, agendar y validar que cambie a estado ""agendada"".
+IX. Plataforma TOA
+1. Validar información, Ítem de servicio, materiales requeridos y pasos de actividad. Asignar a técnico.
+2. Iniciar actividad en técnico y validar información de esta (Ítem de servicio, materiales requeridos y pasos)
+3. Dirigirse a la sección “Derivada” y completar los campos:
+a. Razón de Derivación: Clte Desiste motivo comercial
+b. Área derivación: Comercial Venta.
+c. Notas de Cierre: (ingresar comentario) y Presionar OK
+X. Plataforma Siebel
+1. Ingresar a Siebel con usuario SUCAHU.
+2. Validar que la cuarta actividad quede en estado ""Derivada"" y que se genere una quinta en estado ""No Agendada"".
+3. Ingresar a la nueva actividad, agendar y validar que cambie a estado ""agendada"".
+XI. Plataforma TOA
+1. Validar información, Ítem de servicio, materiales requeridos y pasos de actividad. Asignar a tecnico.
+2. Iniciar actividad en técnico y validar información de esta (Ítem de servicio, materiales requeridos y pasos) .
+3. Instalar materiales requeridos.
+4. Enviar aprovisionamiento, niveles y completar actividad
+XII. Plataforma Siebel
+1. Pedido queda en estado “completada”
+XIII. Consulta Estados Plataformas después de venta
+1. Plataforma Siebel:
+a. Productos Instalados
+b. Perfil de facturación y DOM (validar que se genera Ni Factura y no BI)
+c. Validar la ultima actividad de terreno quede en estado ""Finalizada""
+1. Plataforma UIM
+2. Plataforma OSM
+3. Plataforma BRM
+a. Resumen
+b. Saldo
+c. Planes
+d. Servicio";"*Pedido debe quedar abierto y actividad agendada
+*Permita asignar actvididad a tecnico
+* Tecnico inicie la actividad y permita derivar a reagendamiento
+*En siebel se genere la nueva actividad No agendada y la anterior quede en estado derivada
+*Se agende la nueva actividad por cada actividad derivada
+*Permita completar actividad en TOA
+*Alta debe quedar completada
++Cliente debe quedar registrado en UIM y BRM
+* OSM debe quedar orden en estado completada
+*Promocion debe quedar visible en Activos instalado
+*DOM debe corresponder al dia de Alta";No Ejecutados;Robot;;;;;;;;;
+23;PORT IN;MOVIL;VTR;Portabilidad - Port In - Movil;Numero de origen Movil(del listado dummy) disponible en UIM. - Cliente nuevo;"--------------MODO DUMMY NO SE VALIDA EN NPG --------------------B26
+Siebel
+22-Se crea un nuevo pedido seleccionado en las opciones de pedidos la opción “Nuevo registro”
+23-Se selecciona el nuevo “Pedido”
+24-Se crea un nuevo registro para el cliente al que se realizará “Port-In”. Seleccionar Modalidad de venta: movil. Tipo portado: movil pospago a venta movil
+25-Se selecciona del Combobox “Catálogo” la opción “Móvil”
+26-Se selecciona la opción “Postpago”
+27-Se selecciona el plan “Multimedia 60 GB 1118
+28-Se presiona el botón “Agregar Ítem”
+29-Se selecciona “Servicio Móvil”
+30-Se presiona el botón “Personalizar”
+31-Se selecciona la pestaña “3 Descuentos”
+32-Se selecciona el ticket en la opción “Descuento Sim Only 10% para Siempre” 30% para siempre
+33-Se presiona el botón “Terminado”
+34-Se selecciona la opción “Portabilidad”
+35-El estado de la portabilidad es “Inicio Portabilidad”
+36-Se ingresa el número que se desea portar
+37-Se ingresa la siguiente IMEI “129387654123456”, este número se utiliza siempre para las portabilidades
+38-Se presiona el botón “Validar Cuenta Día”
+39-El estado de la portabilidad cambio a “Consulta titularidad y Sa….”
+40-Se presiona el botón “Validar Factibilidad”
+41-El estado de la portabilidad cambio a “Consulta pre factibilidad”
+42-Se presiona el botón “Generar documento”
+43-Se presiona el botón “TSQ”
+44-Se genera el documento y se cierra la pantalla
+45-El campo “Estado del Trámite” cambia su estado a “TSQ aprobado”
+46-Se presiona el botón “Generar documento”
+47-Se genera el documento y se cierra la pantalla
+48-Se presiona el botón “Enviar”
+49-Se accede a bodega para asignar SIMCARD
+50-Se selecciona el “Cliente”
+51-Se selecciona el “”Pedido”
+52-Se selecciona la opción “Simcard”
+53-Se accede a un sitio compartido, en el que se mantiene un registro de las SIMCARD utilizadas para QA.
+54-Se ingresa el número de SIMCARD
+55-El pedido se encuentra en estado “Pendiente de envío”
+56-Se realiza el cambio de estado a “Enviado” y se guarda el cambio con “Ctrl+S”
+57-Terminada la acción con el perfil de “Bodega”, se cierra este perfil y se accede nuevamente con el perfil de “Vendedor”
+58-Se selecciona el “”Pedido”
+59-Se recibe el pedido con estado “Enviado”
+60-Se realiza el cambio de estado a “Recibido”
+61-Se selecciona la opción “Guardar registro” o CTRL+S
+62-Sistema cambia de estado “Recibido” a “Abierto”, ""Esperando portabilidad"" (Campo estado se bloquea)
+
+Servidor de portabilidad
+63-A continuación utilizamos el aplicativo “MobaXterm” servidor XXXX.XXXX.XXXX.XXXX
+64-Se ingresa la instrucción “df -k” y se presiona “Enter” en el tablero
+65-Al ejecutar la instrucción, se despliega un log, de presentarse “home” menor a 100% se procede directamente a SIEBEL para continuar con Port-In
+66-Se ingresa la siguiente ruta “/home/npg/útil/FTPUtil/ftpTPDDir/filesToProcessDir”
+67-Se debe actualizar el archivo con el nombre “TPD_20190408_1.txt”
+68-Se debe de incorporar el número que se encuentra en proceso de portabilidad, se debe guardar la modificación al archivo
+69-Se arrastra el archivo a este recuadro
+70-Recordar que estos pasos se deben ejecutar siempre que la validación resultara con “home” igual a 100% (Slide anterior) 
+71-Se ingresa el texto y se presiona “Enter” 
+72- Se presiona el botón derecho del mouse y se selecciona la opción “Refresh current folder”
+73-Al ejecutar la instrucción y ejecutar la opción de “Refresh current folder”, el archivo desaparece de la ruta
+e ingresa la siguiente instrucción:/home/npg/util/FTPUtil/runFtpUtility.sh TPD -processFile >> /home/npg/logs/FtpActUtility.log 2>&1
+-------Solucion alternativa(servidor kepler caido) ejecutar WEB Service(SOAP)------
+siebel
+74-Se ingresa a SIBEL, se realiza búsqueda del cliente y se selecciona el “Pedido”, luego se selecciona la pestaña “Portabilidad”
+75-El “Estado Portabilidad” es “Solicitud Enviada”
+76-Se realiza actualización (Alt+Enter), con esta acción el sistema realizará cambio de estado
+77-El “Estado Portabilidad” es “Solicitud Aceptada”
+78-El “Estado del Trámite” del pedido finaliza con “Completada”
+79-El “Estado” del pedido finaliza con “Completada”
+80-El “Estado Portabilidad””, cambia nuevamente a “Esperando Portabilidad
+81-Finalmente, el “Estado Portabilidad””, cambia a “PORTADO”";"*Portabilidad debe completarse correctamente
+*-El “Estado” del pedido finaliza con “Completada”
+*-El “Estado Portabilidad””, cambia nuevamente a 
+*Esperando Portabilidad
+* “Estado Portabilidad””, cambia a “PORTADO” - Validacion cuenta al dia correcta. - Validacion pre factibilidad correcta. Activo correcto en siebel, UIM Y BRM . - Pedido completo en siebe y OSM. Numero en estado PORTEDIN EN UIM";N/A;Robot;;;;;;;;;
+24;PORT OUT;MOVIL;VTR;Portabilidad - Port Out - Movil;- Activo Movil , Validado como Activo, titular y sin saldo en NPG;"1-Se debe disponer de un cliente con plan móvil para realizar el “Port-Out
+2-Se selecciona la cuenta del “Cliente”
+3-Es importante tener disponible en forma rápida el número de celular del cliente, ya que se utilizará constantemente en este proceso
+4-Se utilizará el aplicativo NPG, para validar si es posible realizar Port-Out
+La URL es la siguiente:
+http://172.17.84.86:8080/NPGWebGUI/login/login.do;jsessionid=BD348B704B399C1123B3A9A77B051E07.apache1?SessionTimeOut=true
+NPG
+5-Se presiona el botón “Portación”
+6-Del Combobox “ID de Cierre Participante:” se selecciona “535 – VTR MÓVIL PRUEBA”
+7-Del Combobox “Mensaje:” se selecciona “0201 – Requerimiento de Validación de Titularidad y Saldo”
+8-Del Combobox “Tipo de Servicio (Donante):” se selecciona “MÓVIL”
+9-Del Combobox “Modalidad:” se selecciona “POSTPAGO”
+10-Se ingresa el Rut del cliente que se desea realizar Port-Out
+11-Del Combobox “Tipo de Servicio (Receptor)” se selecciona “MÓVIL”
+12- Se ingresa en “Numero:” el número de celular que se desea realizar Port-Out (Se le agrega al principio 56)
+13- Se presiona el botón “Guardar”
+14- Se selecciona la pestaña “Lista de Trabajo”
+15- Se ingresa el número de celular que se encuentra en proceso de Port-Out
+16- Se presiona el botón “Recuperar""
+17-Sistema entrega lista de validaciones asociadas al número, se selecciona la última opción
+18-Para continuar con la operación Port-Out, se debe validar que cumpla el cliente las condiciones indicadas
+19-Se selecciona la validación correspondiente al cliente en Port-Out
+20-La condición es:: Número del Estado = ACTIVO Titular = OK (Ticket) Pendiente TN Monto = 0
+21-Del Combobox “Mensaje:” se selecciona “1001 – Requerimiento de Portación”
+22-En “RUT del solicitante:” se ingresa el Rut del cliente
+23-Del Combobox “Tipo de subscriptor:” se selecciona “INDIVIDUAL”
+24-En “Nombre del Subscriptor:” se ingresa el nombre del cliente
+25-En “Apellido del subscriptor:” se ingresa el apellido del cliente
+27-En “Dirección del titular:” se ingresa la dirección del cliente
+28-Del Combobox “Canal de Atención:” se selecciona “3 – Web Page”
+29-Del Combobox “Región:” se selecciona “13 – Región Metropolitana de Santiago”
+30-Del Combobox “Comuna:” se selecciona “13114 – Las Condes”
+31-Del Combobox “Localidad:” se selecciona “1311401 – Las Condes”
+32-En “Móvil IMEI:” se agrega la IMEI que se utiliza para estas pruebas “129387654123456”
+33-En Combobox “Acredita Cuenta Al Día” se selecciona “SI”
+34-En “Número” se ingresa el número para Port-Out (Se le agrega 56 al inicio del número)
+35-En “Deuda Aceptada” se ingresa 0
+36-Se presiona el botón “Grabar”
+37-ingresar por FTP XXXX.XXXX.XXX
+38- Se ingresa la siguiente ruta /home/npg/útil/FTPUtil/ftpTPDDir/filesToProcessDir/
+39-El archivo de nombre “TPD_20190408_2.txt”, se modifica con la información del cliente, incluye el número a portar 
+40-El archivo modificado se arrastra al directorio especificado
+41- Se ingresa el texto y se presiona “Enter” 
+42- Se ingresa la siguiente instrucción: /home/npg/util/FTPUtil/runFtpUtility.sh TPD -processFile >> /home/npg/logs/FtpActUtility.log 2>&1
+43- Al ejecutar la instrucción y ejecutar la opción de “Refresh”, el archivo desaparece de la ruta
+44- Se presiona el botón derecho del mouse y se selecciona la opción “Refresh current folder”-----Alternativa web service(problemas servidor kepler)""----
+En siebel
+45-Se selecciona el pedido de portabilidad con estado “Pendiente”
+46-Con las operaciones realizadas anteriormente, en SIEBEL se genera un pedido con estado “Pendiente”
+47-El campo “Estado” cambia a “Completada”
+48-El campo “Estado Portabilidad” cambia a “Baja Portabilidad”
+49-El campo “Estado de Trámite” cambia a “Completada”
+50-Se realiza actualización (Alt+Enter), con esta acción el sistema realizará cambio de estado
+51-El pedido se encuentra en estado “Completada”
+52-El cliente no registra planes asociados, debido a la operación “Port-Out”
+53-Finaliza la operación de “Port-Out”";"*Portabilidad debe completarse correctamente
+* El pedido se encuentra en estado “Completada”
+*-El cliente no registra planes asociados, debido a la operación “Port-Out”
+*Finaliza la operación de “Port-Out” - Dato validado previao a prueba en NPG(titular, activo y sin saldo), - CActivos desconectados en UIM Y BRM - Pedido completado en OSM- Registro de portacion en NPG";N/A;;;;;;;;;;
+25;PORT IN;MOVIL;VTR;Portabilidad - Port in Validacion Prepago Codigo CAP - Movil;- Numero de origen Movil prepago(del listado dummy) disponible en UIM. - Cliente Nuevo;"22-Se crea un nuevo pedido seleccionado en las opciones de pedidos la opción “Nuevo registro”
+23-Se selecciona el nuevo “Pedido”
+24-Se crea un nuevo registro para el cliente al que se realizará “Port-In”. Seleccionar Modalidad de venta: movil. Tipo portado: movil prepago a venta movil
+25-Se selecciona del Combobox “Catálogo” la opción “Móvil”
+26-Se selecciona la opción “Prepago”
+27-Se selecciona el plan “prepago amarilla 5000
+28-Se presiona el botón “Agregar Ítem”
+34-Se selecciona la opción “Portabilidad”
+35-El estado de la portabilidad es “Inicio Portabilidad”
+36-Se ingresa el número que se desea portar
+37-Se ingresa la siguiente IMEI “129387654123456”, este número se utiliza siempre para las portabilidades
+38-Se presiona el botón “Validar Cuenta Día”
+39-El estado de la portabilidad cambio a “Consulta titularidad y Sa….”
+40-Se presiona el botón “Validar Factibilidad”
+41-El estado de la portabilidad cambio a “Consulta pre factibilidad”
+40-Se presiona el botón “Codigo CAP”. Se ingresa valor ""1234""
+41-El estado de la portabilidad cambio a “Validacion codigo CAP”
+43-Se presiona el botón “TSQ”";;N/A;Robot;;;;;;;;;
+26;SOLICITUD DE REPARACIÓN;HFC;VTR;BackOffice de Filtrado - Finalizar;Cliente con servicios fijos 3p;"1.Crear SS de Reparación
+1.1-Ingresar observacion en campo comentarios de la cabecera de la solicitud
+2 Agendar actividad terreno
+3.Insertar en tabla CX_OCS_TRIAGE la información de la solicitud y esperar 5 min a que Job se ejecute
+4.Revisar estado del registro. Debe quedar en PRPOCESADO
+5.Ver en SS que aparezca ACTIVIDAD REMOTA
+6.Cambiar estado de Actividad Remota a FINALIZADA o CANCELADA (FINALIZADA = CANCELAR ACTIVIDAD DE TERRENO / CANCELADA= ACTIVIDAD TERRENO SIGUE SU AGENDAMIENTO)
+7.Verificar actividad de terreno en TOA para ver su estado
+8.Verificar estado de Solicitud de Servicio.
+--------------------------------------------------------------
+Credenciales Siebel QA – BO Filtrado
+USER: ROBOT
+PASS: VTR2018
+Host:edc01-scan
+Puerto:1521
+servicio:SBLQA
+--------------------------------------------------------------
+QUERIES:
+select to_char(created, 'DD/MM/YYYY') created, to_char(created-(1/24)*3, 'HH24:MI:SS') HORA , asignado, DB_LAST_UPD_SRC, to_char(db_last_upd-(1/24)*3, 'HH24:MI:SS') actualizado, ID_SOLICITUD, PUESTO_TRABAJO
+from SIEBEL.CX_OCS_TRIAGE
+order by CREATED desc;
+--------------------------------------------------------------
+insert into 
+SIEBEL.CX_OCS_TRIAGE (ROW_ID, CREATED, CREATED_BY, LAST_UPD, LAST_UPD_BY, MODIFICATION_NUM,CONFLICT_ID, ID_SOLICITUD, PUESTO_TRABAJO ,ASIGNADO) 
+VALUES ('146721030020001', SYSDATE,'0-1', SYSDATE,'0-1',0,'0','1-5B1QQ7H', 'Triage Internet', 'PENDIENTE');
+--------------------------------------------------------------
+CREDENCIALES USUARIOS:
+SCANORE / Vtr.2019
+CAMORALES / Vtr.2017";"*Permita generar la Solicitud de Reparación
+*Se genere el triage (Actividad Remota)
+*Permita ingresar observacion en campo comentario
+*Permita finalizar actividad remota
+*Solicitud debe quedar Cancelada y la actividad terreno Cancelada
+*Solicitud debe quedar con fecha de cierre y solucion";N/A;Robot;;;;;;;;;
+27;SOLICITUD DE REPARACIÓN;HFC;VTR;BackOffice de Filtrado - Cancelar;Cliente con servicios fijos 3p;"1.Crear SS de Reparación
+1.1Ingresar observacion en campo comentarios de la cabecera de la solicitud
+2 Agendar actividad terreno
+3.Insertar en tabla CX_OCS_TRIAGE la información de la solicitud y esperar 5 min a que Job se ejecute
+4.Revisar estado del registro. Debe quedar en PRPOCESADO
+5.Ver en SS que aparezca ACTIVIDAD REMOTA
+6.Cambiar estado de Actividad Remota a FINALIZADA o CANCELADA (FINALIZADA = CANCELAR ACTIVIDAD DE TERRENO / CANCELADA= ACTIVIDAD TERRENO SIGUE SU AGENDAMIENTO)
+7.Verificar actividad de terreno en TOA para ver su estado
+8.Verificar estado de Solicitud de Servicio.
+--------------------------------------------------------------
+Credenciales Siebel QA – BO Filtrado
+USER: ROBOT
+PASS: VTR2018
+Host:edc01-scan
+Puerto:1521
+servicio:SBLQA
+--------------------------------------------------------------
+QUERIES:
+select to_char(created, 'DD/MM/YYYY') created, to_char(created-(1/24)*3, 'HH24:MI:SS') HORA , asignado, DB_LAST_UPD_SRC, to_char(db_last_upd-(1/24)*3, 'HH24:MI:SS') actualizado, ID_SOLICITUD, PUESTO_TRABAJO
+from SIEBEL.CX_OCS_TRIAGE
+order by CREATED desc;
+--------------------------------------------------------------
+insert into 
+SIEBEL.CX_OCS_TRIAGE (ROW_ID, CREATED, CREATED_BY, LAST_UPD, LAST_UPD_BY, MODIFICATION_NUM,CONFLICT_ID, ID_SOLICITUD, PUESTO_TRABAJO ,ASIGNADO) 
+VALUES ('146721030020001', SYSDATE,'0-1', SYSDATE,'0-1',0,'0','1-5B1QQ7H', 'Triage Internet', 'PENDIENTE');
+--------------------------------------------------------------
+CREDENCIALES USUARIOS:
+SCANORE / Vtr.2019
+CAMORALES / Vtr.2017";"*Permita generar la Solicitud de Reparación
+*Se genere el triage (Actividad Remota)
+*Permita ingresar observacion en campo comentario
+*Permita Cancelar actividad remota
+*La solicitud debe continuar Abierta y la actividad terreno agendada";N/A;Robot;;;;;;;;;
+28;VENTA;MOVIL;VTR;Venta Movil con Equipo - Dummy;N/A;"I. Consulta Estados Plataformas Antes Venta
+1. Plataforma Siebel
+a. Creación de cliente o Consulta Cliente vista 360
+II. Ingresar Venta Móvil
+1. En pedidos seleccionar “Nuevo registro”
+2. Seleccionar “Numero de Pedido”
+3. En catalogo seleccionar producto a instalar
+4. En detalles posicionarse en Promoción y presionar ""Editar promoción""
+5. En Servicio Móvil Seleccionar "" Personalizar"" y Agregar descuento SIM Only
+6. En la promoción principal Presionar editr promoción
+7. En sección Equipo móvil seleccionar el equipo cantidad 1 
+8. Presionar Agregar Ítem
+9. En modalidad seleccionar Venta, presionar terminado
+10.En editar promoción, presionar terminado
+11.Generar documento (cotización)
+12.Enviar TSQ
+13.Generar documento
+14.Enviar pedido y este queda en estado abierto y pendiente de pago
+III. Pago de PUF
+1. Realizar pago de PUF a través de Caja.
+2. En Siebel Validar que el estado del pedido quede en ""Pendiente de Envio"", que se marque Flag de pago y que contexto de estado avance.
+IV. Ingreso de Simcard
+1.Plataforma Siebel Usuario Bodeguero
+a. Ingresar Simcard
+b.- Ingresar imei del equipo
+c. Cambiar estado de Pedido a “enviado”
+2. Plataforma Siebel Usuario ejecutivo
+a. Cambiar estado de pedido a “Recibido”
+b.Pedido queda en estado “Completada”
+VI. Consulta Estados Plataformas después de completar Alta móvil.
+1. Plataforma Siebel
+a. Productos Instalados y que corresponda numero de serie simcard
+b. Perfil de facturación y DOM (validar que se genera N° Factura y no BI)
+2. Plataforma UIM
+3. Plataforma OSM
+4. Plataforma BRM
+a. Resumen
+b. Saldo
+C. Planes";"1.- Pedido de venta debe quedar completado
+2.- Cliente debe quedar registrado en UIM y BRM
+3.- OSM debe quedar orden en estado completada
+4.- Promocion y Equipo debe quedar visible en Activos instalado
+5.- DOM debe corresponder al dia de Alta";N/A;Robot;;;;;;;;;
+29;MODIFICACIÓN;MOVIL;VTR;Cambio de Teléfono - Dummy;Cliente con servicio móvil activo;"1.- Ingresar a Siebel con usuario y password
+2.- Ingresar Rut de cliente que tenga productos activos móviles
+5.- Ingresar a la vista 360
+6.- Seleccionar producto principal en sección ""productos instalados""
+7.- Presionar modificar
+8.- Sistema llevara automáticamente a la nueva orden de modificación
+9.- Seleccionar Servicio móvil
+10.- Seleccionar numero común
+11.- Presionar detalle de línea
+12.- Seleccionar otro numero en Numero de línea
+13.- Generar documento
+14.- Presionar TSQ (este debe aprobarse)
+15.- Generar documento
+16.- Ënvar pedido
+17.- Pedido debe quedar completado 
+18.- Revisar en vista 360 en productos instalados validación de nuevo numero
+19.- Facturar 1 ciclo";"1.- Pedido de modifcación debe quedar completado
+2.- Cambios deben quedar registrados en UIM
+3.- OSM debe quedar la orden en estado completado
+4.- Nuevo numero debe debe quedar visible en Activos instalado(Numero Comun)
+5.- EN la boleta se debe visualizar el nuevo nímero telefonico";N/A;Robot;;;;;;;;;
+30;VENTA;HFC;VTR;Alta 3 play con flujo de provisin OK-REABRIR-OK;Cliente con servicios activos 3p;"I. Consulta Estados Plataformas Antes de Venta
+1. Plataforma Siebel
+2. Creación de cliente o Consulta Cliente vista 360
+II. Venta Triple Pack Plataforma Siebel
+1. En pedidos seleccionar “Nuevo registro”
+2. Seleccionar “Numero de Pedido” 
+3. En catalogo seleccionar producto a instalar
+4. Generar Cotización y Enviar TSQ
+5. Generar Documento
+6. Ingresar numero de serie y Enviar pedido
+7. Actividad generada
+III. Plataforma TOA
+1. Validar información, Ítem de servicio, materiales requeridos y pasos de actividad. Asignar a técnico.
+2. Iniciar actividad en técnico y validar información de esta (Ítem de servicio, materiales requeridos y pasos) .
+3. Instalar materiales requeridos.
+4. Enviar aprovisionamiento
+5. Una vez que el aprovisionamiento arroje OK presionar “Reabrir Orden” y ok.
+6. En materiales instalados, ingresar a dbox instalado y presionar “Deshacer Instalar” con motivo “Fallo Electrónico”.
+7. Dirigirse a Siebel y Validar que se cree una nueva revisión (n°2) y que esta quede en estado pendiente.
+8. Instalar un Dbox nuevo.
+9. En materiales instalados, ingresar a MTA instalada y presionar “Deshacer Instalar” con motivo “Fallo Electrónico”.
+10. Instalar nueva MTA.
+11. Enviar aprovisionamiento y niveles.
+12. Completar pedido.
+IV. Consulta Estados Plataformas después de venta
+1. Plataforma Siebel:
+a. Validar productos instalados y series de mta y dbox instalados.
+b. Perfil de facturación y DOM (validar que se genera N° Factura y no BI)
+c. Validar actividad terreno quede en estado ""Finalizada""
+1. Plataforma UIM
+a. Validar productos instalados y series de mta y dbox instalados.
+2. Plataforma OSM
+3. Plataforma BRM
+a. Resumen
+b. Saldo
+c. Planes
+d. Servicio";"*Alta debe quedar completada
++Cliente debe quedar registrado en UIM y BRM
+* OSM debe quedar orden en estado completada";No Ejecutados;Robot;;;;;;;;;
+31;REPARACIÓN;HFC;VTR;Reparación con cambio de 2 equipos cliente 3 play con flujo de provisión OK-REABRIR-OK;N/A;"I. Consulta Estados Plataformas Antes de Reparación.
+1. Plataforma Siebel
+a. Validar Productos instalados y series de equipo a intercambiar
+2. Plataforma UIM
+II. Ingresar SS de Reparación
+1.- Ingresar a Siebel, ingresar el rut del cliente y hacer click a nivel de cuenta de servicio
+2.- En vista 360 del cliente hacer click en pestaña Solicitud de Servicio
+3.- Ingresar nueva solicitud de servicio de reparación Tipo: (Internet, Televisión o Telefonia fija), Area (Reparación Tecnica), Subarea y descripción
+4.- Botón Guardar
+5.- Ingresar fecha de agendamiento
+III. Plataforma TOA
+1.- Asignar actividad a Técnico e Iniciar actividad.
+2.- En TOA, sección material, intercambiar Dbox por un equipo nuevo.
+3.- Dirigirse a Siebel y Validar que se cree una nueva revisión (n°2) y que esta quede en estado pendiente.
+4.- En TOA sección materiales, intercambiar MTA por un equipo nuevo.
+5. Dirigirse a Siebel y Validar que se cree una nueva revisión (n°3) y que esta quede en estado pendiente.
+6. Validar que se generen los Pasos en TOA
+6.- Enviar aprovisionamiento
+7.- Una vez que el aprovisionamiento arroje OK, presionar botón “Reabrir Orden” y dar ok.
+8.-En materiales, Seleccionar el nuevo dbox y presionar “Deshacer Instalar” con motivo “Fallo Electrónico”.
+9.- Dirigirse a Siebel y Validar que se cree una nueva revisión (n°4) y que esta quede en estado pendiente.
+10.- En materiales, Seleccionar el dbox que fue desinstalado en el comienzo y presionar “Deshacer desinstalar” con motivo “Instalación”.
+11.-En materiales, Seleccionar la nueva MTA y presionar “Deshacer Instalar” con motivo “Fallo Electrónico”.
+12.- Seleccionar la MTA que fue desinstalada en el comienzo y presionar “Deshacer desinstalar” con motivo “Instalación”.
+13. Una vez instalados los equipos que tenía el cliente al comienzo
+14.- Intercambiar Dbox y Mta por equipos nuevos (Distintos a los que ya se habían instalado).
+15-. Enviar aprovisionamiento y niveles.
+16.- Completar orden.
+IV. Consulta Estados Plataformas después de Reparación
+1. Plataforma Siebel
+a. Pedido de Reparación en estado completada.
+b. Actividad de reparación en estado Finalizada.
+c. Equipos MTA y DBOX deben figurar con las nuevas series instaladas.
+2. Plataforma UIM
+a. Validar que la ultima versión figure con la nueva serie instalada.
+3. Plataforma OSM
+4. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios";"*Permita generar la SS de reparación
+*Luego de seleccionar tipo, area y subarea y guardar, el activo se selecciones automaticamente
+*Lleve automaticamente al agendamiento
+*Permita asignar actividad a tecnico
+*Tecnico pueda iniciar actividad y realizar el intercambio de material
+-Al momento del intercambio se visualice el pedido en vista 360
+*Tecnico envie a provisionar esperar el OK
+*Permita generar la accion reabrir orden
+*Permita generar un nuevo intercambio de material
+*Permita volver a enviar a provisionar
+*En vista 360 pedido de reparacion debe quedar en estado Abierto
+-En el detalle del pedido de reparación debe estar el asset Nuevo y Eliminar del equipo intercambiado
+*Tecnico permita finalizar la Actividad
+*Solicitud debe quedar Cerrada con fecha de cierre y solución
+* Actividad estado Finalizada
+*Se visualice en siebel el nuevo equipo instalado
+*Validar en UIM la serie del nuevo equipo";No Ejecutados;Robot;;;;;;;;;
+32;REPARACIÓN;HFC;VTR;Reparación con cambio de 2 equipos cliente 3 play con flujo de provisión NOK-OK;N/A;"*Para esta prueba se requiere cargar al técnico:
+- 1 MTA y 1 DBOX Sucios.
+- 1 MTA y 1 DBOX Ok.
+I. Consulta Estados Plataformas Antes de Reparación.
+1. Plataforma Siebel
+a. Validar Productos instalados y series de equipo a intercambiar
+2. Plataforma UIM
+II. Ingresar SS de Reparación
+1.- Ingresar a Siebel, ingresar el Rut del cliente y hacer click a nivel de cuenta de servicio
+2.- En vista 360 del cliente hacer click en pestaña Solicitud de Servicio
+3.- Ingresar una nueva solicitud y llenar los campos Tipo, Área, Subarea, Descripción y activo.
+4.-Posteriormente hacer click en N° de SS e ingresar Motivo, Codigo de cierre, Cambiar estado a finalizada y guardar.
+5.- Ingresar fecha de agendamiento
+III. Plataforma TOA
+1.- Asignar actividad a Técnico e Iniciar actividad.
+2.- En TOA, sección material, intercambiar Dbox por un equipo nuevo (INSTALAR EQUIPO SUCIO).
+3.- Dirigirse a Siebel y Validar que se cree una nueva revisión (n°2) y que esta quede en estado pendiente.
+4.- En TOA sección materiales, intercambiar MTA por un equipo nuevo (INSTALAR EQUIPO SUCIO).
+5. Dirigirse a Siebel y Validar que se cree una nueva revisión (n°3) y que esta quede en estado pendiente.
+6. Validar que se generen los Pasos tanto en Siebel como en TOA
+6.- Enviar aprovisionamiento y esperar que arroje falle NOK
+7.-En materiales, Seleccionar el nuevo dbox y presionar “Deshacer Instalar” con motivo “Fallo Electrónico”.
+8.- Dirigirse a Siebel y Validar que se cree una nueva revisión (n°4) y que esta quede en estado pendiente.
+9.- En materiales, Seleccionar el dbox que fue desinstalado en el comienzo y presionar “Deshacer desinstalar” con motivo “Instalación”.
+10.-En materiales, Seleccionar la nueva MTA y presionar “Deshacer Instalar” con motivo “Fallo Electrónico”.
+11.- Seleccionar la MTA que fue desinstalada en el comienzo y presionar “Deshacer desinstalar” con motivo “Instalación”.
+Una vez instalados los equipos que tenía cliente al comienzo
+12.- Intercambiar Dbox y MTA por equipos nuevos (LIMPIOS).
+13-. Enviar aprovisionamiento y niveles.
+14.- Completar pedido.
+IV. Consulta Estados Plataformas después de Reparación
+1. Plataforma Siebel
+a. Pedido de Reparación en estado completada.
+b. Actividad de reparación en estado Finalizada.
+c. Equipos MTA y DBOX deben figurar con las nuevas series instaladas.
+2. Plataforma UIM
+a. Validar que la ultima versión figure con la nueva serie instalada.
+3. Plataforma OSM
+4. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios";"*Permita generar la SS de reparación
+*Luego de seleccionar tipo, area y subarea y guardar, el activo se selecciones automaticamente
+*Lleve automaticamente al agendamiento
+*Permita asignar actividad a tecnico
+*Tecnico pueda iniciar actividad y realizar el intercambio de material
+-Al momento del intercambio se visualice el pedido en vista 360
+*Tecnico envie a provisionar esperar el OK
+*Permita generar la accion reabrir orden
+*Permita generar un nuevo intercambio de material
+*Permita volver a enviar a provisionar
+*En vista 360 pedido de reparacion debe quedar en estado Abierto
+-En el detalle del pedido de reparación debe estar el asset Nuevo y Eliminar del equipo intercambiado
+*Tecnico permita finalizar la Actividad
+*Solicitud debe quedar Cerrada con fecha de cierre y solución
+* Actividad estado Finalizada
+*Se visualice en siebel el nuevo equipo instalado
+*Validar en UIM la serie del nuevo equipo";No Ejecutados;Robot;;;;;;;;;
+33;RESET/REFRESH;HFC;VTR;Reset/Refresh;Cliente con servicios activos 3p;"1-Login con usuario ""SUCAHU""
+2-Buscar cliente
+3-Ir a la vista 360
+4-expandir productos instalados""
+5-expandir televisión""
+6-hacer click en ""botón reset/refresh""
+7-hacer click en ""refresh todas""
+8-hacer click en ""botón aceptar""
+9-hacer click en ""opción reset/refresh""
+10-hacer click en ""botón consultar estado"" 
+11-En siebel en ""actividades"" validar en ""comentarios"" valor ""Proceso Finalizado""
+12-En ""siebel"" en ""actividades"" validar si existe ""proceso finalizado en comentarios""";*Reset (actividad) debe quedar Finalizada;No Ejecutados;Robot;;;;;;;;;
+34;POSTVENTA;N/A;VTR;Generar un pedido de venta movil y tratar de seleccionar cuenta de facturacin con activos de fijo;Cliente con solo servicio fijo activo;"1.- Ingresar a Siebel con usuario y password
+2.- Ingresar Rut de cliente que tenga solo productos activosFijos
+3.- Ingresar a la cuenta del cliente y generar nuevo pedido de venta
+4.- Ingresar al pedido de venta y cambiar la modalidad de venta a movil
+5.- El Campo Cuenta de facturación debe quedar en blanco, hacer clic en el icono de busqueda para seleccionar la cuenta (no debe mostrar ninguna cuenta de facturación)
+6.- Volver a la vista 360, Ingresar a la sección jerarquía de cuentas y agregar una nueva cuenta de facturación
+7.- Ingresar al pedido de venta movil, en el campo cuenta de facturación hacer clic en el icono de busqueda
+8.- Seleccionar la cuenta cuenta de facturación prospecto (cuenta nueva)
+";"1.- No permite seleccionar una cuenta de facturación con servicios fijos activos para un pedido de venta movil
+2.- Permite seleccionar cuenta de facturación prospecto (nueva)";No Ejecutados;Robot;;;;;;;;;
+35;POSTVENTA;N/A;VTR;Generar un pedido de venta fija y tratar de seleccionar cuenta de facturacion con activos de Movil;Cliente con solo servicio móvil activo;"1.- Ingresar a Siebel con usuario y password
+2.- Ingresar Rut de cliente que tenga solo productos activos móvil
+3.- Ingresar a la cuenta del cliente y generar nuevo pedido de venta
+4.- Ingresar al pedido de venta y cambiar la modalidad de venta a fja
+5.- El Campo Cuenta de facturación debe quedar en blanco, hacer clic en el icono de busqueda para seleccionar la cuenta (no debe mostrar ninguna cuenta de facturación)
+6.- Volver a la vista 360, Ingresar a la sección jerarquía de cuentas y agregar una nueva cuenta de facturación
+7.- Ingresar al pedido de venta fijo, en el campo cuenta de facturación hacer clic en el icono de busqueda
+8.- Seleccionar la cuenta cuenta de facturación prospecto (cuenta nueva)
+";"1.- No permite seleccionar una cuenta de facturación con servicios móvil activos para un pedido de venta fijos
+2.- Permite seleccionar cuenta de facturación prospecto (nueva)";N/A;Robot;;;;;;;;;
+36;POSTVENTA;N/A;VTR;Generar un pedido de venta y tratar de seleccionar una cuenta de facturacion sin asset activos migrado;Cliente Migrado fijo o movil sin servicios activos;"1-Ingresar a Siebel con usuario y password
+2-Ingresar Rut de cliente migrado sin servicios activos (desconectado)
+3-Ingresasr a la vista 360
+4-generar un nuevo pedido seleccionando en área de pedidos nuevo registro
+5-ingresar al nuevo pedido
+6-Perfil de facturación debe venir en blanco 
+7-al desplegar perfil NO debe mostrar ningún perfil de facturación antiguo";*Sistema no debe permitir desplegar perfil , este NO debe mostrar ningún perfil de facturación antiguo;N/A;Robot;;;;;;;;;
+37;POSTVENTA;N/A;VTR;Generar un pedido de venta y tratar de seleccionar una cuenta de facturacion sin asset activos;Cliente nacido en Andes fijo o movil sin servicios activos;"1-Ingresar a Siebel con usuario y password
+2-Ingresar Rut de cliente nacido en andes sin servicios activos (desconectado)
+3-Ingresasr a la vista 360
+4-generar un nuevo pedido seleccionando en área de pedidos nuevo registro
+5-ingresar al nuevo pedido
+6-Perfil de facturación debe venir en blanco 
+7-al desplegar perfil NO debe mostrar ningún perfil de facturación antiguo";*Sistema no debe permitir desplegar perfil , este NO debe mostrar ningún perfil de facturación antiguo;No Ejecutados;Robot;;;;;;;;;
+38;POSTVENTA;N/A;VTR;Crear una cuenta de facturacion sin perfil de facturacion y adicionarlo al Pedido de Venta;Cliente con solo servicio fijo activo;"1-Ingresar a Siebel con usuario y password
+2-Ingresar Rut de cliente que tenga solo productos activos Fijos
+3-ir a sección jerarquía de cuentas
+4-Agregar una nueva cuenta de facturación(presionando botón+)
+5- ingresar a la nueva cuenta de facturacion creada y valdiar que tenga el estado Prospecto
+6-Ingresasr a la vista 360
+7-generar un nuevo pedido seleccionando en área de pedidos nuevo registro
+8-ingresar al nuevo pedido
+9-desplegar perfil de facturación en el nuevo pedido
+10-al desplegar solo debe mostrar nueva cuenta de facturación creada";*Sistema solo debe mostrar nueva cuenta de facturación creada;No Ejecutados;Robot;;;;;;;;;
+39;POSTVENTA;N/A;VTR;Crear una cuenta de facturacion sin perfil de facturacion y adicionarlo al Pedido de traslado;Cliente con solo servicio fijo activo;"1-Ingresar a Siebel con usuario y password
+2-Ingresar Rut de cliente que tenga solo productos activos Fijos
+3-ir a sección jerarquía de cuentas
+4-Agregar una nueva cuenta de facturación(presionando botón+)
+5- ingresar a la nueva cuenta de facturacion creada y valdiar que tenga el estado Prospecto
+6-Ingresar a la vista 360
+7-Seleccionar producto principal en sección ""productos instalados""
+8-En icono de engrane presionar traslado
+9-Sistema llevara automáticamente al nuevo pedido de traslado
+10-En el nuevo pedido debe cargar automáticamente perfil antiguo del cliente 
+11-Sistema no debe permitir cambiar el perfil de facturación";*Sistema no debe permitir cambiar el perfil de facturación;No Ejecutados;Robot;;;;;;;;;
+40;POSTVENTA;N/A;VTR;Crear una cuenta de facturacion sin perfil de facturacion y adicionarlo al Pedido de Cambio de Promocion;Cliente con solo servicio fijo activo;"1-Ingresar a Siebel con usuario y password
+2-Ingresar Rut de cliente que tenga solo productos activos Fijos
+3-ir a sección jerarquía de cuentas
+4-Agregar una nueva cuenta de facturación(presionando botón+)
+5- ingresar a la nueva cuenta de facturacion creada y valdiar que tenga el estado Prospecto
+6-Ingresar a la vista 360
+7-Seleccionar producto principal en sección ""productos instalados""
+8-Presionar Actualización de promoción
+9-Se desplegara ventana para elegir promoción (elegir cualquiera disponible)
+10.Presionar aceptar
+11-Sistema llevara automáticamente al nuevo pedido de cambio de promoción
+12-En el nuevo pedido debe cargar automáticamente perfil antiguo del cliente 
+13-Sistema no debe permitir cambiar el perfil de facturación";*Sistema no debe permitir cambiar el perfil de facturación;No Ejecutados;Robot;;;;;;;;;
+41;POSTVENTA;N/A;VTR;Crear una cuenta de facturacion sin perfil de facturacion y adicionarlo al Pedido de Modificacion;Cliente con solo servicio fijo activo;"1-Ingresar a Siebel con usuario y password
+2-Ingresar Rut de cliente que tenga solo productos activos Fijos
+3-ir a sección jerarquía de cuentas
+4-Agregar una nueva cuenta de facturación(presionando botón+)
+5- ingresar a la nueva cuenta de facturacion creada y valdiar que tenga el estado Prospecto
+6-Ingresar a la vista 360
+7-Seleccionar producto principal en sección ""productos instalados""
+8-Presionar Modificar
+9-Sistema llevara automáticamente al nuevo pedido de modificación
+10-En el nuevo pedido debe cargar automáticamente perfil antiguo del cliente 
+11-Sistema no debe permitir cambiar el perfil de facturación";*Sistema no debe permitir cambiar el perfil de facturación;No Ejecutados;Robot;;;;;;;;;
+42;DESCONEXIÓN;HFC;VTR;Baja Traslado Fijo con retiro de equipo y corte de acometida - Cliente 3 play - Dummy;Cliente con servicios activos 3p;"I. Consulta Estados Plataformas Antes de Baja Traslado.
+1. Plataforma Siebel
+a. Validar Productos instalados 
+b. Validar actividad de Alta Traslado completada y Baja Traslado ""Agendada""
+II. Plataforma TOA
+1.-Validar información, ITEM y pasos
+2.- Asignar actividad a Técnico.
+3.- Iniciar actividad en Técnico, validar información y pasos.
+4.- Enviar Solicitud Tipo ""Corte de acomedita"" y esperar el ok de este
+5.- Desinstalar materiales de Cliente con motivo Retiro.
+6.- Enviar Solicitud Tipo ""Retiro de Materiales"" y esperar el ok de este
+7.- Completar Pedido
+IV. Consulta Estados Plataformas después de Baja Traslado
+1. Plataforma Siebel
+a. Validar Activos instalados
+b. Actividad de Baja traslado Finalizada
+c. Cliente debe mantener equipos instalados de Alta Traslado
+2. Plataforma UIM
+3. Plataforma OSM";"*Sistema debe permitir realizar baja correctamente
+*En toa debe completarse Retiro de material y corte de acometida
+*Actividad de Baja traslado Finalizada
+* Cliente debe mantener equipos instalados de Alta Traslado
++Cliente debe quedar registrado en UIM y BRM
+* OSM debe quedar orden en estado completada";No Ejecutados;Robot;;;;;;;;;
+43;DESCONEXIÓN;HFC;VTR;Desconexión Futura (3P);Cliente con servicios fijos 3p;"1- Ingresar a Siebel con usuario y password
+2- Ingresar Rut de cliente servicios activos fijos
+3- Ingresar a la vista 360
+4- Ir a Productos instalados seleccionar promoción principal
+5- Presionar desconectar
+6- Sistema llevara a la sección de solicitudes de servicio actividades
+7- Ingresar fecha de envió posterior a hoy
+8- Ingresar motivo OTRO PRUEBA
+9- Presionar guardar en la parte superior sección ""Información SS""
+10-Sistema creara nueva actividad con descripción ""Generación de Orden""";"*Permita generar la SS de desconexion
+*Fecha de envio debe estar alineada al DOM del cliente -1 día
+*Permita seleccionar una fecha distina a hoy
+*No debe permitir seleccionar una fecha posterior a hoy
+*Permita seleccionar un motivo de desconexión
+*Sistema debe crear nueva actividad con descripción ""Generación de Orden"" el cual debe mostrarse automáticamente sin actualizar pagina";No Ejecutados;Robot;;;;;;;;;
+44;POSTVENTA;N/A;VTR;Solicitud de Servicio Facturacion Convertida en Reclamo;Cliente fijo o Movil con servicios activos;"1. Ingresar a un Cliente con Servicios Activo
+2. Ingresar a Jerarquia de Cuenta y Seleccionar su cuenta de Facturación
+3. Seleccionar la Pestaña Solicitudes de Servicio
+4. Crear una nueva Solicitu de Servicio presionando el botón """" + """"
+5. Realizar el llenado de los Campos:
+- Tipo
+- Area
+- Subarea
+- Descripción
+Guardar
+6. Ingresa al numero de la SS creada
+7. Seleccionar el Botón ""Convertir en N° Reclamo""
+8. Realizar el llenado de los Campos:
+- Tipo de Servicio reclamado
+- Empresa reclamada
+- Motivo del Reclamo
+- Macro motivo SUBTEL
+- Tipo Cliente
+- Medio notificación
+- Dirección solicitante
+- Dirección respuesta
+- Canal SUBTEL
+- Antecedentes
+- Detallar documentación
+- Información adicional
+Asignar N° Reclamo
+9. Seleccionar la pestaña Actividades
+10. Logearse con el usuario asignado para la actividad Resolución ""Se escala caso para Analisis""
+11. Ingresar a la Solicitud de Servicio y llenar los campos de la actividad
+- Motivo
+- Codigo de Cierre: Contacta-Explica Fact. 
+- Estado: Finalizada
+12. Cambiar al usuario asignado para la actividad Resolución ""Enviar Carta Respuesta""
+13. Ingresar a la Solicitud de Servicio
+14. Seleccionar la pestaña SUBTEL
+15. Seleccionar Respuesta a SUBTEL y llenar campos:
+- Fecha respuesta
+- Respuesta a SUBTEL
+- Comentario Respuesta
+Guardar
+16. Seleccionar boton en la parte superior ""Informes""
+17. Menu izquierda seleccionar:
+- Nombre del informe: ""Carta Respuesta a Cliente - Presencial""
+- Nombre: ""Cualquier nombre""
+- Tipo de salida: PDF
+- Entorno reg. informe: Español
+18. Seleccionar botón Generar
+19. Seleccionar boton Mis Informes
+20. Seleccionar el ""Nombre del Informe"" y debe genarar un pdf con la carta al cliente.
+21. volver al campo SUBTEL y Llenar los campos de la Actividad resolucion ""Enviar Carta Respuesta""
+- Motivo
+- Codigo de Cierre
+- Estado: Finalizada
+22. validar el encabezado de la solicitud de servicio 
+- Estado=cerrado
+- feha de cracion 
+- fecha solucion 
+-fecha de cierre
+
+las fechas deben de tener la fecha correspondiente a la creacion de la solicutud (fecha al día) 
+
+";"1. Permita generar la Solicitud de Servicio
+2. Derivaciones queden asignadas al puesto de trabajo correcto
+3. Usuario envia carta, permita generar la respuesta subtel
+4. En mis informes la generacion del informe el estado sea Success
+5. Permita generar y descargar la carta formal de envio al cliente en el formato seleccionado
+6. Permita finalizar la actividad envio de carta
+7. Cabecera quede en estado Finalizada
+8. Actividades queden finalizadas
+9. Posea fecha de cierre y resolucion
+NOTA:
+para corregir el error al generar el pdf de carta de respuesta de reclamo se debe resetear cuenta sqlbip del usuaruio en siebel (NADRIANVERB ó SVALPARAISO)";No Ejecutados;Felipe;;;;;;;;;
+45;POSTVENTA;N/A;VTR;Solicitud de Servicio a Nivel cuenta servicio;Cliente fijo o Movil con servicios activos;"I. Consulta Estados Plataformas.
+1. Plataforma Siebel
+II. Ingresar SS Inconveniente de Servicio
+1.- Ingresar a Siebel, ingresar el rut del cliente y hacer click a nivel de cuenta de servicio
+2.- En vista 360 del cliente hacer click en pestaña Solicitud de Servicio
+3.- Ingresar nueva solicitud de servicio ingresando 
+Tipo: Telefonia Movil, Internet, Television o Telefonia Fija (Segun corresponda)
+Area: Inconveniente de Servicio
+Subarea: 
+4.- Guardar
+5.- Ingresar con el usuario BO que se le asigno Actividad
+6.-Con usuario BO finalizar Actividad";"*Permita generar solicitud de servicio
+*Permita llenar campos Tipo, area, subarea, descripcion
+*Primera actividad se derive automaticamente 
+*nueva actividad debe quedar derivada al BO respectivo
+*Bo pueda finalizar actividad
+* Cabecera SS debe quedar cerrada, con fecha de cierre y solucion";No Ejecutados;Felipe;;;;;;;;;
+46;POSTVENTA;N/A;VTR;Solicitud de Servicio a Nivel cuenta Cliente;Cliente fijo o Movil con servicios activos;"I. Consulta Estados Plataformas.
+1. Plataforma Siebel
+II. Ingresar SS 
+1.- Ingresar a Siebel, ingresar el rut del cliente
+2.- En vista 360 del cliente hacer click en pestaña Solicitud de Servicio
+3.- Ingresar nueva solicitud de servicio ingresando 
+Tipo: Problemas en Atencion
+Area: Falta de Espiritu VTR
+Subarea: Sucursal
+4.- Guardar
+5.- Ingresar con el usuario BO que se le asigno Actividad
+6.-Con usuario BO finalizar Actividad";"*Permita generar solicitud de servicio
+*Permita llenar campos Tipo, area, subarea, descripcion
+*Primera actividad se derive automaticamente 
+*nueva actividad debe quedar derivada al BO respectivo
+*Bo pueda finalizar actividad
+* Cabecera SS debe quedar cerrada, con fecha de cierre y solucion";No Ejecutados;Felipe;;;;;;;;;
+47;POSTVENTA;N/A;VTR;Solicitud de Servicio a Nivel cuenta Facturacion - Campos Adicionales;Cliente con servicios activos 3p;"I. Consulta Estados Plataformas.
+1. Plataforma Siebel
+II. Ingresar SS Facturación
+1.- Ingresar a Siebel, ingresar el rut del cliente y hacer click a nivel de cuenta de facturacion
+2.- En vista 360 del cliente hacer click en pestaña Solicitud de Servicio
+3.- Ingresar nueva solicitud de servicio que requiera campos adicionales ingresando 
+Tipo: Cuenta
+Area: Recaudacion
+Subarea: Pago no aplicado
+Descripción:
+4.- Botón Guardar
+5.- Llenar campos adicionales segun corresponda
+6.- Botón Guardar de la cabecera de la solicitud
+6.- Ingresar con el usuario BO que se le asigno Actividad
+7.-Con usuario BO finalizar Actividad";"*Permita generar solicitud de servicio
+*Permita llenar campos Tipo, area, subarea, descripcion
+*Lleve automaticamente a la vista para llenar campos adicionales
+*La Actividad resolucion tenga motivo y area derivar estado abierta
+*luego de llenar campos adicionales y guardar, la actividad se derive automaticamente
+*Actividad debe quedar derivada al BO respectivo
+*Bo pueda finalizar actividad
+* Cabecera SS debe quedar cerrada, con fecha de cierre y solucion";No Ejecutados;Felipe;;;;;;;;;
+48;POSTVENTA;N/A;VTR;Anulacion de SS de desconexion Futura;Cliente con servicios fijos 3p;"1. Desconectar la promoción contratada por el cliente 
+2. Fecha de envio debe ser la fecha DOM -1 día (No se debe modificar)
+3. Ingresar motivo de desconexión
+4. Guardar
+5. Anular Actividad Generacion de Orden
+- Motivo
+- Codigo de Cierre
+- Estado: Anulada";"*Fecha de envio debe ser la fecha DOM -1 día 
+*Solicitud de Desconexion quede Abierta hasta que se cumpla Fecha
+*Permita Anular Actividad Generacion de Orden
+*No debe generar Pedido de Desconexión
+*Cabecera quede en estado Anulada y quede con fecha de cierre y solucion";No Ejecutados;Robot;;;;;;;;;
+49;AJUSTE CARGO;N/A;VTR;Ajuste a cargo facturado boleta no pagada;Cliente con servicios activos 3p;"1. Ingresar a la cuenta cliente
+2. En la vista 360, en Perfil de Facturacion seleccionar el numero de la cuenta de facturacion
+3. En el campo Facturas, seleccionar el numero de factura
+4. Dentro del campo Cargos por Item seleccionar Ajustar
+5. En el campo detalle llenar los campos:
+- Importe solicitado (Monto a descontar)
+- Descripcion de la solicitud (Campo obligatorio, alguna obs)
+- Motivo y Submotivo
+6. Seleccionar Enviar
+7. Refrescar (Estado debe quedar Ajustado)
+8. Seleccionar Portal de Facturacion
+9. En el campo Facturas seleccionar ""Generar NC Ajuste""
+10. Refrescar";"*Permita acceder al rut del cliente
+* Permita acceder al perfil de facturación
+*ultima boleta posea folio y monto para ajustar
+*Ajuste quede en estado Ajustado
+*Se rebaje el monto adeudado de la boleta
+*Se genere la nota de credito
+*Monto rebajado se refleje en Caja Unica";No Ejecutados;Felipe;;;;;;;;;
+50;POSTVENTA;N/A;VTR;SS Orden de Retencion Tecnica a Servicio Fijo - Modificar campo Notas;Cliente con servicios activos 3p;"1. Loguearse con Ejecutivo de Retención (SLLAMASE - Vtr.2021)
+2. Ingresar Rut de Cliente 
+3. Seleccionar la Cuenta Cliente
+4. Ingresar a Jerarquia de Cuenta y seleccionar la Cuenta de Servicio correspondiente
+5. Seleccionar Solicitudes de Servicio
+6. Presionar el boton "" + ""
+Llenar los campo: 
+- Tipo: (Telefonia Fija / Internet / Television ) 
+- Area: Orden de Retención Técnica
+- SubArea: 
+- Seleccionar un Activo
+- Descripción: ""Prueba Reparación""
+Guardar
+7. Agendar Actividad
+8. Ingresar a TOA y validar Nota de Actividad Retención
+9. Volver a Siebel
+10. Ingresar a la Actividad Retención
+11. Ingresar a Pestaña Agendamiento
+12. Modificar Texto de Notas
+13. Seleccionar Actualizar Notas";"1. Ejecutivo Retención permita generar Solicitud de Orden de Retencion Tecnica
+2. El activo no se seleccione automaticamente
+3. Solicitud de Reparación sea del Tipo Retención
+4. Permita Agendar la Actividad
+5. Actividad cambie al Estado Agendada
+6. Se visualice por TOA la Primera Nota ingresada
+7. Permita modificar la primera nota a través de Siebel
+8. Se visualice la nueva nota ingresada en TOA";No Ejecutados;Robot;;;;;;;;;
+51;POSTVENTA;N/A;VTR;SS Reparación Tecnica Reiterado - Modificar campo Notas;Cliente con servicios activos 3p;"Precondicion- > Cliente con una reparacion ingresada en menos de 60 días
+1. Ingresar Rut de Cliente 
+2. Seleccionar la Cuenta Cliente
+3. Ingresar a Jerarquia de Cuenta y seleccionar la Cuenta de Servicio correspondiente
+4. Seleccionar Solicitudes de Servicio
+5. Presionar el boton "" + ""
+Llenar los campo: 
+- Tipo: (Telefonia Fija / Internet / Television ) 
+- Area: Reparación Tecnica
+- SubArea: 
+- Descripción:
+Guardar
+8. Agendar Actividad
+9. Ingresar a TOA y validar Nota de Actividad Reiterado
+10. Volver a Siebel
+11. Ingresar a la Actividad Reiterado
+12. Ingresar a Pestaña Agendamiento
+13. Modificar Texto de Notas
+14. Seleccionar Actualizar Notas";;No Ejecutados;Robot;;;;;;;;;
+52;POSTVENTA;N/A;VTR;Ingresar 2 SS Reparacion Tecnica a Servicio Fijo -3P;Cliente con servicios activos 3p;"1. Ingresar Rut de Cliente 
+2. Seleccionar la Cuenta Cliente
+3. Ingresar a Jerarquia de Cuenta y seleccionar la Cuenta de Servicio correspondiente
+4. Seleccionar Solicitudes de Servicio
+5. Presionar el boton "" + ""
+Llenar los campo: 
+- Tipo: (Telefonia Fija / Internet / Television ) 
+- Area: Reparación Tecnica
+- SubArea: 
+- Descripción:
+Guardar
+6. Agendar Reparacion
+8. Volver a la Vista 360
+9. Ingresar a Jerarquia de Cuenta y seleccionar la Cuenta de Servicio correspondiente
+10. Seleccionar Solicitudes de Servicio
+11. Presionar el boton "" + ""
+Llenar los campo: 
+- Tipo: (Telefonia Fija / Internet / Television ) 
+- Area: Reparación Tecnica";"1. Primera Solicitud de Servicio genere la Actividad de Reparación
+2. Debe permitir Agendar
+3. Al crear la segunda SS de Reparación al tipificar Area como Reparacion Tecnica, se informará con el siguiente mensaje ""El Cliente ya cuenta con una Solicitud de Servicio - Area: Reparacion Técnica abierta para la misma cuenta de Servicio""
+4. Permita deshacer la creacion de dicha SS";No Ejecutados;Robot;;;;;;;;;
+53;DESCONEXION COBRANZA;HFC;VTR;Desconexión Fija - Ultima boleta no pagada;Cliente fijo con servicios activos;"I. Consulta Estados Plataformas Antes de Desconexion
+1. Plataforma Siebel
+a. Consulta Cliente
+b. Estado Servicios
+2. Plataforma UIM
+3. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios
+II. Desconexión
+1. En productos instalados posicionarse en Promoción y presionar Botón desconectar
+2. Modificar campo ""Fecha de envio"" (debe ser dom -1 día) a la fecha e ingresar ""Motivo de desconexión"".
+3. Presionar icono de ""Guardar""
+4. Una vez guardada, te dirigirá al pedido de desconexión que se encontrara en estado ""Abierto"" automaticamente.
+5. Pedido queda en estado “Completada”
+IV. Consulta Estados Plataformas despues de Desconexion
+1. Plataforma Siebel
+- Perfil de Facturación
+- Se genere una NC a la ultima boleta
+- Debe rebajar el monto adeudado del cliente
+2. Plataforma UIM
+3. Plataforma OSM
+4. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios";"*Desconexion debe quedar en estado completada
+*Solicitud debe quedar con fecha de cierre y solucion
++en Siebe se debe de valdiar en l productos instalados la no voisualiza la promocion desinstalada
++Cliente debe quedar registrado UIM y BRM con servicios desconectados
+* OSM debe quedar orden en estado completada
+* genero nota de credito por dx anticipada, si ultima boleta pagada debe generar saldo a favor";No Ejecutados;Robot;;;;;;;;;
+54;VENTA;HFC;VTR;Cancell Por Upgrade alta de fono con cancel por upgrade a 3play;- Cliente Nuevo - Promociones configuradas(en funcion de promocion de origen) para cancel por upgrade.;"1.- Crear nuevo pedido de venta
+2.- Agregar promoción 
+3.- Enviar TSQ y Generar Documentos
+4.- Enviar pedido
+5.- En el pedido presionar ""Agregar servicios fijos"", y seleccionar nueva promoción
+6.- Esperar que refresque el pedido
+7.- Revisar que se cree una segunda versión, con esta continuar el flujo.
+8.- Enviar TSQ y Generar Documentos
+9.- Enviar pedido
+10- Completar pedido en TOA y Siebel
+";". pedido de venta submitido correctamnete. - Permita seleccionar promocion desde el listado desplegado. - Se cree segunda version del pedido, permita continuar el flujo con esta. - Primera version en estado ""Revisado"", con motivo""Cancelacion por upgrade"", y assets asociados a promocion de origen en estado completado.-Pedido quede completado en toa, siebel y OSM. - Activos en siebel, UIM Y BRM. ";No Ejecutados;Robot;;;;;;;;;
+55;REPARACIÓN;HFC;VTR;Reparación (ordenes en vuelo) 3P;Cliente con servicios activos 3p;"1. Ingresar SS de reparación en cliente 1 Play Internet
+2. Agendar actividad de reparación
+3. Validar los Item de la actividad en TOA (cliente figura con servicio 1 play internet)
+4. Con la Actividad de reparación agendada, ingresar un Upgrade de 1 Play a 3 Play
+5. Agendar actividad de Upgrade
+6. Iniciar actividad de Upgrade
+7. Instalar equipos solicitados y aprovisionar
+8. Enviar niveles y completar actividad
+9. Validar que se complete la orden de Upgrade en Siebel y que la promoción nueva se vea reflejado en “Productos Instalados” (vista 360)
+10. Validar los Item de la actividad de reparación en TOA se hayan actualizado con la nueva promoción (3 Play)
+11. Iniciar actividad de reparación
+12. Intercambiar MTA y DBOX
+13. Validar que se generen tantas revisiones como equipos intercambiados (2)
+14. Enviar aprovisionamiento
+15. Enviar niveles y completar actividad.
+16. Validar que la orden de reparación se complete en Siebel
+17. Validar que los nuevos equipos instalados sean consistentes entre TOA y la orden
+18. Validar que los nuevos equipos instalados sean consistentes con los mostrados en “Productos Instalados” (vista 360)";"Validar los Item de la actividad en TOA (cliente figura con servicio 1 play internet)
+Validar que se complete la orden de Upgrade en Siebel y que la promoción nueva se vea reflejado en “Productos Instalados” (vista 360)
+Validar los Item de la actividad de reparación en TOA se hayan actualizado con la nueva promoción (3 Play)
+Validar que se generen tantas revisiones como equipos intercambiados (2)
+Validar que la orden de reparación se complete en Siebel
+Validar que los nuevos equipos instalados sean consistentes entre TOA y la orden
+Validar que los nuevos equipos instalados sean consistentes con los mostrados en “Productos Instalados” (vista 360)";No Ejecutados;Robot;;;;;;;;;
+56;REPARACIÓN;HFC;VTR;Reparacion sin intercambio 3P;Cliente con servicios activos 3p;"1. Ingresar SS de reparación en cliente 3 Play
+2. Agendar actividad de reparación
+3. Asignar actividad a técnico e iniciar 
+4. Enviar Niveles y completar actividad
+5. Validar que la orden de reparación no sea visible en Siebel 
+6. Validar por base de datos el tipo de orden sea “Temporal” y el estado “Completado”
+7. Validar por base de datos que los Item de la orden temporal estén en estado “Completado.
+8. Validar desde la vista 360 que la actividad se encuentre en estado “Finalizada”";"Validar que la orden de reparación no sea visible en Siebel 
+Validar por base de datos el tipo de orden sea “Temporal” y el estado “Completado”
+Validar por base de datos que los Item de la orden temporal estén en estado “Completado.
+Validar desde la vista 360 que la actividad se encuentre en estado “Finalizada”";No Ejecutados;Robot;;;;;;;;;
+57;VENTA;FTTH;VTR;Alta 3 play FTTH;N/A;"I. Consulta Estados Plataformas Antes de Venta
+1. Plataforma Siebel
+2. Creacion de cliente o Consulta Cliente vista 360
+3. Direccion debe tener tipo de red FTTH
+II. Venta Triple Pack Siebel FTTH
+1. En pedidos seleccionar “Nuevo registro”
+2. Seleccionar “Numero de Pedido” 
+3. En catalogo seleccionar producto a instalar
+4. Generar Cotización y Enviar TSQ
+5. Generar Documento
+6. Ingresar numero de serie y Enviar pedido
+7. Actividad generada
+III. Plataforma TOA
+1. Validar informacion, Item de servicio, materiales requeridos y pasos de actividad. Asignar a tecnico.
+2. Iniciar actividad en tecnico y validar informacion de esta (Item de servicio, materiales requeridos y pasos) .
+3. Instalar materiales requeridos.
+4. Enviar aprovisionamiento, niveles y completar actividad
+IV. Plataforma Siebel
+9. Pedido queda en estado “completada”
+V. Consulta Estados Plataformas despues de venta
+1. Plataforma Siebel:
+a. Productos Instalados
+b. Perfil de facturacion y DOM (validar que se genera N° Factura y no BI)
+c. Validar actividad terreno quede en estado ""Finalizada""
+1. Plataforma UIM (Estado In Service los 3 servicios)
+2. Plataforma OSM (Completed todas las capas)
+3. Plataforma BRM (Servicios en estado activos)
+a. Resumen
+b. Saldo
+c. Planes
+d. Servicio";"*Permita generar una venta de servicio Fijo
+*Numero telefonia fija, se asigne automaticamente
+*TSQ quede aprobado
+*Permita enviar pedido y agendar
+*Actividad muestre los pasos y material requerido
+*Permita asignar actividad a TOA
+*Tecnico pueda asignar el material requerido y visualice los pasos
+*Permita enviar el aprovisionamiento quedando OK
+*Niveles OK
+*Completar actividad
+*Alta debe quedar completada
++Cliente debe quedar registrado en UIM y BRM
+* OSM debe quedar orden en estado completada";No Ejecutados;Robot;;;;;;;;;
+58;TRASLADO - CANCELADO;HFC;VTR;Traslado cliente cancell por upgrade; Activo completado mediante cancel por upgrades;"I. Consulta Estados Plataformas Antes de Traslado.
+1. Plataforma Siebel
+a. Consulta Cliente productos instalados
+2. Plataforma UIM
+3. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios
+II. Ingresar Pedido de traslado
+1.- Ingresar a Siebel y buscar rut del cliente
+2.- Hacer click sobre la cuenta Cliente
+3.- A nivel de vista 360 del cliente seleccionar pestaña jerarquia de cuentas 
+4.- Crear una nueva cuenta de servicio con una nueva dirección
+5.- En vista 360 del cliente a nivel de producto fijo seleccioanr el plan y posteriormente hacer click en icono engranaje y seleccionar opcion traslado
+6.-En el campo cuenta de servicio seleccionar la nueva cuenta y verificar que tenga la nueva dirección
+7.- Presionar TSQ y verificar que quede aprobado
+8.- Presionar boton Enviar
+III. Plataforma TOA
+9.- En TOA Coordinador asignar actividad a tecnico correspondiente
+10.- Ingresar a TOA Tecnico e iniciar actividad
+11.- Realizar el retiro de todos los materiales del cliente que estan activos e instalar nuevos
+12.- Enviar solcitud de aprovisionamiento
+13.- Una ves que el aprovisionamiento este OK enviar niveles
+14.- Niveles quedará como NOK para ello ir a TOA coordinador y cambiar niveles de NOK a OK
+15.- Verificar que en TOA Tecnico niveles este OK y completar la orden
+IV. Consulta Estados Plataformas despues de Traslado 
+1. Plataforma Siebel
+a. Pedido de Traslado en estado complatada.
+b. Actividad de Traslado en estado Finalizada.
+c. Equipos MTA y DBOX deben figurar con las nuevas series instaladas.
+d. Validar DOM
+2. Plataforma UIM
+a. Validar que la ultima version figure con la nueva serie instalada y nueva dirección.
+3. Plataforma OSM
+4. Plataforma BRM
+a. Resumen
+b. Planes
+c. Servicios";"*Traslado debe quedar completada
++Cliente debe quedar registrado en UIM y BRM
+* OSM debe quedar orden en estado completada - Cuenta de servicio origen sin activos en estado ""Inactivo. - Cuenta de servicio destino con los activos en estado ""Activo""";No Ejecutados;Robot;;;;;;;;;
+59;SUSPENSION COBRANZA;MOVIL;VTR;Suspension Bi direccional - Por cobranza (movil);Cliente con deuda para que entren en proceso de cobranza;"1. Ejecutar collections para ingresar cuentas a cobranza.
+2. Cuentas en Siebel quedan en Cobranza (se debe ejecutar proceso que mueve la alerta a eim_alert_cut y s_alert_cut).
+3. Avanzar la cobranza a la acción Suspensión Bi.";"Siebel: alerta de crédito ""Suspension Bi"" en estado completada.
+Las cuentas deben quedar con el flag en Cobranza con los assets Suspendidos Bi por Mora.";N/A;;;;;;;;;;
+60;REANUDACION COBRANZA;MOVIL;VTR;Reanudacion con Pago (movil);Cliente debe estar en cobranza;"1. Realizar pago online por caja para sacar cuenta de cobranza.
+2. Se debe generar la orden de reanudacion y la misma se debe completar.";"Siebel: las alertas de salida a cobranza quedan en estado completada.
+La cuenta debe quedar sin el flag en Cobranza y con sus assets activos.";N/A;;;;;;;;;;
+61;SUSPENSION COBRANZA;HFC;VTR;Suspension Bi direccional - Por cobranza (Fija);Cliente con deuda para que entren en proceso de cobranza;"1. Ejecutar collections para ingresar cuentas a cobranza. 
+2. Cuentas en Siebel quedan en Cobranza (se debe ejecutar proceso que mueve la alerta a eim_alert_cut y s_alert_cut). 
+3. Avanzar la cobranza a la acción Suspensión Bi.";"Siebel: alerta de crédito ""Suspension Bi"" en estado completada. 
+Las cuentas deben quedar con el flag en Cobranza con los assets Suspendidos Bi por Mora.";No Ejecutados;Felipe;;;;;;;;;
+62;REANUDACION COBRANZA;HFC;VTR;Reanudacion con Pago (Fija);Cliente debe estar en cobranza;"1. Realizar pago online por caja para sacar cuenta de cobranza.
+2. Se debe generar la orden de reanudacion y la misma se debe completar.";"Siebel: las alertas de salida a cobranza quedan en estado completada.
+La cuenta debe quedar sin el flag en Cobranza y con sus assets activos.";No Ejecutados;Felipe;;;;;;;;;
+63;SUSPENSION;MOVIL;VTR;Suspension y Reanudación por robo (movil con equipo);Cliente con servicio móvil postpago activo y equipo en arriendo;"1.- Ingresar a siebel y realizar la busqueda del cliente
+2.- Desplazarse hasta los productos instalados y hacer clic en la promoción
+3.- Ir al engranaje y seleccionar SUSPENDER por robo
+4.- Se genera un pedido de suspensión, validar en los assent que incluya tanto el servicio como el equipo móvil
+5.- Enviar pedido y esperar que se complete
+--- VALIDAR BLOQUEO DEL EQUIPO EN NPG---
+1.- Ingresar a la NPG y hacer clic sobre el boton Equipos bloqueados
+2.- En la seccion requerimientos del equipo, en el campo mensaje seleccionar""consulta solicitud equipo bloqueado""
+3.- Ingresar el email del equipo
+4.- En el campo ID de cliente participante, seleccionar VTR MOVIL PRUEBA
+5.- hacer clic en el boton grabar
+6.- En la seccion respuesta del equipo, en el campo Estado Del Equipo debe aparece el mensaje ""Bloqueado por robo""
+--- REANUDACIÓN POR ROBO---
+1.- Ingresar a siebel y realizar la busqueda del cliente
+2.- Desplazarse hasta los productos instalados y hacer clic en la promoción
+3.- Ir al engranaje y seleccionar REANUDAR por robo
+4.- Se genera un pedido de reanudación, validar en los assent que incluya tanto el servicio como el equipo móvil
+5.- Enviar pedido y esperar que se complete
+--- VALIDAR DESBLOQUEO DEL EQUIPO EN NPG---
+1.- Ingresar a la NPG y hacer clic sobre el boton Equipos bloqueados
+2.- En la seccion requerimientos del equipo, en el campo mensaje seleccionar""consulta solicitud equipo bloqueado""
+3.- Ingresar el email del equipo
+4.- En el campo ID de cliente participante, seleccionar VTR MOVIL PRUEBA
+5.- hacer clic en el boton grabar
+6.- En la seccion respuesta del equipo, en el campo Estado Del Equipo debe aparece el mensaje ""No existe o desbloqueado""";"---SUSPENSIÓN---
+1.- En SIEBEL se debe visualizar todos los productos en estado suspendido
+2.- En OSM debe quedar la orden en estado completado
+3.- En UIM el cliente debe quedar suspendido, en BRM los productos se mantienen activos
+4.- En NPG el email del equipo móvil debe quedar bloqueado por robo
+---REANUDACIÓN---
+1.- En SIEBEL se debe visualizar todos los productos en estado activo
+2.- En OSM debe quedar la orden en estado completado
+3.- En UIM el cliente debe quedar activo, en BRM los productos se mantienen activos
+4.- En NPG el email del equipo móvil debe quedar desbloqueado";N/A;;;;;;;;;;
+64;VENTA;MOVIL;VTR;Delivery movil;"Cliente nuevo sin servicios
+En SoapUI tener cargado el projecto http://172.17.225.25:2080/eai_esn/start.swe?SWEExtSource=WebService&SWEExtCmd=Execute&WSSOAP=1";"1.Realizar la búsqueda de clientes 
+2. Ingresar a la liga con identificador de liga Cliente
+3. Seleccionar ""Nuevo registro"" en la sección de pedidos 360
+4.Seleccionar ""número de pedido""
+5.Seleccionar en modalidad de venta la opción ""Móvil""
+6.Seleccionar método de envío ""Venta con delivery""
+7.- Posicionarse en la Pestaña ""Enviar a"" y completar el formulario incluyendo el campo ""Entregar a""
+9. Seleccionar la pestaña catálogo el producto a instalar
+10. Cambiar la opción a móvil
+11.Seleccionar la opción Residencial
+12.Abrir el árbol de opciones y seleccionar normal/ postpago/Multimedia
+13.Seleccionar un producto multimedia
+14.Dar clic en Agregar item
+15.Seleccionar la pestaña Detalles
+16.Posicionarse en la opción ""servicio móvil""
+17.Seleccionar ""Personalizar""
+18.Agregar descuento SIM Only 10% con cantidad 1 y agregar item
+19.Dar clic en Terminado
+20.Abrir el árbol y seleccionar número móvil 
+21.Validar el campo número móvil se encuentre limpio (usar app java)
+22.Dar clic en la opción Pago upfront primera boleta 
+23 Dar clic en botón ""Generar documento""
+24.Dar clic en botón TSQ
+25.Presionar el botón ""Enviar""
+26.Ingresar a SIEBEL con perfil bodeguero
+27.Ingreso de Simcard
+1.Plataforma Siebel Usuario Bodeguero
+a. Ingresar Simcard
+b. Cambiar estado de Pedido a ""Preparado""
+c. Posteriormente usando el siguiente WS -> http://172.17.225.25:2080/eai_esn/start.swe?SWEExtSource=WebService&SWEExtCmd=Execute&WSSOAP=1 Colocar el numero de orden y estado ""Recepción Fisica"" y ejecutar WS, corroborar que la ejecución del servicio sea OK
+d. Posteriormente usando el siguiente WS -> http://172.17.225.25:2080/eai_esn/start.swe?SWEExtSource=WebService&SWEExtCmd=Execute&WSSOAP=1 Colocar el numero de orden y estado ""En Ruta"" y ejecutar WS, corroborar que la ejecución del servicio sea OK y el pedido quede en estado ""Enviado"" 
+28.Plataforma Siebel Usuario ejecutivo
+29.En la pestaña de la orden ejecutar nuevamente el WS http://172.17.225.25:2080/eai_esn/start.swe?SWEExtSource=WebService&SWEExtCmd=Execute&WSSOAP=1 Colocar el numero de orden y estado ""Entregado"" y ejecutar WS, corroborar que la ejecución del servicio sea OK y el pedido quede en estado ""Abierto"" 
+30.Validar que la orden quede en estado Completada y que en las actividades queden todas en estado Finalizada";La orden debe quedar en estado completada y los productos activos en vista 360 de Siebel, es posible validar que las actividades quedan todas en estado Finalizadas, en UIM los productos deben estar en estado In Service y en BRM en estado Activos;N/A;;;;;;;;;;
+65;FACTURACIÓN;HFC;VTR;Validacion de Boleta - consistencia entre Siebel Vs Boleta;Cliente con servicios 3P activos y facturado;"1.- Ingresar a Siebel
+2.- A nivel de vista 360 jacer click en cuenta de facturación
+3.- Validar los montos del cargo del plan 
+4.- Hacer click en pestaña Boleta y Cargos
+5.- En boleta digitalziada verificar los montos y cargos del plan y compararlos con loque muestra Siebel";Los montos y cargos asociados al plan que posee el cliente son concordantes entre la Boleta y lo que muestra Siebel.;No Ejecutados;Felipe;;;;;;;;;
+66;POSTVENTA;N/A;VTR;Validacion de MAC- consistencia entre Siebel Vs BRM;OK;;;No Ejecutados;Felipe;;;;;;;;;
+67;VENTA;HFC;VTR;Alta 3p Cliente B2B;"Cliente nuevo sin servicios
+En SoapUI tener cargado el projecto http://172.17.225.25:2080/eai_esn/start.swe?SWEExtSource=WebService&SWEExtCmd=Execute&WSSOAP=1";"1.- Ingresar a Siebel
+2.- Crear cliente en Siebel
+3.- En la creación en tipo de cliente debe ser MYPE y sub tipo ""Empresarial""
+4.- una vez creado el cliente en vista 360 ir a la pestaña ""Contacto""
+5.- Presionar el botón ""+"" y añadir el primer contcato que aparece en la lista desplegada de Siebel
+6.- Presionar botón Guardar
+7. En pedidos seleccionar “Nuevo registro”
+8. Seleccionar “Numero de Pedido” 
+9. En catalogo seleccionar producto a instalar
+10. Generar Cotización y Enviar TSQ
+11. Generar Documento
+12. Ingresar numero de serie y Enviar pedido
+13. Actividad generada
+14. Plataforma TOA
+15 Validar informacion, Item de servicio, materiales requeridos y pasos de actividad. Asignar a tecnico.
+16. Iniciar actividad en tecnico y validar informacion de esta (Item de servicio, materiales requeridos y pasos) .
+17. Instalar materiales requeridos.
+18. Enviar aprovisionamiento, niveles y completar actividad
+19. Plataforma Siebel
+20. Pedido queda en estado “completada”
+21. Consulta Estados Plataformas despues de venta
+22. Plataforma Siebel:
+a. Productos Instalados
+b. Perfil de facturacion y DOM (validar que se genera N° Factura y no BI)
+c. Validar actividad terreno quede en estado ""Finalizada""
+d. Plataforma UIM
+e. Plataforma OSM
+f. Plataforma BRM
+g. Resumen
+h. Saldo
+i. Planes
+j. Servicio";La orden debe quedar en estado completada y los productos activos en vista 360 de Siebel, es posible validar que las actividades quedan todas en estado Finalizadas, en UIM los productos deben estar en estado In Service y en BRM en estado Activo;No Ejecutados;Felipe;;;;;;;;;
+68;PORT IN;HFC;VTR;Portabilidad - Port In - Fijo;.- Numero de origen Fijo(del listado dummy) disponible en UIM. - Cliente Nuevo;"
+--------------------MODO DUMMY NO SE VALIDA EN NPG--------------
+Siebel
+22-Se crea un nuevo pedido seleccionado en las opciones de pedidos la opción “Nuevo registro”
+23-Se selecciona el nuevo “Pedido”
+24-Se crea un nuevo registro para el cliente al que se realizará “Port-In” seleccionar tipo de pedido ""Fijo"". Tipo de portado fijo otra compañia a venta fija
+25-Se selecciona del Combobox “Catálogo” la opción “Fijo”
+26-Se selecciona la opción “Residencial”
+27-Se selecciona el plan “Fono ilimitado 600 movil
+28-Se presiona el botón “Agregar Ítem”
+34-Se selecciona la opción “Portabilidad”
+35-El estado de la portabilidad es “Inicio Portabilidad”
+36-Se ingresa el número que se desea portar
+38-Se presiona el botón “Validar Cuenta Día”
+39-El estado de la portabilidad cambio a “Consulta titularidad y Sa….”
+40-Se presiona el botón “Validar Factibilidad”
+41-El estado de la portabilidad cambio a “Consulta pre factibilidad”
+42-Se presiona el botón “Generar documento”
+43-Se presiona el botón “TSQ”
+44-Se genera el documento y se cierra la pantalla
+45-El campo “Estado del Trámite” cambia su estado a “TSQ aprobado”
+46-Se presiona el botón “Generar documento”
+47-Se genera el documento y se cierra la pantalla
+48-Se presiona el botón “Enviar”
+- Pedido queda en estado ""Abierto""- Ingresar actividad a toa coordinar- Asignar actividad a tecnico- Inciar , agregar materiales , aprovisionar, , enviar niveles y finalizar actividad en tecnico. - Esperar que en siebel pedido quede ""Pendiente de portabilidad"", y estado de portabilidad en ""Solicitud aceptada"".
+Servidor de portabilidad
+63-A continuación utilizamos el aplicativo “MobaXterm” servidor XXXX.XXXX.XXXX.XXXX
+64-Se ingresa la instrucción “df -k” y se presiona “Enter” en el tablero
+65-Al ejecutar la instrucción, se despliega un log, de presentarse “home” menor a 100% se procede directamente a SIEBEL para continuar con Port-In
+66-Se ingresa la siguiente ruta “/home/npg/útil/FTPUtil/ftpTPDDir/filesToProcessDir”
+67-Se debe actualizar el archivo con el nombre “TPD_20190408_1.txt”
+68-Se debe de incorporar el número que se encuentra en proceso de portabilidad, se debe guardar la modificación al archivo
+69-Se arrastra el archivo a este recuadro
+70-Recordar que estos pasos se deben ejecutar siempre que la validación resultara con “home” igual a 100% (Slide anterior) 
+71-Se ingresa el texto y se presiona “Enter” 
+72- Se presiona el botón derecho del mouse y se selecciona la opción “Refresh current folder”
+73-Al ejecutar la instrucción y ejecutar la opción de “Refresh current folder”, el archivo desaparece de la ruta
+e ingresa la siguiente instrucción:/home/npg/util/FTPUtil/runFtpUtility.sh TPD -processFile >> /home/npg/logs/FtpActUtility.log 2>&1
+-------Solucion alternativa(servidor kepler caido) ejecutar WEB Service(SOAP)------
+siebel
+74-Se ingresa a SIBEL, se realiza búsqueda del cliente y se selecciona el “Pedido”, luego se selecciona la pestaña “Portabilidad”
+75-El “Estado Portabilidad” es “Solicitud Enviada”
+76-Se realiza actualización (Alt+Enter), con esta acción el sistema realizará cambio de estado
+77-El “Estado Portabilidad” es “Solicitud Aceptada”
+78-El “Estado del Trámite” del pedido finaliza con “Completada”
+79-El “Estado” del pedido finaliza con “Completada”
+80-El “Estado Portabilidad””, cambia nuevamente a “Esperando Portabilidad
+81-Finalmente, el “Estado Portabilidad””, cambia a “PORTADO”";"*Portabilidad debe completarse correctamente
+*-El “Estado” del pedido finaliza con “Completada” - Aprovisionamiento exitosos, cierre en TOA
+*-El “Estado Portabilidad””, cambia nuevamente a 
+*Esperando Portabilidad
+* “Estado Portabilidad””, cambia a “PORTADO” Validacion cuenta al dia correcta. - Validacion pre factibilidad correcta. Activo correcto en siebel, UIM Y BRM . - Pedido completo en siebe y OSM. Numero en estado PORTEDIN EN UIM";No Ejecutados;jonathan;;;;;;;;;
+69;PORT OUT;HFC;VTR;Portabilidad - Port Out- Fijo;Activo Fijo , Validado como Activo, titular y sin saldo en NPG;"1-Se debe disponer de un cliente con plan fijo para realizar el “Port-Out
+2-Se selecciona la cuenta del “Cliente”
+3-Es importante tener disponible en forma rápida el número de celular del cliente, ya que se utilizará constantemente en este proceso
+4-Se utilizará el aplicativo NPG, para validar si es posible realizar Port-Out
+La URL es la siguiente:
+http://172.17.84.86:8080/NPGWebGUI/login/login.do;jsessionid=BD348B704B399C1123B3A9A77B051E07.apache1?SessionTimeOut=true
+NPG
+5-Se presiona el botón “Portación”
+6-Del Combobox “ID de Cierre Participante:” se selecciona “626 – VTR Fijo PRUEBA”
+7-Del Combobox “Mensaje:” se selecciona “0201 – Requerimiento de Validación de Titularidad y Saldo”
+8-Del Combobox “Tipo de Servicio (Donante):” se selecciona “Fijo”
+9-Del Combobox “Modalidad:” se selecciona “POSTPAGO”
+10-Se ingresa el Rut del cliente que se desea realizar Port-Out
+11-Del Combobox “Tipo de Servicio (Receptor)” se selecciona “Fijo”
+12- Se ingresa en “Numero:” el número de celular que se desea realizar Port-Out (Se le agrega al principio 56)
+13- Se presiona el botón “Guardar”
+14- Se selecciona la pestaña “Lista de Trabajo”
+15- Se ingresa el número de celular que se encuentra en proceso de Port-Out
+16- Se presiona el botón “Recuperar""
+17-Sistema entrega lista de validaciones asociadas al número, se selecciona la última opción
+18-Para continuar con la operación Port-Out, se debe validar que cumpla el cliente las condiciones indicadas
+19-Se selecciona la validación correspondiente al cliente en Port-Out
+20-La condición es:: Número del Estado = ACTIVO Titular = OK (Ticket) Pendiente TN Monto = 0
+21-Del Combobox “Mensaje:” se selecciona “1001 – Requerimiento de Portación”
+22-En “RUT del solicitante:” se ingresa el Rut del cliente
+23-Del Combobox “Tipo de subscriptor:” se selecciona “INDIVIDUAL”
+24-En “Nombre del Subscriptor:” se ingresa el nombre del cliente
+25-En “Apellido del subscriptor:” se ingresa el apellido del cliente
+27-En “Dirección del titular:” se ingresa la dirección del cliente
+28-Del Combobox “Canal de Atención:” se selecciona “3 – Web Page”
+29-Del Combobox “Región:” se selecciona “13 – Región Metropolitana de Santiago”
+30-Del Combobox “Comuna:” se selecciona “13114 – Las Condes”
+31-Del Combobox “Localidad:” se selecciona “1311401 – Las Condes”
+32-En “Móvil IMEI:” se agrega la IMEI que se utiliza para estas pruebas “129387654123456”
+33-En Combobox “Acredita Cuenta Al Día” se selecciona “SI”
+34-En “Número” se ingresa el número para Port-Out (Se le agrega 56 al inicio del número)
+35-En “Deuda Aceptada” se ingresa 0
+36-Se presiona el botón “Grabar”
+37-ingresar por FTP XXXX.XXXX.XXX
+38- Se ingresa la siguiente ruta /home/npg/útil/FTPUtil/ftpTPDDir/filesToProcessDir/
+39-El archivo de nombre “TPD_20190408_2.txt”, se modifica con la información del cliente, incluye el número a portar 
+40-El archivo modificado se arrastra al directorio especificado
+41- Se ingresa el texto y se presiona “Enter” 
+42- Se ingresa la siguiente instrucción: /home/npg/util/FTPUtil/runFtpUtility.sh TPD -processFile >> /home/npg/logs/FtpActUtility.log 2>&1
+43- Al ejecutar la instrucción y ejecutar la opción de “Refresh”, el archivo desaparece de la ruta
+44- Se presiona el botón derecho del mouse y se selecciona la opción “Refresh current folder” ----Alternativa web service(problemas servidor kepler)""----
+En siebel
+45-Se selecciona el pedido de portabilidad con estado “Pendiente”
+46-Con las operaciones realizadas anteriormente, en SIEBEL se genera un pedido con estado “Pendiente”
+47-El campo “Estado” cambia a “Completada”
+48-El campo “Estado Portabilidad” cambia a “Baja Portabilidad”
+49-El campo “Estado de Trámite” cambia a “Completada”
+50-Se realiza actualización (Alt+Enter), con esta acción el sistema realizará cambio de estado
+51-El pedido se encuentra en estado “Completada”
+52-El cliente no registra planes asociados, debido a la operación “Port-Out”
+53-Finaliza la operación de “Port-Out”";"*Portabilidad debe completarse correctamente
+* El pedido se encuentra en estado “Completada”
+*-El cliente no registra planes asociados, debido a la operación “Port-Out”
+*Finaliza la operación de “Port-Out” Dato validado previao a prueba en NPG(titular, activo y sin saldo), - CActivos desconectados en UIM Y BRM - Pedido completado en OSM- Registro de portacion en NPG";No Ejecutados;jonathan;;;;;;;;;
+70;SERVICIO ADICIONAL;HFC;VTR;Venta de SVA - Telefonia;Cliente con servicios activos 3p, 2P (con telefonia) o 1P Telefonía;"1.- Ingresar a Siebel
+2.- Ingresar rut de cliente y presionar botón Buscar
+3.- Una vez desplegados los datos hacer clic en rut
+4.-A nivel de productos hacer click sobre el plan y presionar botón Modificar
+5.- A nivel de asset Telefonía hacer click en botón ""Personalizar""
+6.- Hacer click en la ventana SVA y seleccionar Mira Quien Llama y posteriormente presionar botón Terminar
+7.- Presionar botón Generar Documento
+8.- Prsionar borón Enviar y esperar a que la orden quede en estado Completada
+9.- Validar en vista 360 que el SVA quede en estado Activo
+10.- Validar en UIm que el SVA quede en estado Activo
+11.- Validar en BRM que el SVA quede en estado Activo
+";La orden debe quedar en estado completada y lel SVA activo en vista 360 de Siebel, es posible validar en UIM que el SVA queda correctamente instaciado y en BRM que el producto queda en estado Activo;No Ejecutados;Felipe;;;;;;;;;
+;;;;;;;;;;;;;;;;;;

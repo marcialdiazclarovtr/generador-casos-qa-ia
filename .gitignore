@@ -1,0 +1,33 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+venv/
+.env
+
+# Outputs / runs
+json/
+output/
+requerimientos/
+status.json
+
+# Node
+node_modules/
+frontend/node_modules/
+frontend/.vite/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
