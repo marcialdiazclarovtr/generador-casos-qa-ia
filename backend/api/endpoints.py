@@ -10,6 +10,7 @@ Endpoints:
 - POST /api/cancel         → Cancela tarea de una sesion especifica
 - GET  /api/files          → Lista archivos generados (todas las sesiones)
 - GET  /api/files/{session}→ Lista archivos de una sesión
+- GET  /api/matriz         → Obtiene matriz.json (datos base desde backend)
 """
 import hashlib
 import json
@@ -36,6 +37,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 UPLOAD_FOLDER = BASE_DIR / "requerimientos"
 OUTPUT_FOLDER = BASE_DIR / "output"
 JSON_FOLDER = BASE_DIR / "json"
+JSON_MATRIX_FOLDER = BASE_DIR / "Datos" / "matriz"
 
 UPLOAD_FOLDER.mkdir(parents=True, exist_ok=True)
 OUTPUT_FOLDER.mkdir(parents=True, exist_ok=True)
@@ -406,3 +408,26 @@ async def list_sessions():
 
     sessions.sort(key=lambda x: x["mtime"], reverse=True)
     return sessions
+
+
+# ── Exponer matriz.json desde el backend ─────────────────
+
+@router.get("/matriz")
+async def get_matriz():
+    file_path = JSON_MATRIX_FOLDER / "matriz.json"
+
+    print("EXISTS:", file_path.exists())
+    print("PATH:", file_path.resolve())
+
+    with open(file_path, "r", encoding="utf-8") as f:
+        raw = f.read()
+
+    print("RAW FILE:", raw)
+    print("RAW TYPE:", type(raw))
+
+    data = json.loads(raw)
+
+    print("PARSED DATA:", data)
+    print("PARSED TYPE:", type(data))
+
+    return data

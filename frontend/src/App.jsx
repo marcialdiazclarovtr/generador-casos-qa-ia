@@ -10,6 +10,7 @@ import {
   uploadFiles, processDocs, getDocResult, enhanceJson, getEnhanceResult,
   generateTestCases, getFiles, getGenerationStatus, cancelExecution
 } from './api/client';
+import MatrizProcesos from './pages/MatrizProcesos';
 
 function App() {
   const [config, setConfig] = useState({
@@ -37,6 +38,11 @@ function App() {
   const [tokenUsage, setTokenUsage] = useState(null);
   const [queuePosition, setQueuePosition] = useState(0);
   const timerRef = useRef(null);
+
+  // Estado para la navegación entre páginas (home, matriz de procesos, etc.)
+  const [currentPage, setCurrentPage] = useState(
+    window.location.hash === '#/matriz' ? 'matriz' : 'home'
+  );
 
   // ── Timer: cuenta cada segundo mientras isRunning ──
   const isRunning = status === 'uploading' || status === 'processing' || status === 'queued';
@@ -270,7 +276,16 @@ function App() {
     setMessage('');
   };
 
+  useEffect(() => {
+    window.location.hash = currentPage === 'matriz' ? '#/matriz' : '#/home';
+  }, [currentPage]);
+
+  if (currentPage === 'matriz') {
+    return <MatrizProcesos onBack={() => setCurrentPage('home')} />;
+  }
+
   return (
+
     <div className="flex flex-col min-h-screen bg-gray-50 font-sans">
 
       {/* ── HEADER ─────────────────────────────────────────────────────── */}
@@ -285,6 +300,23 @@ function App() {
             </span>
           </div>
           <div className="flex items-center gap-6">
+            {currentPage !== 'home' && (
+              <button
+                onClick={() => setCurrentPage('home')}
+                className="text-xs font-medium text-white border border-white/40 px-3 py-1.5 rounded-lg
+                          bg-white/10 hover:bg-white/20 transition-colors"
+              >
+                Inicio
+              </button>
+            )}
+            <button
+              onClick={() => setCurrentPage('matriz')}
+              className="text-xs font-medium text-white border border-white/40 px-3 py-1.5 rounded-lg
+            bg-white/10 hover:bg-white/20 transition-colors"
+            >
+              Configurar matriz de procesos
+            </button>
+            <div className="w-px h-6 bg-white/30" />
             <img src="/logo_claro.png" alt="Claro" className="h-9 w-auto object-contain brightness-0 invert" />
             <div className="w-px h-6 bg-white/30" />
             <img src="/logo_vtr.png" alt="VTR" className="h-7 w-auto object-contain brightness-0 invert" />
