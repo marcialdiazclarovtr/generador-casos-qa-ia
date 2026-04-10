@@ -4,8 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 
-from backend.api import endpoints
-from backend.api.endpoints import task_queue
+from api import endpoints
+from api.endpoints import task_queue
 
 
 @asynccontextmanager

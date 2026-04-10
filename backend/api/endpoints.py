@@ -23,9 +23,11 @@ from typing import List, Optional
 from fastapi import APIRouter, UploadFile, File, HTTPException, Query
 from fastapi.responses import FileResponse, JSONResponse
 
-from backend.schemas.request import GenerateRequest, EnhanceJsonRequest
-from backend.pipeline import run_pipeline, run_doc_processing, enhance_json_with_llm
-from backend.task_queue import TaskQueue, SessionManager
+from schemas.request import GenerateRequest, EnhanceJsonRequest
+from pipeline import run_pipeline, run_doc_processing, enhance_json_with_llm
+from task_queue import TaskQueue, SessionManager
+
+from fastapi import Body
 
 router = APIRouter()
 
@@ -415,19 +417,16 @@ async def list_sessions():
 @router.get("/matriz")
 async def get_matriz():
     file_path = JSON_MATRIX_FOLDER / "matriz.json"
-
-    print("EXISTS:", file_path.exists())
-    print("PATH:", file_path.resolve())
-
     with open(file_path, "r", encoding="utf-8") as f:
-        raw = f.read()
-
-    print("RAW FILE:", raw)
-    print("RAW TYPE:", type(raw))
-
-    data = json.loads(raw)
-
-    print("PARSED DATA:", data)
-    print("PARSED TYPE:", type(data))
-
+        data = json.load(f)
     return data
+
+@router.put("/matriz")
+async def update_matriz(payload: dict = Body(...)):
+    file_path = JSON_MATRIX_FOLDER / "matriz.json"
+    with open(file_path, "r", encoding="utf-8") as f:
+        current = json.load(f)
+    current["procesos"] = payload["procesos"]
+    with open(file_path, "w", encoding="utf-8") as f:
+        json.dump(current, f, ensure_ascii=False, indent=2)
+    return {"status": "ok"}
