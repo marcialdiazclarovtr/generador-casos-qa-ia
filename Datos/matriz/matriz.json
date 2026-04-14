@@ -475,28 +475,6 @@
           }
         },
         {
-          "subproceso": "Eliminar Descuentos",
-          "control_origen_codigo": "CL",
-          "control_origen_nombre": "CLARO",
-          "control_origen_equivale_a": [
-            "CLARO"
-          ],
-          "habilitado": {
-            "B2C": {
-              "Movil": true,
-              "HFC": false,
-              "FTTH": false,
-              "Neutra": false
-            },
-            "B2B": {
-              "Movil": true,
-              "HFC": false,
-              "FTTH": false,
-              "Neutra": false
-            }
-          }
-        },
-        {
           "subproceso": "Modificación Dbox adicional",
           "control_origen_codigo": "VT",
           "control_origen_nombre": "VTR",
@@ -948,28 +926,6 @@
               "HFC": false,
               "FTTH": false,
               "Neutra": false
-            }
-          }
-        },
-        {
-          "subproceso": "Suspensión por Cobranza ---------PRUEBAAAA",
-          "control_origen_codigo": "VT",
-          "control_origen_nombre": "VTR",
-          "control_origen_equivale_a": [
-            "VTR"
-          ],
-          "habilitado": {
-            "B2C": {
-              "Movil": false,
-              "HFC": true,
-              "FTTH": true,
-              "Neutra": true
-            },
-            "B2B": {
-              "Movil": false,
-              "HFC": true,
-              "FTTH": true,
-              "Neutra": true
             }
           }
         },

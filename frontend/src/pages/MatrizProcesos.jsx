@@ -36,85 +36,30 @@ function EditBoolCell({ value, onClick }) {
 }
 
 function MatrizTable({ data, setData }) {
-  // ➕ Agregar proceso
-  const addProcesoBelow = (pIdx) => {
-    setData(prev => {
-      const next = JSON.parse(JSON.stringify(prev));
-
-      next.splice(pIdx + 1, 0, {
-        proceso: "Nuevo Proceso",
-        subprocesos: [
-          {
-            subproceso: "",
-            control_origen_codigo: "Ambas",
-            habilitado: {
-              B2C: { Movil: true, HFC: true, FTTH: true, Neutra: true },
-              B2B: { Movil: true, HFC: true, FTTH: true, Neutra: true }
-            }
-          }
-        ]
-      });
-
-      return next;
-    });
-  };
-
-  // Actualizar proceso
-  const updateProceso = (pIdx, value) => {
-    setData(prev => {
-      const next = JSON.parse(JSON.stringify(prev));
-      next[pIdx].proceso = value;
-      return next;
-    });
-  };
-
-  // ➖ Eliminar proceso
-  const removeProceso = (pIdx) => {
-    setData(prev => {
-      const next = JSON.parse(JSON.stringify(prev));
-      next.splice(pIdx, 1);
-      return next;
-    });
-  };
-
-  // Añadir subproceso
-  const addSubprocesoBelow = (pIdx, spIdx) => {
-    setData(prev => {
-      const next = JSON.parse(JSON.stringify(prev));
-
-      next[pIdx].subprocesos.splice(spIdx + 1, 0, {
-        subproceso: "",
-        control_origen_codigo: "Ambas",
-        habilitado: {
-          B2C: { Movil: true, HFC: true, FTTH: true, Neutra: true },
-          B2B: { Movil: true, HFC: true, FTTH: true, Neutra: true }
-        }
-      });
-
-      return next;
-    });
-  };
-
-  // Eliminar subproceso
-  const removeSubproceso = (pIdx, spIdx) => {
-    setData(prev => {
-      const next = JSON.parse(JSON.stringify(prev));
-
-      // 1. Eliminar subproceso
-      next[pIdx].subprocesos.splice(spIdx, 1);
-
-      // 2. Si ya no quedan subprocesos → eliminar proceso completo
-      if (next[pIdx].subprocesos.length === 0) {
-        next.splice(pIdx, 1);
-      }
-
-      return next;
-    });
-  };
-
   const CICLO_CONTROL = ['Ambas', 'VT', 'CL'];
 
-  // Helpers de mutación inmutable
+  // ── Leer segmentos y tecnologías dinámicamente del JSON ──
+  const getSegmentos = () => {
+    for (const p of data) {
+      for (const sp of p.subprocesos) {
+        if (sp.habilitado) return Object.keys(sp.habilitado);
+      }
+    }
+    return [];
+  };
+
+  const getTecnologias = (segmento) => {
+    for (const p of data) {
+      for (const sp of p.subprocesos) {
+        if (sp.habilitado?.[segmento]) return Object.keys(sp.habilitado[segmento]);
+      }
+    }
+    return [];
+  };
+
+  const segmentos = getSegmentos();
+
+  // ── Helpers de mutación ──────────────────────────────────
   const updateSubproceso = (pIdx, spIdx, field, value) => {
     setData(prev => {
       const next = JSON.parse(JSON.stringify(prev));
@@ -123,11 +68,19 @@ function MatrizTable({ data, setData }) {
     });
   };
 
-  const toggleBool = (pIdx, spIdx, segmento, tecnologia) => {
+  const updateProceso = (pIdx, value) => {
     setData(prev => {
       const next = JSON.parse(JSON.stringify(prev));
-      next[pIdx].subprocesos[spIdx].habilitado[segmento][tecnologia] =
-        !next[pIdx].subprocesos[spIdx].habilitado[segmento][tecnologia];
+      next[pIdx].proceso = value;
+      return next;
+    });
+  };
+
+  const toggleBool = (pIdx, spIdx, segmento, tec) => {
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      next[pIdx].subprocesos[spIdx].habilitado[segmento][tec] =
+        !next[pIdx].subprocesos[spIdx].habilitado[segmento][tec];
       return next;
     });
   };
@@ -137,7 +90,148 @@ function MatrizTable({ data, setData }) {
     updateSubproceso(pIdx, spIdx, 'control_origen_codigo', nextVal);
   };
 
-  // Aplanar filas guardando índices originales
+  // ── Agregar / eliminar filas ─────────────────────────────
+  const addProcesoBelow = (pIdx) => {
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      const habilitado = {};
+      getSegmentos().forEach(seg => {
+        habilitado[seg] = {};
+        getTecnologias(seg).forEach(tec => { habilitado[seg][tec] = true; });
+      });
+      next.splice(pIdx + 1, 0, {
+        proceso: 'Nuevo Proceso',
+        subprocesos: [{ subproceso: '', control_origen_codigo: 'Ambas', habilitado }]
+      });
+      return next;
+    });
+  };
+
+  const removeProceso = (pIdx) => {
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      next.splice(pIdx, 1);
+      return next;
+    });
+  };
+
+  const addSubprocesoBelow = (pIdx, spIdx) => {
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      const habilitado = {};
+      getSegmentos().forEach(seg => {
+        habilitado[seg] = {};
+        getTecnologias(seg).forEach(tec => { habilitado[seg][tec] = true; });
+      });
+      next[pIdx].subprocesos.splice(spIdx + 1, 0, {
+        subproceso: '', control_origen_codigo: 'Ambas', habilitado
+      });
+      return next;
+    });
+  };
+
+  const removeSubproceso = (pIdx, spIdx) => {
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      next[pIdx].subprocesos.splice(spIdx, 1);
+      if (next[pIdx].subprocesos.length === 0) next.splice(pIdx, 1);
+      return next;
+    });
+  };
+
+  // ── Agregar / eliminar SEGMENTO (B2C, B2B, nuevo...) ────
+  const addSegmento = (afterSegmento) => {
+    const newSeg = `Segmento_${Date.now()}`;
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      next.forEach(p => {
+        p.subprocesos.forEach(sp => {
+          const tecs = getTecnologias(afterSegmento);
+          sp.habilitado[newSeg] = {};
+          tecs.forEach(tec => { sp.habilitado[newSeg][tec] = false; });
+        });
+      });
+      return next;
+    });
+  };
+
+  const removeSegmento = (seg) => {
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      next.forEach(p => {
+        p.subprocesos.forEach(sp => {
+          delete sp.habilitado[seg];
+        });
+      });
+      return next;
+    });
+  };
+
+  // ── Renombrar segmento ───────────────────────────────────
+  const renameSegmento = (oldName, newName) => {
+    if (!newName || newName === oldName) return;
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      next.forEach(p => {
+        p.subprocesos.forEach(sp => {
+          if (sp.habilitado[oldName] !== undefined) {
+            sp.habilitado[newName] = sp.habilitado[oldName];
+            delete sp.habilitado[oldName];
+          }
+        });
+      });
+      return next;
+    });
+  };
+
+  // ── Agregar / eliminar TECNOLOGÍA dentro de un segmento ──
+  const addTecnologia = (segmento, afterTec) => {
+    const newTec = `Col_${Date.now()}`;
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      next.forEach(p => {
+        p.subprocesos.forEach(sp => {
+          if (sp.habilitado[segmento]) {
+            sp.habilitado[segmento][newTec] = false;
+          }
+        });
+      });
+      return next;
+    });
+  };
+
+  const removeTecnologia = (segmento, tec) => {
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      next.forEach(p => {
+        p.subprocesos.forEach(sp => {
+          if (sp.habilitado[segmento]) {
+            delete sp.habilitado[segmento][tec];
+          }
+        });
+      });
+      return next;
+    });
+  };
+
+  // ── Renombrar tecnología ─────────────────────────────────
+  const renameTecnologia = (segmento, oldTec, newTec) => {
+    if (!newTec || newTec === oldTec) return;
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      next.forEach(p => {
+        p.subprocesos.forEach(sp => {
+          if (sp.habilitado[segmento] && sp.habilitado[segmento][oldTec] !== undefined) {
+            sp.habilitado[segmento][newTec] = sp.habilitado[segmento][oldTec];
+            delete sp.habilitado[segmento][oldTec];
+          }
+        });
+      });
+      return next;
+    });
+  };
+
+  // ── Aplanar filas ────────────────────────────────────────
   const rows = [];
   data.forEach((p, pIdx) => {
     p.subprocesos.forEach((sp, spIdx) => {
@@ -145,144 +239,178 @@ function MatrizTable({ data, setData }) {
     });
   });
 
+  // ── Estilos base ─────────────────────────────────────────
   const thBase = {
     border: '1px solid #9ca3af',
-    padding: '6px 10px',
+    padding: '4px 8px',
     color: '#ffffff',
     fontWeight: '600',
-    fontSize: 12,
+    fontSize: 11,
     textAlign: 'center',
     verticalAlign: 'middle',
-    whiteSpace: 'pre-line',
+    whiteSpace: 'nowrap',
   };
 
-  return (
-    <table style={{ borderCollapse: 'collapse', width: '100%', fontSize: 12 }}>
-      <thead>
-        <tr>
-          <th rowSpan={2} style={{ ...thBase, backgroundColor: DARK_BLUE }}>{'Proceso\nN1'}</th>
-          <th rowSpan={2} style={{ ...thBase, backgroundColor: DARK_BLUE }}>{'Procedimiento (SubProceso)\nN2'}</th>
-          <th rowSpan={2} style={{ ...thBase, backgroundColor: DARK_BLUE }}>{'Control\n(Origen)'}</th>
-          <th colSpan={4} style={{ ...thBase, backgroundColor: CELESTE }}>Residencial (B2C)</th>
-          <th colSpan={4} style={{ ...thBase, backgroundColor: GREEN_DARK }}>Organización (B2B)</th>
-          <th
-            rowSpan={2}
-            style={{ ...thBase, backgroundColor: DARK_BLUE }}
+  const btnStyle = (color) => ({
+    background: color,
+    color: 'white',
+    border: 'none',
+    width: 18,
+    height: 18,
+    borderRadius: 3,
+    cursor: 'pointer',
+    fontWeight: 'bold',
+    fontSize: 12,
+    lineHeight: '18px',
+    padding: 0,
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+  });
+
+  // ── Componente inline para encabezado editable con +/- ──
+  const ColHeader = ({ label, bgColor, textColor = '#fff', onAdd, onRemove, editable = false, onRename, fontSize = 11 }) => {
+    const [editing, setEditing] = useState(false);
+    const [val, setVal] = useState(label);
+
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3 }}>
+        {editable && editing ? (
+          <input
+            autoFocus
+            value={val}
+            onChange={e => setVal(e.target.value)}
+            onBlur={() => { setEditing(false); onRename && onRename(val); }}
+            onKeyDown={e => { if (e.key === 'Enter') { setEditing(false); onRename && onRename(val); } }}
+            style={{ width: 80, fontSize, textAlign: 'center', border: '1px solid #ccc', borderRadius: 3, padding: '1px 4px' }}
+          />
+        ) : (
+          <span
+            onClick={() => editable && setEditing(true)}
+            style={{ cursor: editable ? 'pointer' : 'default', fontSize, fontWeight: 600, color: textColor }}
+            title={editable ? 'Click para renombrar' : ''}
           >
-            Agregar / Eliminar SubProceso
+            {label}
+          </span>
+        )}
+        <div style={{ display: 'flex', gap: 3 }}>
+          {onRemove && <button style={btnStyle('#dc3545')} onClick={onRemove} title="Eliminar columna">−</button>}
+          {onAdd    && <button style={btnStyle('#28a745')} onClick={onAdd}    title="Agregar columna">+</button>}
+        </div>
+      </div>
+    );
+  };
+
+  const totalTecCols = segmentos.reduce((acc, seg) => acc + getTecnologias(seg).length, 0);
+
+  return (
+    <table style={{ borderCollapse: 'collapse', fontSize: 12 }}>
+      <thead>
+        {/* ── FILA 1: encabezados principales ── */}
+        <tr>
+          {/* Proceso N1 */}
+          <th rowSpan={2} style={{ ...thBase, backgroundColor: DARK_BLUE, minWidth: 100 }}>
+            <ColHeader label="Proceso N1" bgColor={DARK_BLUE} />
+          </th>
+
+          {/* Procedimiento N2 */}
+          <th rowSpan={2} style={{ ...thBase, backgroundColor: DARK_BLUE, minWidth: 160 }}>
+            <ColHeader label="Procedimiento (SubProceso) N2" bgColor={DARK_BLUE} />
+          </th>
+
+          {/* Control Origen */}
+          <th rowSpan={2} style={{ ...thBase, backgroundColor: DARK_BLUE, minWidth: 90 }}>
+            <ColHeader label="Control (Origen)" bgColor={DARK_BLUE} />
+          </th>
+
+          {/* Segmentos dinámicos */}
+          {segmentos.map((seg, sIdx) => (
+            <th
+              key={seg}
+              colSpan={getTecnologias(seg).length}
+              style={{ ...thBase, backgroundColor: sIdx % 2 === 0 ? CELESTE : GREEN_DARK }}
+            >
+              <ColHeader
+                label={seg}
+                bgColor={sIdx % 2 === 0 ? CELESTE : GREEN_DARK}
+                editable
+                onRename={(newName) => renameSegmento(seg, newName)}
+                onAdd={() => addSegmento(seg)}
+                onRemove={segmentos.length > 1 ? () => removeSegmento(seg) : null}
+              />
+            </th>
+          ))}
+
+          {/* Acciones fila */}
+          <th rowSpan={2} style={{ ...thBase, backgroundColor: DARK_BLUE, minWidth: 70 }}>
+            Acciones
           </th>
         </tr>
+
+        {/* ── FILA 2: subencabezados tecnologías ── */}
         <tr>
-          {['Móvil','HFC','FTTH','Neutra'].map(h => (
-            <th key={`b2c-${h}`} style={{ ...thBase, backgroundColor: CELESTE_SUB, color: '#1e3a5f' }}>{h}</th>
-          ))}
-          {['Móvil','HFC','FTTH','Neutra'].map(h => (
-            <th key={`b2b-${h}`} style={{ ...thBase, backgroundColor: GREEN_SUB, color: '#1b5e20' }}>{h}</th>
-          ))}
+          {segmentos.map((seg, sIdx) => {
+            const tecs = getTecnologias(seg);
+            const subBg = sIdx % 2 === 0 ? CELESTE_SUB : GREEN_SUB;
+            const subColor = sIdx % 2 === 0 ? '#1e3a5f' : '#1b5e20';
+            return tecs.map((tec, tIdx) => (
+              <th key={`${seg}-${tec}`} style={{ ...thBase, backgroundColor: subBg, color: subColor, minWidth: 60 }}>
+                <ColHeader
+                  label={tec}
+                  bgColor={subBg}
+                  textColor={subColor}
+                  editable
+                  onRename={(newName) => renameTecnologia(seg, tec, newName)}
+                  onAdd={() => addTecnologia(seg, tec)}
+                  onRemove={tecs.length > 1 ? () => removeTecnologia(seg, tec) : null}
+                />
+              </th>
+            ));
+          })}
         </tr>
       </thead>
+
       <tbody>
         {rows.map(({ p, pIdx, sp, spIdx, isFirst, rowspan }, i) => (
           <tr key={i}>
+            {/* Proceso — rowspan, editable */}
             {isFirst && (
-              <td
-                rowSpan={rowspan}
-                style={{
-                  border: '1px solid #9ca3af',
-                  backgroundColor: DARK_BLUE,
-                  color: '#ffffff',
-                  fontWeight: '600',
-                  fontSize: 12,
-                  padding: '6px 10px',
-                  textAlign: 'center',
-                  verticalAlign: 'middle',
-                }}
-              >
+              <td rowSpan={rowspan} style={{
+                border: '1px solid #9ca3af', backgroundColor: DARK_BLUE,
+                color: '#fff', fontWeight: 600, fontSize: 12,
+                padding: '6px 8px', textAlign: 'center', verticalAlign: 'middle',
+              }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'center' }}>
-                  
-                  {/* Nombre del proceso */}
                   <input
                     value={p.proceso}
                     onChange={e => updateProceso(pIdx, e.target.value)}
-                    style={{
-                      width: '100%',
-                      background: 'transparent',
-                      border: 'none',
-                      outline: 'none',
-                      fontSize: 12,
-                      color: '#ffffff',
-                      fontWeight: 600,
-                      textAlign: 'center'
-                    }}
+                    style={{ width: '100%', background: 'transparent', border: 'none', outline: 'none', fontSize: 12, color: '#fff', fontWeight: 600, textAlign: 'center' }}
                   />
-
-                  {/* Botones */}
                   <div style={{ display: 'flex', gap: 4 }}>
-                    
-                    {/* ➖ Eliminar proceso */}
-                    <button
-                      onClick={() => removeProceso(pIdx)}
-                      style={{
-                        background: '#dc3545',
-                        color: 'white',
-                        border: 'none',
-                        width: 22,
-                        height: 22,
-                        borderRadius: 4,
-                        cursor: 'pointer',
-                        fontWeight: 'bold'
-                      }}
-                      title="Eliminar proceso"
-                    >
-                      -
-                    </button>
-
-                    {/* ➕ Agregar proceso */}
-                    <button
-                      onClick={() => addProcesoBelow(pIdx)}
-                      style={{
-                        background: '#28a745',
-                        color: 'white',
-                        border: 'none',
-                        width: 22,
-                        height: 22,
-                        borderRadius: 4,
-                        cursor: 'pointer',
-                        fontWeight: 'bold'
-                      }}
-                      title="Agregar proceso"
-                    >
-                      +
-                    </button>
-
+                    <button style={btnStyle('#dc3545')} onClick={() => removeProceso(pIdx)} title="Eliminar proceso">−</button>
+                    <button style={btnStyle('#28a745')} onClick={() => addProcesoBelow(pIdx)} title="Agregar proceso">+</button>
                   </div>
                 </div>
               </td>
             )}
 
-            {/* Subproceso — editable con input inline */}
-            <td style={{
-              border: '1px solid #9ca3af', backgroundColor: SUBPROC_BG,
-              padding: '2px 6px', verticalAlign: 'middle',
-            }}>
+            {/* Subproceso */}
+            <td style={{ border: '1px solid #9ca3af', backgroundColor: SUBPROC_BG, padding: '2px 6px', verticalAlign: 'middle' }}>
               <input
                 value={sp.subproceso}
                 onChange={e => updateSubproceso(pIdx, spIdx, 'subproceso', e.target.value)}
-                style={{
-                  width: '100%', background: 'transparent', border: 'none',
-                  outline: 'none', fontSize: 12, color: '#1e3a5f',
-                  fontWeight: 500, cursor: 'text',
-                }}
+                style={{ width: '100%', background: 'transparent', border: 'none', outline: 'none', fontSize: 12, color: '#1e3a5f', fontWeight: 500 }}
               />
             </td>
 
-            {/* Control Origen — cicla con click */}
+            {/* Control Origen */}
             <td
               onClick={() => cycleControl(pIdx, spIdx, sp.control_origen_codigo)}
               style={{
                 border: '1px solid #9ca3af',
                 backgroundColor: getControlColor(sp.control_origen_codigo),
-                padding: '5px 10px', textAlign: 'center', verticalAlign: 'middle',
+                padding: '5px 8px', textAlign: 'center', verticalAlign: 'middle',
                 fontWeight: 600, fontSize: 11, cursor: 'pointer', userSelect: 'none',
               }}
               title="Click para cambiar"
@@ -290,68 +418,22 @@ function MatrizTable({ data, setData }) {
               {sp.control_origen_codigo}
             </td>
 
-            {/* B2C — toggleable */}
-            {['Movil','HFC','FTTH','Neutra'].map(tec => (
-              <EditBoolCell
-                key={`b2c-${tec}`}
-                value={sp.habilitado.B2C[tec]}
-                onClick={() => toggleBool(pIdx, spIdx, 'B2C', tec)}
-              />
-            ))}
+            {/* Celdas bool dinámicas */}
+            {segmentos.map(seg =>
+              getTecnologias(seg).map(tec => (
+                <EditBoolCell
+                  key={`${seg}-${tec}`}
+                  value={sp.habilitado?.[seg]?.[tec] ?? false}
+                  onClick={() => toggleBool(pIdx, spIdx, seg, tec)}
+                />
+              ))
+            )}
 
-            {/* B2B — toggleable */}
-            {['Movil','HFC','FTTH','Neutra'].map(tec => (
-              <EditBoolCell
-                key={`b2b-${tec}`}
-                value={sp.habilitado.B2B[tec]}
-                onClick={() => toggleBool(pIdx, spIdx, 'B2B', tec)}
-              />
-            ))}
-
-            {/* 👉 NUEVA COLUMNA: eliminar fila */}
-            <td style={{
-              border: '1px solid #9ca3af',
-              textAlign: 'center',
-              backgroundColor: SUBPROC_BG
-            }}>
+            {/* Acciones fila */}
+            <td style={{ border: '1px solid #9ca3af', textAlign: 'center', backgroundColor: SUBPROC_BG }}>
               <div style={{ display: 'flex', gap: 4, justifyContent: 'center' }}>
-                
-                {/* ➖ Eliminar */}
-                <button
-                  onClick={() => removeSubproceso(pIdx, spIdx)}
-                  style={{
-                    background: '#dc3545',
-                    color: 'white',
-                    border: 'none',
-                    width: 24,
-                    height: 24,
-                    borderRadius: 4,
-                    cursor: 'pointer',
-                    fontWeight: 'bold'
-                  }}
-                  title="Eliminar fila"
-                >
-                  -
-                </button>
-
-                {/* ➕ Agregar debajo */}
-                <button
-                  onClick={() => addSubprocesoBelow(pIdx, spIdx)}
-                  style={{
-                    background: '#28a745',
-                    color: 'white',
-                    border: 'none',
-                    width: 24,
-                    height: 24,
-                    borderRadius: 4,
-                    cursor: 'pointer',
-                    fontWeight: 'bold'
-                  }}
-                  title="Agregar debajo"
-                >
-                  +
-                </button>
-
+                <button style={btnStyle('#dc3545')} onClick={() => removeSubproceso(pIdx, spIdx)} title="Eliminar subproceso">−</button>
+                <button style={btnStyle('#28a745')} onClick={() => addSubprocesoBelow(pIdx, spIdx)} title="Agregar subproceso">+</button>
               </div>
             </td>
           </tr>
