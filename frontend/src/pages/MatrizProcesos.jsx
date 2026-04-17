@@ -35,6 +35,60 @@ function EditBoolCell({ value, onClick }) {
   );
 }
 
+const btnStyle = (color) => ({
+  background: color,
+  color: 'white',
+  border: 'none',
+  width: 18,
+  height: 18,
+  borderRadius: 3,
+  cursor: 'pointer',
+  fontWeight: 'bold',
+  fontSize: 12,
+  lineHeight: '18px',
+  padding: 0,
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  flexShrink: 0,
+});
+
+function ColHeader({ label, bgColor, textColor = '#fff', onAdd, onRemove, editable = false, onRename, fontSize = 11 }) {
+  const [editing, setEditing] = useState(false);
+  const [val, setVal] = useState(label);
+
+  useEffect(() => {
+    if (!editing) setVal(label);
+  }, [label, editing]);
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3 }}>
+      {editable && editing ? (
+        <input
+          autoFocus
+          value={val}
+          onChange={e => setVal(e.target.value)}
+          onBlur={() => { setEditing(false); onRename && onRename(val); }}
+          onKeyDown={e => { if (e.key === 'Enter') { setEditing(false); onRename && onRename(val); } }}
+          style={{ width: 80, fontSize, textAlign: 'center', border: '1px solid #ccc', borderRadius: 3, padding: '1px 4px', color: '#1e3a5f', backgroundColor: '#ffffff' }}
+        />
+      ) : (
+        <span
+          onClick={() => editable && setEditing(true)}
+          style={{ cursor: editable ? 'pointer' : 'default', fontSize, fontWeight: 600, color: textColor }}
+          title={editable ? 'Click para renombrar' : ''}
+        >
+          {label}
+        </span>
+      )}
+      <div style={{ display: 'flex', gap: 3 }}>
+        {onRemove && <button style={btnStyle('#dc3545')} onClick={onRemove} title="Eliminar columna">−</button>}
+        {onAdd    && <button style={btnStyle('#28a745')} onClick={onAdd}    title="Agregar columna">+</button>}
+      </div>
+    </div>
+  );
+}
+
 function MatrizTable({ data, setData }) {
   const CICLO_CONTROL = ['Ambas', 'VT', 'CL'];
 
@@ -58,6 +112,91 @@ function MatrizTable({ data, setData }) {
   };
 
   const segmentos = getSegmentos();
+
+  // ── Columnas extra de Proceso, Subproceso y Control ──────────────
+  // Se derivan leyendo las claves del JSON dinámicamente
+  const getExtraProcesoKeys = () => {
+    const keys = [];
+    data.forEach(p => {
+      Object.keys(p).forEach(k => {
+        if (k.startsWith('proceso_') && !keys.includes(k)) keys.push(k);
+      });
+    });
+    return keys.sort();
+  };
+
+  const getExtraSubprocesoKeys = () => {
+    const keys = [];
+    data.forEach(p => p.subprocesos.forEach(sp => {
+      Object.keys(sp).forEach(k => {
+        if (k.startsWith('subproceso_') && !keys.includes(k)) keys.push(k);
+      });
+    }));
+    return keys.sort();
+  };
+
+  const getExtraControlKeys = () => {
+    const keys = [];
+    data.forEach(p => p.subprocesos.forEach(sp => {
+      Object.keys(sp).forEach(k => {
+        if (k.startsWith('control_origen_codigo_') && !keys.includes(k)) keys.push(k);
+      });
+    }));
+    return keys.sort();
+  };
+
+  const extraProcesoKeys   = getExtraProcesoKeys();
+  const extraSubprocesoKeys = getExtraSubprocesoKeys();
+  const extraControlKeys   = getExtraControlKeys();
+
+  // Estados para cambiar nombre de columnas nuevas genereadas a partir de encabezados Proceso N1, Procedimiento (SubProceso) N2, y Control (Origen)
+  const [headerLabels, setHeaderLabels] = useState(() => {
+    try {
+      const saved = localStorage.getItem('matrizHeaderLabels');
+      return saved ? JSON.parse(saved) : {};
+    } catch { return {}; }
+  });
+
+  const getHeaderLabel = (key, defaultLabel) => headerLabels[key] ?? defaultLabel;
+  const setHeaderLabel = (key, label) => {
+    setHeaderLabels(prev => {
+      const next = { ...prev, [key]: label };
+      try { localStorage.setItem('matrizHeaderLabels', JSON.stringify(next)); } catch {}
+      return next;
+    });
+  };
+
+  // ── Columnas base visibles (se puede ocultar/mostrar cada una) ───
+  // Se guarda en data como metadato _columnas_ocultas en el primer proceso
+  const COLUMNAS_BASE = ['proceso', 'subproceso', 'control'];
+
+  const getColumnasOcultas = () => {
+    return data[0]?._columnas_ocultas ?? [];
+  };
+
+  const columnasOcultas = getColumnasOcultas();
+  const mostrarProceso    = !columnasOcultas.includes('proceso');
+  const mostrarSubproceso = !columnasOcultas.includes('subproceso');
+  const mostrarControl    = !columnasOcultas.includes('control');
+
+  const ocultarColumnaBase = (col) => {
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      const ocultas = next[0]._columnas_ocultas ?? [];
+      if (!ocultas.includes(col)) ocultas.push(col);
+      next[0]._columnas_ocultas = ocultas;
+      return next;
+    });
+  };
+
+  // Renombrar columna proceso
+  const renameColumnaProceso = (key, newValue) => {
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      next.forEach(p => { if (p[key] !== undefined) p[key] = newValue; });
+      return next;
+    });
+  };
 
   // ── Helpers de mutación ──────────────────────────────────
   const updateSubproceso = (pIdx, spIdx, field, value) => {
@@ -123,9 +262,17 @@ function MatrizTable({ data, setData }) {
         habilitado[seg] = {};
         getTecnologias(seg).forEach(tec => { habilitado[seg][tec] = true; });
       });
-      next[pIdx].subprocesos.splice(spIdx + 1, 0, {
-        subproceso: '', control_origen_codigo: 'Ambas', habilitado
-      });
+
+      // Construir el nuevo subproceso con el mismo orden de claves que los existentes
+      const nuevoSp = { subproceso: '' };
+      // Agregar claves subproceso_N en orden
+      extraSubprocesoKeys.forEach(k => { nuevoSp[k] = ''; });
+      nuevoSp.control_origen_codigo = 'Ambas';
+      // Agregar claves control_origen_codigo_N en orden
+      extraControlKeys.forEach(k => { nuevoSp[k] = 'Ambas'; });
+      nuevoSp.habilitado = habilitado;
+
+      next[pIdx].subprocesos.splice(spIdx + 1, 0, nuevoSp);
       return next;
     });
   };
@@ -139,6 +286,171 @@ function MatrizTable({ data, setData }) {
     });
   };
 
+  // Funciones para agregar o eliminar columnas proceso / subproceso / control
+  const addColumnaProceso = () => {
+    const existingNums = extraProcesoKeys
+      .map(k => parseInt(k.replace('proceso_', ''), 10))
+      .filter(n => !isNaN(n));
+    const nextNum = existingNums.length > 0 ? Math.max(...existingNums) + 1 : 2;
+    const newKey = `proceso_${nextNum}`;
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      next.forEach(p => {
+        const reordered = { proceso: p.proceso };
+        // agregar todas las claves proceso_N existentes
+        Object.keys(p).forEach(k => {
+          if (k.startsWith('proceso_')) reordered[k] = p[k];
+        });
+        // agregar la nueva
+        reordered[newKey] = 'Sin nombre';
+        // agregar el resto (subprocesos, _columnas_ocultas, etc.)
+        Object.keys(p).forEach(k => {
+          if (k !== 'proceso' && !k.startsWith('proceso_')) reordered[k] = p[k];
+        });
+        Object.keys(p).forEach(k => delete p[k]);
+        Object.assign(p, reordered);
+      });
+      return next;
+    });
+  };
+
+  const removeColumnaProceso = (key) => {
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      next.forEach(p => { delete p[key]; });
+      return next;
+    });
+  };
+
+  const updateColumnaProceso = (pIdx, key, value) => {
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      next[pIdx][key] = value;
+      return next;
+    });
+  };
+
+  const addColumnaSubproceso = () => {
+    const existingNums = extraSubprocesoKeys
+      .map(k => parseInt(k.replace('subproceso_', ''), 10))
+      .filter(n => !isNaN(n));
+    const nextNum = existingNums.length > 0 ? Math.max(...existingNums) + 1 : 2;
+    const newKey = `subproceso_${nextNum}`;
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      next.forEach(p => {
+        p.subprocesos.forEach(sp => {
+          const reordered = {};
+          Object.keys(sp).forEach(k => {
+            reordered[k] = sp[k];
+            if (k === 'subproceso') reordered[newKey] = sp.subproceso;
+          });
+          Object.keys(sp).forEach(k => delete sp[k]);
+          Object.assign(sp, reordered);
+        });
+      });
+      return next;
+    });
+  };
+
+  const removeColumnaSubproceso = (key) => {
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      next.forEach(p => p.subprocesos.forEach(sp => { delete sp[key]; }));
+      return next;
+    });
+  };
+
+  const renameColumnaSubproceso = (oldKey, newName) => {
+    const newKey = `sp__${newName}`;
+    if (!newName || newKey === oldKey) return;
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      next.forEach(p => {
+        p.subprocesos.forEach(sp => {
+          if (sp[oldKey] !== undefined) {
+            const reordered = {};
+            Object.keys(sp).forEach(k => {
+              reordered[k === oldKey ? newKey : k] = sp[k];
+            });
+            Object.keys(sp).forEach(k => delete sp[k]);
+            Object.assign(sp, reordered);
+          }
+        });
+      });
+      return next;
+    });
+  };
+
+  const updateColumnaSubproceso = (pIdx, spIdx, key, value) => {
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      next[pIdx].subprocesos[spIdx][key] = value;
+      return next;
+    });
+  };
+  
+  const addColumnaControl = () => {
+    const existingNums = extraControlKeys
+      .map(k => parseInt(k.replace('control_origen_codigo_', ''), 10))
+      .filter(n => !isNaN(n));
+    const nextNum = existingNums.length > 0 ? Math.max(...existingNums) + 1 : 2;
+    const newKey = `control_origen_codigo_${nextNum}`;
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      next.forEach(p => {
+        p.subprocesos.forEach(sp => {
+          const reordered = {};
+          Object.keys(sp).forEach(k => {
+            reordered[k] = sp[k];
+            if (k === 'control_origen_codigo') reordered[newKey] = sp.control_origen_codigo;
+          });
+          Object.keys(sp).forEach(k => delete sp[k]);
+          Object.assign(sp, reordered);
+        });
+      });
+      return next;
+    });
+  };
+
+  const removeColumnaControl = (key) => {
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      next.forEach(p => p.subprocesos.forEach(sp => { delete sp[key]; }));
+      return next;
+    });
+  };
+
+  const renameColumnaControl = (oldKey, newName) => {
+    const newKey = `ctrl__${newName}`;
+    if (!newName || newKey === oldKey) return;
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      next.forEach(p => {
+        p.subprocesos.forEach(sp => {
+          if (sp[oldKey] !== undefined) {
+            const reordered = {};
+            Object.keys(sp).forEach(k => {
+              reordered[k === oldKey ? newKey : k] = sp[k];
+            });
+            Object.keys(sp).forEach(k => delete sp[k]);
+            Object.assign(sp, reordered);
+          }
+        });
+      });
+      return next;
+    });
+  };
+
+  const cycleControlExtra = (pIdx, spIdx, key, current) => {
+    const nextVal = CICLO_CONTROL[(CICLO_CONTROL.indexOf(current) + 1) % CICLO_CONTROL.length];
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      next[pIdx].subprocesos[spIdx][key] = nextVal;
+      return next;
+    });
+  };
+
   // ── Agregar / eliminar SEGMENTO (B2C, B2B, nuevo...) ────
   const addSegmento = (afterSegmento) => {
     const newSeg = `Segmento_${Date.now()}`;
@@ -147,8 +459,15 @@ function MatrizTable({ data, setData }) {
       next.forEach(p => {
         p.subprocesos.forEach(sp => {
           const tecs = getTecnologias(afterSegmento);
-          sp.habilitado[newSeg] = {};
-          tecs.forEach(tec => { sp.habilitado[newSeg][tec] = false; });
+          const reordered = {};
+          Object.keys(sp.habilitado).forEach(k => {
+            reordered[k] = sp.habilitado[k];
+            if (k === afterSegmento) {
+              reordered[newSeg] = {};
+              tecs.forEach(tec => { reordered[newSeg][tec] = false; });
+            }
+          });
+          sp.habilitado = reordered;
         });
       });
       return next;
@@ -175,8 +494,15 @@ function MatrizTable({ data, setData }) {
       next.forEach(p => {
         p.subprocesos.forEach(sp => {
           if (sp.habilitado[oldName] !== undefined) {
-            sp.habilitado[newName] = sp.habilitado[oldName];
-            delete sp.habilitado[oldName];
+            const reordered = {};
+            Object.keys(sp.habilitado).forEach(k => {
+              if (k === oldName) {
+                reordered[newName] = sp.habilitado[oldName];
+              } else {
+                reordered[k] = sp.habilitado[k];
+              }
+            });
+            sp.habilitado = reordered;
           }
         });
       });
@@ -192,7 +518,14 @@ function MatrizTable({ data, setData }) {
       next.forEach(p => {
         p.subprocesos.forEach(sp => {
           if (sp.habilitado[segmento]) {
-            sp.habilitado[segmento][newTec] = false;
+            const reordered = {};
+            Object.keys(sp.habilitado[segmento]).forEach(k => {
+              reordered[k] = sp.habilitado[segmento][k];
+              if (k === afterTec) {
+                reordered[newTec] = false;
+              }
+            });
+            sp.habilitado[segmento] = reordered;
           }
         });
       });
@@ -214,6 +547,53 @@ function MatrizTable({ data, setData }) {
     });
   };
 
+  // Funciones para eliminar las columnas "control origen", "Proceso N1" y "Procedimiento (SubProceso) N2" (atributos "control_origen_codigo", "proceso" y "subproceso" del json respectivamente) de forma permanente
+  const eliminarColumnaControl = () => {
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      next.forEach(p => {
+        p.subprocesos.forEach(sp => {
+          delete sp.control_origen_codigo;
+          delete sp.control_origen_nombre;
+          delete sp.control_origen_equivale_a;
+        });
+      });
+      // También marcarla como oculta para que no se muestre
+      const ocultas = next[0]._columnas_ocultas ?? [];
+      if (!ocultas.includes('control')) ocultas.push('control');
+      next[0]._columnas_ocultas = ocultas;
+      return next;
+    });
+  };
+
+  const eliminarColumnaProceso = () => {
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      next.forEach(p => {
+        delete p.proceso;
+      });
+      const ocultas = next[0]._columnas_ocultas ?? [];
+      if (!ocultas.includes('proceso')) ocultas.push('proceso');
+      next[0]._columnas_ocultas = ocultas;
+      return next;
+    });
+  };
+
+  const eliminarColumnaSubproceso = () => {
+    setData(prev => {
+      const next = JSON.parse(JSON.stringify(prev));
+      next.forEach(p => {
+        p.subprocesos.forEach(sp => {
+          delete sp.subproceso;
+        });
+      });
+      const ocultas = next[0]._columnas_ocultas ?? [];
+      if (!ocultas.includes('subproceso')) ocultas.push('subproceso');
+      next[0]._columnas_ocultas = ocultas;
+      return next;
+    });
+  };
+
   // ── Renombrar tecnología ─────────────────────────────────
   const renameTecnologia = (segmento, oldTec, newTec) => {
     if (!newTec || newTec === oldTec) return;
@@ -222,8 +602,15 @@ function MatrizTable({ data, setData }) {
       next.forEach(p => {
         p.subprocesos.forEach(sp => {
           if (sp.habilitado[segmento] && sp.habilitado[segmento][oldTec] !== undefined) {
-            sp.habilitado[segmento][newTec] = sp.habilitado[segmento][oldTec];
-            delete sp.habilitado[segmento][oldTec];
+            const reordered = {};
+            Object.keys(sp.habilitado[segmento]).forEach(k => {
+              if (k === oldTec) {
+                reordered[newTec] = sp.habilitado[segmento][oldTec];
+              } else {
+                reordered[k] = sp.habilitado[segmento][k];
+              }
+            });
+            sp.habilitado[segmento] = reordered;
           }
         });
       });
@@ -251,57 +638,6 @@ function MatrizTable({ data, setData }) {
     whiteSpace: 'nowrap',
   };
 
-  const btnStyle = (color) => ({
-    background: color,
-    color: 'white',
-    border: 'none',
-    width: 18,
-    height: 18,
-    borderRadius: 3,
-    cursor: 'pointer',
-    fontWeight: 'bold',
-    fontSize: 12,
-    lineHeight: '18px',
-    padding: 0,
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexShrink: 0,
-  });
-
-  // ── Componente inline para encabezado editable con +/- ──
-  const ColHeader = ({ label, bgColor, textColor = '#fff', onAdd, onRemove, editable = false, onRename, fontSize = 11 }) => {
-    const [editing, setEditing] = useState(false);
-    const [val, setVal] = useState(label);
-
-    return (
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3 }}>
-        {editable && editing ? (
-          <input
-            autoFocus
-            value={val}
-            onChange={e => setVal(e.target.value)}
-            onBlur={() => { setEditing(false); onRename && onRename(val); }}
-            onKeyDown={e => { if (e.key === 'Enter') { setEditing(false); onRename && onRename(val); } }}
-            style={{ width: 80, fontSize, textAlign: 'center', border: '1px solid #ccc', borderRadius: 3, padding: '1px 4px' }}
-          />
-        ) : (
-          <span
-            onClick={() => editable && setEditing(true)}
-            style={{ cursor: editable ? 'pointer' : 'default', fontSize, fontWeight: 600, color: textColor }}
-            title={editable ? 'Click para renombrar' : ''}
-          >
-            {label}
-          </span>
-        )}
-        <div style={{ display: 'flex', gap: 3 }}>
-          {onRemove && <button style={btnStyle('#dc3545')} onClick={onRemove} title="Eliminar columna">−</button>}
-          {onAdd    && <button style={btnStyle('#28a745')} onClick={onAdd}    title="Agregar columna">+</button>}
-        </div>
-      </div>
-    );
-  };
-
   const totalTecCols = segmentos.reduce((acc, seg) => acc + getTecnologias(seg).length, 0);
 
   return (
@@ -310,19 +646,82 @@ function MatrizTable({ data, setData }) {
         {/* ── FILA 1: encabezados principales ── */}
         <tr>
           {/* Proceso N1 */}
-          <th rowSpan={2} style={{ ...thBase, backgroundColor: DARK_BLUE, minWidth: 100 }}>
-            <ColHeader label="Proceso N1" bgColor={DARK_BLUE} />
-          </th>
+          {mostrarProceso && (
+            <th rowSpan={2} style={{ ...thBase, backgroundColor: DARK_BLUE, minWidth: 100 }}>
+              <ColHeader
+                label={getHeaderLabel('__proceso', 'Proceso N1')}
+                bgColor={DARK_BLUE}
+                editable
+                onRename={(newName) => setHeaderLabel('__proceso', newName)}
+                onAdd={() => addColumnaProceso()}
+                onRemove={() => eliminarColumnaProceso()}
+              />
+            </th>
+          )}
+          {extraProcesoKeys.map(key => (
+            <th key={key} rowSpan={2} style={{ ...thBase, backgroundColor: DARK_BLUE, minWidth: 100 }}>
+              <ColHeader
+                label={getHeaderLabel(key, 'Nuevo Proceso N1')}
+                bgColor={DARK_BLUE}
+                editable
+                onRename={(newName) => setHeaderLabel(key, newName)}
+                onRemove={() => removeColumnaProceso(key)}
+                onAdd={() => addColumnaProceso()}
+              />
+            </th>
+          ))}
 
           {/* Procedimiento N2 */}
-          <th rowSpan={2} style={{ ...thBase, backgroundColor: DARK_BLUE, minWidth: 160 }}>
-            <ColHeader label="Procedimiento (SubProceso) N2" bgColor={DARK_BLUE} />
-          </th>
+          {mostrarSubproceso && (
+            <th rowSpan={2} style={{ ...thBase, backgroundColor: DARK_BLUE, minWidth: 160 }}>
+              <ColHeader
+                label={getHeaderLabel('__subproceso', 'Procedimiento (SubProceso) N2')}
+                bgColor={DARK_BLUE}
+                editable
+                onRename={(newName) => setHeaderLabel('__subproceso', newName)}
+                onAdd={() => addColumnaSubproceso()}
+                onRemove={() => eliminarColumnaSubproceso()}
+              />
+            </th>
+          )}
+          {extraSubprocesoKeys.map(key => (
+            <th key={key} rowSpan={2} style={{ ...thBase, backgroundColor: DARK_BLUE, minWidth: 160 }}>
+              <ColHeader
+                label={getHeaderLabel(key, 'Nueva columna')}
+                bgColor={DARK_BLUE}
+                editable
+                onRename={(newName) => setHeaderLabel(key, newName)}
+                onRemove={() => removeColumnaSubproceso(key)}
+                onAdd={() => addColumnaSubproceso()}
+              />
+            </th>
+          ))}
 
           {/* Control Origen */}
-          <th rowSpan={2} style={{ ...thBase, backgroundColor: DARK_BLUE, minWidth: 90 }}>
-            <ColHeader label="Control (Origen)" bgColor={DARK_BLUE} />
-          </th>
+          {mostrarControl && (
+            <th rowSpan={2} style={{ ...thBase, backgroundColor: DARK_BLUE, minWidth: 90 }}>
+              <ColHeader
+                label={getHeaderLabel('__control', 'Control (Origen)')}
+                bgColor={DARK_BLUE}
+                editable
+                onRename={(newName) => setHeaderLabel('__control', newName)}
+                onAdd={() => addColumnaControl()}
+                onRemove={() => eliminarColumnaControl()}
+              />
+            </th>
+          )}
+          {extraControlKeys.map(key => (
+            <th key={key} rowSpan={2} style={{ ...thBase, backgroundColor: DARK_BLUE, minWidth: 90 }}>
+              <ColHeader
+                label={getHeaderLabel(key, 'Nueva columna')}
+                bgColor={DARK_BLUE}
+                editable
+                onRename={(newName) => setHeaderLabel(key, newName)}
+                onRemove={() => removeColumnaControl(key)}
+                onAdd={() => addColumnaControl()}
+              />
+            </th>
+          ))}
 
           {/* Segmentos dinámicos */}
           {segmentos.map((seg, sIdx) => (
@@ -375,7 +774,7 @@ function MatrizTable({ data, setData }) {
         {rows.map(({ p, pIdx, sp, spIdx, isFirst, rowspan }, i) => (
           <tr key={i}>
             {/* Proceso — rowspan, editable */}
-            {isFirst && (
+            {isFirst && mostrarProceso && (
               <td rowSpan={rowspan} style={{
                 border: '1px solid #9ca3af', backgroundColor: DARK_BLUE,
                 color: '#fff', fontWeight: 600, fontSize: 12,
@@ -394,8 +793,22 @@ function MatrizTable({ data, setData }) {
                 </div>
               </td>
             )}
+            {isFirst && extraProcesoKeys.map(key => (
+              <td key={key} rowSpan={rowspan} style={{
+                border: '1px solid #9ca3af', backgroundColor: DARK_BLUE,
+                color: '#fff', fontWeight: 600, fontSize: 12,
+                padding: '6px 8px', textAlign: 'center', verticalAlign: 'middle',
+              }}>
+                <input
+                  value={p[key] ?? ''}
+                  onChange={e => updateColumnaProceso(pIdx, key, e.target.value)}
+                  style={{ width: '100%', background: 'transparent', border: 'none', outline: 'none', fontSize: 12, color: '#fff', fontWeight: 600, textAlign: 'center' }}
+                />
+              </td>
+            ))}
 
             {/* Subproceso */}
+            {mostrarSubproceso && (
             <td style={{ border: '1px solid #9ca3af', backgroundColor: SUBPROC_BG, padding: '2px 6px', verticalAlign: 'middle' }}>
               <input
                 value={sp.subproceso}
@@ -403,8 +816,20 @@ function MatrizTable({ data, setData }) {
                 style={{ width: '100%', background: 'transparent', border: 'none', outline: 'none', fontSize: 12, color: '#1e3a5f', fontWeight: 500 }}
               />
             </td>
+            )}
+
+            {extraSubprocesoKeys.map(key => (
+              <td key={key} style={{ border: '1px solid #9ca3af', backgroundColor: SUBPROC_BG, padding: '2px 6px', verticalAlign: 'middle' }}>
+                <input
+                  value={sp[key] ?? ''}
+                  onChange={e => updateColumnaSubproceso(pIdx, spIdx, key, e.target.value)}
+                  style={{ width: '100%', background: 'transparent', border: 'none', outline: 'none', fontSize: 12, color: '#1e3a5f', fontWeight: 500 }}
+                />
+              </td>
+            ))}
 
             {/* Control Origen */}
+            {mostrarControl && (
             <td
               onClick={() => cycleControl(pIdx, spIdx, sp.control_origen_codigo)}
               style={{
@@ -417,6 +842,23 @@ function MatrizTable({ data, setData }) {
             >
               {sp.control_origen_codigo}
             </td>
+            )}
+
+            {extraControlKeys.map(key => (
+              <td
+                key={key}
+                onClick={() => cycleControlExtra(pIdx, spIdx, key, sp[key] ?? 'Ambas')}
+                style={{
+                  border: '1px solid #9ca3af',
+                  backgroundColor: getControlColor(sp[key] ?? 'Ambas'),
+                  padding: '5px 8px', textAlign: 'center', verticalAlign: 'middle',
+                  fontWeight: 600, fontSize: 11, cursor: 'pointer', userSelect: 'none',
+                }}
+                title="Click para cambiar"
+              >
+                {sp[key] ?? 'Ambas'}
+              </td>
+            ))}
 
             {/* Celdas bool dinámicas */}
             {segmentos.map(seg =>

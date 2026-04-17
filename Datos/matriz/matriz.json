@@ -55,130 +55,169 @@
       "proceso": "Venta",
       "subprocesos": [
         {
-          "subproceso": "Crear Cliente ---------PRUEBAAAA",
-          "control_origen_codigo": "VT",
+          "subproceso": "Crear Cliente",
+          "subproceso_2": "Crear Cliente numero 2",
+          "control_origen_codigo": "Ambas",
           "control_origen_nombre": "CLARO_Y_VTR",
           "control_origen_equivale_a": [
             "CLARO",
             "VTR"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": true,
-              "HFC": true,
+              "HFC-------": true,
               "FTTH": true,
-              "Neutra": true
+              "Neutra---------": true
             },
-            "B2B": {
-              "Movil": true,
+            "B2B----------": {
+              "Movil-------------": true,
               "HFC": true,
-              "FTTH": true,
+              "FTTH----------": true,
               "Neutra": true
-            }
-          }
-        },
-        {
-          "subproceso": "hola",
-          "control_origen_codigo": "VT",
-          "habilitado": {
-            "B2C": {
-              "Movil": true,
-              "HFC": true,
-              "FTTH": true,
-              "Neutra": true
-            },
-            "B2B": {
-              "Movil": true,
-              "HFC": true,
-              "FTTH": true,
-              "Neutra": false
             }
           }
         },
         {
           "subproceso": "Venta Fija",
-          "control_origen_codigo": "VT",
+          "subproceso_2": "Venta Fija",
+          "control_origen_codigo": "Ambas",
           "control_origen_nombre": "CLARO_Y_VTR",
           "control_origen_equivale_a": [
             "CLARO",
             "VTR"
           ],
           "habilitado": {
-            "B2C": {
-              "Movil": true,
-              "HFC": true,
+            "B2C--------": {
+              "Movil": false,
+              "HFC-------": true,
               "FTTH": true,
-              "Neutra": true
+              "Neutra---------": true
             },
-            "B2B": {
-              "Movil": true,
+            "B2B----------": {
+              "Movil-------------": false,
               "HFC": true,
-              "FTTH": true,
+              "FTTH----------": true,
               "Neutra": true
             }
           }
         },
         {
-          "subproceso": "Venta Fija Cruzada ---------PRUEBAAAA",
-          "control_origen_codigo": "VT",
+          "subproceso": "Venta Fija Cruzada*****",
+          "subproceso_2": "Venta Fija Cruzada*****",
+          "control_origen_codigo": "Ambas",
           "control_origen_nombre": "CLARO_Y_VTR",
           "control_origen_equivale_a": [
             "CLARO",
             "VTR"
           ],
           "habilitado": {
-            "B2C": {
-              "Movil": true,
-              "HFC": true,
+            "B2C--------": {
+              "Movil": false,
+              "HFC-------": true,
               "FTTH": true,
-              "Neutra": true
+              "Neutra---------": false
             },
-            "B2B": {
-              "Movil": true,
+            "B2B----------": {
+              "Movil-------------": false,
               "HFC": true,
+              "FTTH----------": true,
+              "Neutra": false
+            }
+          }
+        },
+        {
+          "subproceso": "Portabilidad Fija",
+          "subproceso_2": "Portabilidad Fija",
+          "control_origen_codigo": "Ambas",
+          "control_origen_nombre": "CLARO_Y_VTR",
+          "control_origen_equivale_a": [
+            "CLARO",
+            "VTR"
+          ],
+          "habilitado": {
+            "B2C--------": {
+              "Movil": false,
+              "HFC-------": true,
               "FTTH": true,
+              "Neutra---------": true
+            },
+            "B2B----------": {
+              "Movil-------------": false,
+              "HFC": true,
+              "FTTH----------": true,
               "Neutra": true
             }
           }
         },
         {
           "subproceso": "Venta Móvil",
-          "control_origen_codigo": "CL",
+          "subproceso_2": "Venta Móvil",
+          "control_origen_codigo": "Ambas",
           "control_origen_nombre": "CLARO_Y_VTR",
           "control_origen_equivale_a": [
             "CLARO",
             "VTR"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": true,
-              "HFC": true,
-              "FTTH": true,
-              "Neutra": true
+              "HFC-------": true,
+              "FTTH": false,
+              "Neutra---------": false
             },
-            "B2B": {
-              "Movil": true,
+            "B2B----------": {
+              "Movil-------------": true,
               "HFC": true,
-              "FTTH": true,
-              "Neutra": true
+              "FTTH----------": false,
+              "Neutra": false
             }
           }
         },
         {
-          "subproceso": "d",
+          "subproceso": "Portabilidad Móvil",
+          "subproceso_2": "Portabilidad Móvil",
           "control_origen_codigo": "Ambas",
+          "control_origen_nombre": "CLARO_Y_VTR",
+          "control_origen_equivale_a": [
+            "CLARO",
+            "VTR"
+          ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": true,
-              "HFC": true,
-              "FTTH": true,
-              "Neutra": true
+              "HFC-------": false,
+              "FTTH": false,
+              "Neutra---------": false
             },
-            "B2B": {
+            "B2B----------": {
+              "Movil-------------": true,
+              "HFC": false,
+              "FTTH----------": false,
+              "Neutra": false
+            }
+          }
+        },
+        {
+          "subproceso": "Migración de Pre a Post / CE",
+          "subproceso_2": "Migración de Pre a Post / CE",
+          "control_origen_codigo": "CL",
+          "control_origen_nombre": "CLARO",
+          "control_origen_equivale_a": [
+            "CLARO"
+          ],
+          "habilitado": {
+            "B2C--------": {
               "Movil": true,
-              "HFC": true,
-              "FTTH": true,
-              "Neutra": true
+              "HFC-------": false,
+              "FTTH": false,
+              "Neutra---------": false
+            },
+            "B2B----------": {
+              "Movil-------------": true,
+              "HFC": false,
+              "FTTH----------": false,
+              "Neutra": false
             }
           }
         }
@@ -188,51 +227,77 @@
       "proceso": "Postventa",
       "subprocesos": [
         {
-          "subproceso": "Modificación Overbuild (Cambio de Promo)",
+          "subproceso": "Cambio de Promo (1 a 2, 1 a 3, 2 a 3)",
+          "subproceso_2": "Cambio de Promo (1 a 2, 1 a 3, 2 a 3)",
           "control_origen_codigo": "VT",
           "control_origen_nombre": "VTR",
           "control_origen_equivale_a": [
             "VTR"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": false,
-              "HFC": true,
+              "HFC-------": true,
               "FTTH": true,
-              "Neutra": false
+              "Neutra---------": true
             },
-            "B2B": {
-              "Movil": false,
+            "B2B----------": {
+              "Movil-------------": false,
               "HFC": true,
+              "FTTH----------": true,
+              "Neutra": true
+            }
+          }
+        },
+        {
+          "subproceso": "Modificación Overbuild (Cambio de Promo)",
+          "subproceso_2": "Modificación Overbuild (Cambio de Promo)",
+          "control_origen_codigo": "VT",
+          "control_origen_nombre": "VTR",
+          "control_origen_equivale_a": [
+            "VTR"
+          ],
+          "habilitado": {
+            "B2C--------": {
+              "Movil": false,
+              "HFC-------": true,
               "FTTH": true,
+              "Neutra---------": false
+            },
+            "B2B----------": {
+              "Movil-------------": false,
+              "HFC": true,
+              "FTTH----------": true,
               "Neutra": false
             }
           }
         },
         {
           "subproceso": "Modificación Cambio de Tecnología (Cambio de Promo)",
+          "subproceso_2": "Modificación Cambio de Tecnología (Cambio de Promo)",
           "control_origen_codigo": "VT",
           "control_origen_nombre": "VTR",
           "control_origen_equivale_a": [
             "VTR"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": false,
-              "HFC": true,
+              "HFC-------": true,
               "FTTH": true,
-              "Neutra": false
+              "Neutra---------": false
             },
-            "B2B": {
-              "Movil": false,
+            "B2B----------": {
+              "Movil-------------": false,
               "HFC": true,
-              "FTTH": true,
+              "FTTH----------": true,
               "Neutra": false
             }
           }
         },
         {
           "subproceso": "Modificaciones (Autoinstalación)",
+          "subproceso_2": "Modificaciones (Autoinstalación)",
           "control_origen_codigo": "Ambas",
           "control_origen_nombre": "CLARO_Y_VTR",
           "control_origen_equivale_a": [
@@ -240,330 +305,368 @@
             "VTR"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": false,
-              "HFC": true,
+              "HFC-------": true,
               "FTTH": true,
-              "Neutra": true
+              "Neutra---------": true
             },
-            "B2B": {
-              "Movil": false,
+            "B2B----------": {
+              "Movil-------------": false,
               "HFC": true,
-              "FTTH": true,
+              "FTTH----------": true,
               "Neutra": true
             }
           }
         },
         {
           "subproceso": "DownGrade de Promo (2 a 1, 3 a 2, 3 a 1)",
+          "subproceso_2": "DownGrade de Promo (2 a 1, 3 a 2, 3 a 1)",
           "control_origen_codigo": "VT",
           "control_origen_nombre": "VTR",
           "control_origen_equivale_a": [
             "VTR"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": false,
-              "HFC": true,
+              "HFC-------": true,
               "FTTH": true,
-              "Neutra": true
+              "Neutra---------": true
             },
-            "B2B": {
-              "Movil": false,
+            "B2B----------": {
+              "Movil-------------": false,
               "HFC": true,
-              "FTTH": true,
+              "FTTH----------": true,
               "Neutra": true
             }
           }
         },
         {
           "subproceso": "Bloqueo de Servicio",
+          "subproceso_2": "Bloqueo de Servicio",
           "control_origen_codigo": "CL",
           "control_origen_nombre": "CLARO",
           "control_origen_equivale_a": [
             "CLARO"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": true,
-              "HFC": false,
+              "HFC-------": false,
               "FTTH": false,
-              "Neutra": false
+              "Neutra---------": false
             },
-            "B2B": {
-              "Movil": true,
+            "B2B----------": {
+              "Movil-------------": true,
               "HFC": false,
-              "FTTH": false,
+              "FTTH----------": false,
               "Neutra": false
             }
           }
         },
         {
-          "subproceso": "Desbloqueo de Servicio ---------PRUEBAAAA",
+          "subproceso": "Desbloqueo de Servicio",
+          "subproceso_2": "Desbloqueo de Servicio",
           "control_origen_codigo": "CL",
           "control_origen_nombre": "CLARO",
           "control_origen_equivale_a": [
             "CLARO"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": true,
-              "HFC": false,
+              "HFC-------": false,
               "FTTH": false,
-              "Neutra": false
+              "Neutra---------": false
             },
-            "B2B": {
-              "Movil": true,
+            "B2B----------": {
+              "Movil-------------": true,
               "HFC": false,
-              "FTTH": false,
+              "FTTH----------": false,
               "Neutra": false
             }
           }
         },
         {
           "subproceso": "Suspensión Voluntaria",
+          "subproceso_2": "Suspensión Voluntaria",
           "control_origen_codigo": "VT",
           "control_origen_nombre": "VTR",
           "control_origen_equivale_a": [
             "VTR"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": false,
-              "HFC": true,
+              "HFC-------": true,
               "FTTH": true,
-              "Neutra": true
+              "Neutra---------": true
             },
-            "B2B": {
-              "Movil": false,
+            "B2B----------": {
+              "Movil-------------": false,
               "HFC": true,
-              "FTTH": true,
+              "FTTH----------": true,
               "Neutra": true
             }
           }
         },
         {
           "subproceso": "Reanudación por Suspensión Voluntaria",
+          "subproceso_2": "Reanudación por Suspensión Voluntaria",
           "control_origen_codigo": "VT",
           "control_origen_nombre": "VTR",
           "control_origen_equivale_a": [
             "VTR"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": false,
-              "HFC": true,
+              "HFC-------": true,
               "FTTH": true,
-              "Neutra": true
+              "Neutra---------": true
             },
-            "B2B": {
-              "Movil": false,
+            "B2B----------": {
+              "Movil-------------": false,
               "HFC": true,
-              "FTTH": true,
+              "FTTH----------": true,
               "Neutra": true
             }
           }
         },
         {
           "subproceso": "Agregar Servicios Adicionales",
+          "subproceso_2": "Agregar Servicios Adicionales",
           "control_origen_codigo": "CL",
           "control_origen_nombre": "CLARO",
           "control_origen_equivale_a": [
             "CLARO"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": true,
-              "HFC": false,
+              "HFC-------": false,
               "FTTH": false,
-              "Neutra": false
+              "Neutra---------": false
             },
-            "B2B": {
-              "Movil": true,
+            "B2B----------": {
+              "Movil-------------": true,
               "HFC": false,
-              "FTTH": false,
+              "FTTH----------": false,
               "Neutra": false
             }
           }
         },
         {
           "subproceso": "Eliminar Servicios Adicionales",
+          "subproceso_2": "Eliminar Servicios Adicionales",
           "control_origen_codigo": "CL",
           "control_origen_nombre": "CLARO",
           "control_origen_equivale_a": [
             "CLARO"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": true,
-              "HFC": false,
+              "HFC-------": false,
               "FTTH": false,
-              "Neutra": false
+              "Neutra---------": false
             },
-            "B2B": {
-              "Movil": true,
+            "B2B----------": {
+              "Movil-------------": true,
               "HFC": false,
-              "FTTH": false,
+              "FTTH----------": false,
               "Neutra": false
             }
           }
         },
         {
-          "subproceso": "Agregar Bolsas",
+          "subproceso": "Agregar Bolsas*****",
+          "subproceso_2": "Agregar Bolsas*****",
           "control_origen_codigo": "CL",
           "control_origen_nombre": "CLARO",
           "control_origen_equivale_a": [
             "CLARO"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": true,
-              "HFC": false,
+              "HFC-------": false,
               "FTTH": false,
-              "Neutra": false
+              "Neutra---------": false
             },
-            "B2B": {
-              "Movil": true,
+            "B2B----------": {
+              "Movil-------------": true,
               "HFC": false,
-              "FTTH": false,
+              "FTTH----------": false,
               "Neutra": false
             }
           }
         },
         {
           "subproceso": "Eliminar Bolsas",
+          "subproceso_2": "Eliminar Bolsas",
           "control_origen_codigo": "CL",
           "control_origen_nombre": "CLARO",
           "control_origen_equivale_a": [
             "CLARO"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": true,
-              "HFC": false,
+              "HFC-------": false,
               "FTTH": false,
-              "Neutra": false
+              "Neutra---------": false
             },
-            "B2B": {
-              "Movil": true,
+            "B2B----------": {
+              "Movil-------------": true,
               "HFC": false,
-              "FTTH": false,
+              "FTTH----------": false,
               "Neutra": false
             }
           }
         },
         {
           "subproceso": "Agregar Descuentos",
+          "subproceso_2": "Agregar Descuentos",
           "control_origen_codigo": "CL",
           "control_origen_nombre": "CLARO",
           "control_origen_equivale_a": [
             "CLARO"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": true,
-              "HFC": false,
+              "HFC-------": false,
               "FTTH": false,
-              "Neutra": false
+              "Neutra---------": false
             },
-            "B2B": {
-              "Movil": true,
+            "B2B----------": {
+              "Movil-------------": true,
               "HFC": false,
+              "FTTH----------": false,
+              "Neutra": false
+            }
+          }
+        },
+        {
+          "subproceso": "Eliminar Descuentos",
+          "subproceso_2": "Eliminar Descuentos",
+          "control_origen_codigo": "CL",
+          "control_origen_nombre": "CLARO",
+          "control_origen_equivale_a": [
+            "CLARO"
+          ],
+          "habilitado": {
+            "B2C--------": {
+              "Movil": true,
+              "HFC-------": false,
               "FTTH": false,
+              "Neutra---------": false
+            },
+            "B2B----------": {
+              "Movil-------------": true,
+              "HFC": false,
+              "FTTH----------": false,
               "Neutra": false
             }
           }
         },
         {
           "subproceso": "Modificación Dbox adicional",
+          "subproceso_2": "Modificación Dbox adicional",
           "control_origen_codigo": "VT",
           "control_origen_nombre": "VTR",
           "control_origen_equivale_a": [
             "VTR"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": false,
-              "HFC": true,
+              "HFC-------": true,
               "FTTH": true,
-              "Neutra": true
+              "Neutra---------": true
             },
-            "B2B": {
-              "Movil": false,
+            "B2B----------": {
+              "Movil-------------": false,
               "HFC": true,
-              "FTTH": true,
+              "FTTH----------": true,
               "Neutra": true
             }
           }
         },
         {
           "subproceso": "Modificación Venta Canal Adicional",
+          "subproceso_2": "Modificación Venta Canal Adicional",
           "control_origen_codigo": "VT",
           "control_origen_nombre": "VTR",
           "control_origen_equivale_a": [
             "VTR"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": false,
-              "HFC": true,
+              "HFC-------": true,
               "FTTH": true,
-              "Neutra": true
+              "Neutra---------": true
             },
-            "B2B": {
-              "Movil": false,
+            "B2B----------": {
+              "Movil-------------": false,
               "HFC": true,
-              "FTTH": true,
+              "FTTH----------": true,
               "Neutra": true
             }
           }
         },
         {
           "subproceso": "Modificación Agregar Descuento",
+          "subproceso_2": "Modificación Agregar Descuento",
           "control_origen_codigo": "VT",
           "control_origen_nombre": "VTR",
           "control_origen_equivale_a": [
             "VTR"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": false,
-              "HFC": true,
+              "HFC-------": true,
               "FTTH": true,
-              "Neutra": true
+              "Neutra---------": true
             },
-            "B2B": {
-              "Movil": false,
+            "B2B----------": {
+              "Movil-------------": false,
               "HFC": true,
-              "FTTH": true,
+              "FTTH----------": true,
               "Neutra": true
             }
           }
         },
         {
           "subproceso": "Cambio de Plan (CE a CE, Post a Post, CE a Post, Post a CE)",
+          "subproceso_2": "Cambio de Plan (CE a CE, Post a Post, CE a Post, Post a CE)",
           "control_origen_codigo": "CL",
           "control_origen_nombre": "CLARO",
           "control_origen_equivale_a": [
             "CLARO"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": true,
-              "HFC": false,
+              "HFC-------": false,
               "FTTH": false,
-              "Neutra": false
+              "Neutra---------": false
             },
-            "B2B": {
-              "Movil": true,
+            "B2B----------": {
+              "Movil-------------": true,
               "HFC": false,
-              "FTTH": false,
+              "FTTH----------": false,
               "Neutra": false
             }
           }
         },
         {
-          "subproceso": "Cambio de Simcard ---------PRUEBAAAA",
+          "subproceso": "Cambio de Simcard",
+          "subproceso_2": "Cambio de Simcard",
           "control_origen_codigo": "Ambas",
           "control_origen_nombre": "CLARO_Y_VTR",
           "control_origen_equivale_a": [
@@ -571,176 +674,184 @@
             "VTR"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": true,
-              "HFC": false,
+              "HFC-------": false,
               "FTTH": false,
-              "Neutra": false
+              "Neutra---------": false
             },
-            "B2B": {
-              "Movil": true,
+            "B2B----------": {
+              "Movil-------------": true,
               "HFC": false,
-              "FTTH": false,
+              "FTTH----------": false,
               "Neutra": false
             }
           }
         },
         {
           "subproceso": "Cambio de Número",
+          "subproceso_2": "Cambio de Número",
           "control_origen_codigo": "CL",
           "control_origen_nombre": "CLARO",
           "control_origen_equivale_a": [
             "CLARO"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": true,
-              "HFC": false,
+              "HFC-------": false,
               "FTTH": false,
-              "Neutra": false
+              "Neutra---------": false
             },
-            "B2B": {
-              "Movil": true,
+            "B2B----------": {
+              "Movil-------------": true,
               "HFC": false,
-              "FTTH": false,
+              "FTTH----------": false,
               "Neutra": false
             }
           }
         },
         {
           "subproceso": "Cambio o Reposición de Equipo",
+          "subproceso_2": "Cambio o Reposición de Equipo",
           "control_origen_codigo": "CL",
           "control_origen_nombre": "CLARO",
           "control_origen_equivale_a": [
             "CLARO"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": true,
-              "HFC": false,
+              "HFC-------": false,
               "FTTH": false,
-              "Neutra": false
+              "Neutra---------": false
             },
-            "B2B": {
-              "Movil": true,
+            "B2B----------": {
+              "Movil-------------": true,
               "HFC": false,
-              "FTTH": false,
+              "FTTH----------": false,
               "Neutra": false
             }
           }
         },
         {
           "subproceso": "Reparaciones",
+          "subproceso_2": "Reparaciones",
           "control_origen_codigo": "VT",
           "control_origen_nombre": "VTR",
           "control_origen_equivale_a": [
             "VTR"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": false,
-              "HFC": true,
+              "HFC-------": true,
               "FTTH": true,
-              "Neutra": true
+              "Neutra---------": true
             },
-            "B2B": {
-              "Movil": false,
+            "B2B----------": {
+              "Movil-------------": false,
               "HFC": true,
-              "FTTH": true,
+              "FTTH----------": true,
               "Neutra": true
             }
           }
         },
         {
           "subproceso": "Traspaso de Titularidad",
+          "subproceso_2": "Traspaso de Titularidad",
           "control_origen_codigo": "CL",
           "control_origen_nombre": "CLARO",
           "control_origen_equivale_a": [
             "CLARO"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": true,
-              "HFC": false,
+              "HFC-------": false,
               "FTTH": false,
-              "Neutra": false
+              "Neutra---------": false
             },
-            "B2B": {
-              "Movil": true,
+            "B2B----------": {
+              "Movil-------------": true,
               "HFC": false,
-              "FTTH": false,
+              "FTTH----------": false,
               "Neutra": false
             }
           }
         },
         {
           "subproceso": "Traslado de Domicilio",
+          "subproceso_2": "Traslado de Domicilio",
           "control_origen_codigo": "VT",
           "control_origen_nombre": "VTR",
           "control_origen_equivale_a": [
             "VTR"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": false,
-              "HFC": true,
+              "HFC-------": true,
               "FTTH": true,
-              "Neutra": true
+              "Neutra---------": true
             },
-            "B2B": {
-              "Movil": false,
+            "B2B----------": {
+              "Movil-------------": false,
               "HFC": true,
-              "FTTH": true,
+              "FTTH----------": true,
               "Neutra": true
             }
           }
         },
         {
           "subproceso": "Término de Contrato Voluntario",
+          "subproceso_2": "Término de Contrato Voluntario",
           "control_origen_codigo": "CL",
           "control_origen_nombre": "CLARO",
           "control_origen_equivale_a": [
             "CLARO"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": true,
-              "HFC": false,
+              "HFC-------": false,
               "FTTH": false,
-              "Neutra": false
+              "Neutra---------": false
             },
-            "B2B": {
-              "Movil": true,
+            "B2B----------": {
+              "Movil-------------": true,
               "HFC": false,
-              "FTTH": false,
+              "FTTH----------": false,
               "Neutra": false
             }
           }
         },
         {
           "subproceso": "Desconexiones",
+          "subproceso_2": "Desconexiones",
           "control_origen_codigo": "VT",
           "control_origen_nombre": "VTR",
           "control_origen_equivale_a": [
             "VTR"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": false,
-              "HFC": true,
+              "HFC-------": true,
               "FTTH": true,
-              "Neutra": true
+              "Neutra---------": true
             },
-            "B2B": {
-              "Movil": false,
+            "B2B----------": {
+              "Movil-------------": false,
               "HFC": true,
-              "FTTH": true,
+              "FTTH----------": true,
               "Neutra": true
             }
           }
         },
         {
           "subproceso": "PortOut",
+          "subproceso_2": "PortOut",
           "control_origen_codigo": "Ambas",
           "control_origen_nombre": "CLARO_Y_VTR",
           "control_origen_equivale_a": [
@@ -748,39 +859,69 @@
             "VTR"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": true,
-              "HFC": true,
+              "HFC-------": true,
               "FTTH": true,
-              "Neutra": true
+              "Neutra---------": true
             },
-            "B2B": {
-              "Movil": true,
+            "B2B----------": {
+              "Movil-------------": true,
               "HFC": true,
-              "FTTH": true,
+              "FTTH----------": true,
               "Neutra": true
             }
           }
         },
         {
           "subproceso": "Reconexión por Término de Contrato",
+          "subproceso_2": "Reconexión por Término de Contrato",
           "control_origen_codigo": "CL",
           "control_origen_nombre": "CLARO",
           "control_origen_equivale_a": [
             "CLARO"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": true,
-              "HFC": false,
+              "HFC-------": false,
               "FTTH": false,
-              "Neutra": false
+              "Neutra---------": false
             },
-            "B2B": {
-              "Movil": true,
+            "B2B----------": {
+              "Movil-------------": true,
               "HFC": false,
-              "FTTH": false,
+              "FTTH----------": false,
               "Neutra": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "proceso": "Facturacion",
+      "subprocesos": [
+        {
+          "subproceso": "Proceso de Facturación (emisión de boletas / facturas)****",
+          "subproceso_2": "Proceso de Facturación (emisión de boletas / facturas)****",
+          "control_origen_codigo": "Ambas",
+          "control_origen_nombre": "CLARO_Y_VTR",
+          "control_origen_equivale_a": [
+            "CLARO",
+            "VTR"
+          ],
+          "habilitado": {
+            "B2C--------": {
+              "Movil": true,
+              "HFC-------": true,
+              "FTTH": true,
+              "Neutra---------": true
+            },
+            "B2B----------": {
+              "Movil-------------": true,
+              "HFC": true,
+              "FTTH----------": true,
+              "Neutra": true
             }
           }
         }
@@ -791,6 +932,7 @@
       "subprocesos": [
         {
           "subproceso": "Pago Deuda (boletas o Factura)",
+          "subproceso_2": "Pago Deuda (boletas o Factura)",
           "control_origen_codigo": "Ambas",
           "control_origen_nombre": "CLARO_Y_VTR",
           "control_origen_equivale_a": [
@@ -798,22 +940,23 @@
             "VTR"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": true,
-              "HFC": true,
+              "HFC-------": true,
               "FTTH": true,
-              "Neutra": true
+              "Neutra---------": true
             },
-            "B2B": {
-              "Movil": true,
+            "B2B----------": {
+              "Movil-------------": true,
               "HFC": true,
-              "FTTH": true,
+              "FTTH----------": true,
               "Neutra": true
             }
           }
         },
         {
           "subproceso": "Pago de límite de crédito",
+          "subproceso_2": "Pago de límite de crédito",
           "control_origen_codigo": "Ambas",
           "control_origen_nombre": "CLARO_Y_VTR",
           "control_origen_equivale_a": [
@@ -821,44 +964,46 @@
             "VTR"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": true,
-              "HFC": false,
+              "HFC-------": false,
               "FTTH": false,
-              "Neutra": false
+              "Neutra---------": false
             },
-            "B2B": {
-              "Movil": true,
+            "B2B----------": {
+              "Movil-------------": true,
               "HFC": false,
-              "FTTH": false,
+              "FTTH----------": false,
               "Neutra": false
             }
           }
         },
         {
-          "subproceso": "Pago de nota de venta ---------PRUEBAAAA",
+          "subproceso": "Pago de nota de venta",
+          "subproceso_2": "Pago de nota de venta",
           "control_origen_codigo": "CL",
           "control_origen_nombre": "CLARO",
           "control_origen_equivale_a": [
             "CLARO"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": true,
-              "HFC": false,
+              "HFC-------": false,
               "FTTH": false,
-              "Neutra": false
+              "Neutra---------": false
             },
-            "B2B": {
-              "Movil": true,
+            "B2B----------": {
+              "Movil-------------": true,
               "HFC": false,
-              "FTTH": false,
+              "FTTH----------": false,
               "Neutra": false
             }
           }
         },
         {
           "subproceso": "Pago Deuda PUF",
+          "subproceso_2": "Pago Deuda PUF",
           "control_origen_codigo": "Ambas",
           "control_origen_nombre": "CLARO_Y_VTR",
           "control_origen_equivale_a": [
@@ -866,16 +1011,16 @@
             "VTR"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": false,
-              "HFC": true,
+              "HFC-------": true,
               "FTTH": true,
-              "Neutra": true
+              "Neutra---------": true
             },
-            "B2B": {
-              "Movil": false,
+            "B2B----------": {
+              "Movil-------------": false,
               "HFC": true,
-              "FTTH": true,
+              "FTTH----------": true,
               "Neutra": true
             }
           }
@@ -887,132 +1032,161 @@
       "subprocesos": [
         {
           "subproceso": "Bloqueo por Cobranza",
+          "subproceso_2": "Bloqueo por Cobranza",
           "control_origen_codigo": "CL",
           "control_origen_nombre": "CLARO",
           "control_origen_equivale_a": [
             "CLARO"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": true,
-              "HFC": false,
+              "HFC-------": false,
               "FTTH": false,
-              "Neutra": false
+              "Neutra---------": false
             },
-            "B2B": {
-              "Movil": true,
+            "B2B----------": {
+              "Movil-------------": true,
               "HFC": false,
-              "FTTH": false,
+              "FTTH----------": false,
               "Neutra": false
             }
           }
         },
         {
           "subproceso": "Desbloqueo por Bloqueo de Cobranza",
+          "subproceso_2": "Desbloqueo por Bloqueo de Cobranza",
           "control_origen_codigo": "CL",
           "control_origen_nombre": "CLARO",
           "control_origen_equivale_a": [
             "CLARO"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": true,
-              "HFC": false,
+              "HFC-------": false,
               "FTTH": false,
-              "Neutra": false
+              "Neutra---------": false
             },
-            "B2B": {
-              "Movil": true,
+            "B2B----------": {
+              "Movil-------------": true,
               "HFC": false,
-              "FTTH": false,
+              "FTTH----------": false,
               "Neutra": false
             }
           }
         },
         {
-          "subproceso": "Reanudación por Suspensión de Cobranza",
-          "control_origen_codigo": "Ambas",
+          "subproceso": "Suspensión por Cobranza-------",
+          "subproceso_2": "Suspensión por Cobranza-------",
+          "control_origen_codigo": "VT",
           "control_origen_nombre": "VTR",
           "control_origen_equivale_a": [
             "VTR"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": false,
-              "HFC": true,
+              "HFC-------": true,
               "FTTH": true,
-              "Neutra": true
+              "Neutra---------": true
             },
-            "B2B": {
-              "Movil": false,
+            "B2B----------": {
+              "Movil-------------": false,
               "HFC": true,
+              "FTTH----------": true,
+              "Neutra": true
+            }
+          }
+        },
+        {
+          "subproceso": "Reanudación por Suspensión de Cobranza",
+          "subproceso_2": "Reanudación por Suspensión de Cobranza",
+          "control_origen_codigo": "VT",
+          "control_origen_nombre": "VTR",
+          "control_origen_equivale_a": [
+            "VTR"
+          ],
+          "habilitado": {
+            "B2C--------": {
+              "Movil": false,
+              "HFC-------": true,
               "FTTH": true,
+              "Neutra---------": true
+            },
+            "B2B----------": {
+              "Movil-------------": false,
+              "HFC": true,
+              "FTTH----------": true,
               "Neutra": true
             }
           }
         },
         {
           "subproceso": "Término de contrato por Cobranza",
-          "control_origen_codigo": "Ambas",
+          "subproceso_2": "Término de contrato por Cobranza",
+          "control_origen_codigo": "CL",
           "control_origen_nombre": "CLARO",
           "control_origen_equivale_a": [
             "CLARO"
           ],
           "habilitado": {
-            "B2C": {
-              "Movil": false,
-              "HFC": false,
+            "B2C--------": {
+              "Movil": true,
+              "HFC-------": false,
               "FTTH": false,
-              "Neutra": false
+              "Neutra---------": false
             },
-            "B2B": {
-              "Movil": false,
+            "B2B----------": {
+              "Movil-------------": true,
               "HFC": false,
-              "FTTH": false,
+              "FTTH----------": false,
               "Neutra": false
             }
           }
         },
         {
-          "subproceso": "Desconexión por Cobranza ---------PRUEBAAAA",
-          "control_origen_codigo": "Ambas",
+          "subproceso": "Desconexión por Cobranza",
+          "subproceso_2": "Desconexión por Cobranza",
+          "control_origen_codigo": "VT",
           "control_origen_nombre": "VTR",
           "control_origen_equivale_a": [
             "VTR"
           ],
           "habilitado": {
-            "B2C": {
+            "B2C--------": {
               "Movil": false,
-              "HFC": false,
-              "FTTH": false,
-              "Neutra": false
+              "HFC-------": true,
+              "FTTH": true,
+              "Neutra---------": true
             },
-            "B2B": {
-              "Movil": false,
-              "HFC": false,
-              "FTTH": false,
-              "Neutra": false
+            "B2B----------": {
+              "Movil-------------": false,
+              "HFC": true,
+              "FTTH----------": true,
+              "Neutra": true
             }
           }
         },
         {
           "subproceso": "Reconexión de contrato por Término por Cobranza",
-          "control_origen_codigo": "Ambas",
+          "subproceso_2": "Reconexión de contrato por Término por Cobranza",
+          "control_origen_codigo": "CL",
           "control_origen_nombre": "CLARO",
           "control_origen_equivale_a": [
             "CLARO"
           ],
           "habilitado": {
-            "B2C": {
-              "Movil": false,
-              "HFC": false,
+            "B2C--------": {
+              "Movil": true,
+              "HFC-------": false,
               "FTTH": false,
-              "Neutra": false
+              "Neutra---------": false
             },
-            "B2B": {
-              "Movil": false,
+            "B2B----------": {
+              "Movil-------------": true,
               "HFC": false,
-              "FTTH": false,
+              "FTTH----------": false,
               "Neutra": false
             }
           }
